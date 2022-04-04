@@ -1,0 +1,524 @@
+
+<head>
+  <title>GUARDIAS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    
+<style>
+   
+   </style>    
+    
+</head>
+<head>
+  <title>ACUSTOS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+  <link rel="icon" href="imagenes/favi.ico" type="image/ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="./estilos/estilos.css">
+
+    
+<style>
+        
+   </style>    
+</head>
+<div class="container bloque_contenido">
+<div class="row">
+  <div class="col-sm-3">
+      <img src="imagenes/iconohorizontal2.png" width="180px" height="75px"/>
+  </div>
+ <div class="col-sm-7">
+    <div class="menu_principal_paginas">
+    <a href="listarDocentes.php" class="btn btn-info boton_panel_menu" role="button">Docentes</a>
+  <a href="listarGuardias.php" class="btn btn-info boton_panel_menu texto_ct" role="button">  Guardias</a>
+    <a href="listarPracticas.php" class="btn btn-info boton_panel_menu" role="button">Estadísticas </a>
+       <a href="configuracion.php" class="btn btn-info boton_panel_menu" role="button">Configuración </a>
+</div>
+</div>
+  <div class="col-sm-2 texto_sesion ">
+   <a href="logout.php">
+          <span class="glyphicon glyphicon-log-out"></span>
+        </a>  
+  </div>
+</div>
+    <div class="separador">
+    </div>
+</div>
+<script>
+        
+var horario, x;
+horario = {
+  "LUNES":[ 0,0,0,0,0,0 ],
+   "MARTES":[ 0,0,0,0,0,0 ],
+    "MIERCOLES":[ 0,0,0,0,0,0 ],
+     "JUEVES":[ 0,0,0,0,0,0 ],
+      "VIERNES":[ 0,0,0,0,0,0 ]
+};
+//x = horario.LUNES[2];        
+var dias = ["LUNES","MARTES","MIERCOLES","JUEVES","VIERNES"];       
+        
+$(document).ready(function(){
+    
+            $('.opciones').hide();
+    
+/*Función que se ejecuta al hacer click sobre una celda
+Debe de aparecer los iconos de tarea y observaciones.
+Además cambia el color del fondo de la celda para indicar que hay ausencia en esa hora.
+Las horas que están libres no se hace nada aunque se haga click sobre ellas.
+*/
+            $("div[id^='celda']").on("click",function(){
+                var dia = $(this).data('dia');
+                var hora = $(this).data('hora');
+                celda=this.id;
+                icono_tarea="#icono_tarea_"+dia+"_"+hora;
+                opciones_hora="#opciones_"+dia+"_"+hora;
+                 if (!$(this).hasClass('horaLibre')){ 
+                     if (!$(this).hasClass('ausencia')){ 
+                        $(this).addClass('ausencia'); 
+                        //$(icono_tarea).show(); 
+                         $(opciones_hora).show(); 
+                        registrarAusencia(dia,hora-1,1);
+                        
+                    }else{
+                        $(this).removeClass('ausencia'); 
+                        //$(icono_tarea).hide();
+                        $(opciones_hora).hide(); 
+                        registrarAusencia(dia,hora-1,0);
+                    }
+                
+                 }
+               
+                
+                console.log(horario);
+            });
+    
+            $('.boton_seleccion_todo').on("click",function(){
+                var dia = $(this).data('dia');
+                
+                if (!$(this).hasClass('todoSeleccion')){ 
+                     registrarTodoDiaAusencia(dia);
+                     $(this).addClass('todoSeleccion'); 
+                }
+                else{
+                     anularTodoDiaAusencia(dia);
+                     $(this).removeClass('todoSeleccion'); 
+                }
+               
+                console.log(horario);
+                
+            });
+    
+  /* Función que al hacer click sobre el icono de tarea 
+  comprueba si hay o no tarea y en función de ello cambia el icono 
+  para indicar lo deseado.
+  */  
+            $('.icono_tarea').on("click",function(event){
+                
+                var dia = $(this).parent().parent().data('dia');
+                var hora = $(this).parent().parent().data('hora');
+                id_imagen='#imagen_tarea_'+dia+'_'+hora;
+                icono='#icono_tarea_'+dia+'_'+hora;
+                
+                if ($(this).hasClass('sin_tarea')){ 
+                    cambiarIconoHayTarea(icono,id_imagen);
+                }
+                else{
+                    cambiarIconoNoHayTarea(icono,id_imagen);
+                 
+                }
+                //OBLIGATORIO:Esto se debe de hacer para que el div que está debajo, no capture el evento click que se hace sobre el icono de tarea
+                event.stopPropagation();
+                console.log(horario);
+                
+            });
+    
+    function cambiarIconoHayTarea(icono,imagen){
+         //alert('cambiar '+id_imagen+' a icono hay tarea');
+         $(imagen).attr('src', 'imagenes/icono_tarea2.png');
+         $(icono).removeClass('sin_tarea'); 
+    }
+    
+    function cambiarIconoNoHayTarea(icono,imagen){
+          //alert('cambiar '+id_imagen+' a icono No hay tarea');
+          $(imagen).attr('src', 'imagenes/icono_sin_tarea.png');
+          $(icono).addClass('sin_tarea');  
+    }
+    
+    
+     function cambiarIconoHayObservaciones(imagen){
+         alert('cambiar '+imagen+' a icono hay tarea');
+         $(imagen).attr('src', 'imagenes/icono_observaciones.png');
+        
+    }
+    
+    function cambiarIconoNoHayObservaciones(imagen){
+          alert('cambiar '+imagen+' a icono No hay tarea');
+          $(imagen).attr('src', 'imagenes/icono_sin_observaciones.png');
+          
+    }
+    
+    
+$(".icono_obsevaciones").click(function(event) {
+             
+             var dia = $(this).data('dia');
+             var hora = $(this).data('hora');
+             
+            id_celda="#celda_"+dia+"_"+hora;
+            id_observacion="#observaciones_"+dia+"_"+hora;
+             contenido = $(id_observacion).html();
+            $("#campo_obs").val(contenido);
+          
+            //Se convierte el div en editable para que se pueda introducir texto
+            // y recoger las observaciones para esa guardia.
+            //$(id_observacion).attr('contenteditable','true');
+            //OBLIGATORIO:Esto se debe de hacer para que el div que está debajo, no capture el evento click que se hace sobre el icono de tarea
+            event.stopPropagation();
+            //Se desactiva evento click para que se pueda introducir texto en el div. 
+            //Si no se hace al hacer click sobre la capa se quitará la guardia.
+            //$(id_celda).off( "click" );
+    
+      $(id_observacion).html($(id_observacion).html().trim());
+      $("#form_observaciones").dialog({
+			height: 200,
+			width: 300,
+			modal: true,
+			buttons: {
+				"Aceptar": function () {
+                    observacion=$("#campo_obs").val();
+        	        $(id_observacion).html(observacion);
+                    imagen='#imagen_observacion_'+dia+'_'+hora;
+                        if($(id_observacion).html()){
+                            console.info('hay observaciones');
+                            cambiarIconoHayObservaciones(imagen);
+                            $(id_observacion).off( "click" );
+                        }else{
+                             console.info('no hay observaciones ');
+                            cambiarIconoNoHayObservaciones(imagen);
+                        }
+					$(this).dialog("close");   
+			}
+		}
+	});
+    
+    
+             
+    
+    });
+    
+    $(".obsevaciones").click(function(event) {         
+            event.stopPropagation();
+       
+    });
+    
+   
+    
+ 
+}); // fin 
+    
+    
+        
+        function anularTodoDiaAusencia(dia){
+        
+            for(hora=0;hora<6;hora++){   
+                 id_celda="#celda_"+dia+"_"+(hora+1);
+                 if($(id_celda).hasClass('ausencia')){
+                     horario[dias[dia-1]][hora]=0;
+                     $(id_celda).removeClass('ausencia'); 
+                     id_icono="#icono_tarea_"+dia+"_"+(hora+1);
+                     $(id_icono).hide(); 
+                 }
+               
+            }
+        }
+        
+        
+        function registrarAusencia(dia,hora,ausencia){
+            
+            id_celda="#celda_"+dia+"_"+(hora+1);
+            if(!$(id_celda).hasClass('horaLibre')){
+                switch(dia){
+                    case 1:
+                           horario.LUNES[hora]=ausencia;
+                        break;
+                    case 2:
+                           horario.MARTES[hora]=ausencia;
+                        break;
+                    case 3:
+                           horario.MIERCOLES[hora]=ausencia;
+                        break;
+                    case 4:
+                           horario.JUEVES[hora]=ausencia;
+                        break;
+                    case 5:
+                           horario.VIERNES[hora]=ausencia;
+                        break;
+                }
+            }
+            
+        }
+        
+    </script>
+
+    <div class="container bloque_contenido">
+      <div class="horario">
+    <div class="row">
+    <div class="col-sm-4 docente">
+      Profesor1
+    </div>
+    <div class="col-sm-4">
+    <a href="listarDocentes.php" class="btn btn-primary btn-volver" role="button">REGISTRAR AUSENCIAS</a>
+    </div>
+     <div class="col-sm-4">
+
+       <a href="listarDocentes.php" class="btn btn-warning btn-volver" role="button">Volver </a>
+</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 bg-celda-info celdaTituloH">H</div>
+       <div class="col-sm-2 bg-celda-info">
+                LUNES 
+                <img class="boton_seleccion_todo" data-dia="1" src="imagenes/icono_seleccionar_todo.png" width="30px" height="30px"/>
+       </div> 
+        <div class="col-sm-2 bg-celda-info">MARTES
+              <img class="boton_seleccion_todo" data-dia="2" src="imagenes/icono_seleccionar_todo.png" width="30px" height="30px"/>
+        </div>
+         <div class="col-sm-2 bg-celda-info">MIERCOLES
+              <img class="boton_seleccion_todo" data-dia="3" src="imagenes/icono_seleccionar_todo.png" width="30px" height="30px"/>
+         
+         </div>
+          <div class="col-sm-2 bg-celda-info">JUEVES
+                  <img class="boton_seleccion_todo" data-dia="4" src="imagenes/icono_seleccionar_todo.png" width="30px" height="30px"/>
+          </div>
+           <div class="col-sm-2 bg-celda-info">VIERNES
+                  <img class="boton_seleccion_todo" data-dia="5" src="imagenes/icono_seleccionar_todo.png" width="30px" height="30px"/>
+           </div>  
+    </div>
+          
+          
+    <div class="row">
+            <div class="col-sm-2 bg-celda-info celdaHora">1</div>
+        
+        
+            <div class="col-sm-2 celda horaDocencia" id="celda_1_1"  data-dia="1" data-hora="1">
+                <div class="datos_hora">HªFIL-2BACH</div>
+                
+                
+                <div class="opciones" id="opciones_1_1">
+                  <div class="icono_tarea sin_tarea" id="icono_tarea_1_1">
+                   <img id="imagen_tarea_1_1" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+                 </div>
+                    
+                 <div class="icono_obsevaciones" id="icono_observaciones_1_1" data-dia="1" data-hora="1">
+                   <img id="imagen_observacion_1_1" src="imagenes/icono_sin_observaciones.png" width="40px" height="40px"/>
+                 </div>
+                
+                </div>
+                <div class="contenido_hora" id="hora_1_1">
+                     <div class="texto_observacion" id="texto_1_1">
+                    
+                         <div class="observacion" id="observaciones_1_1" data-dia="1" data-hora="1">
+                             </div>
+                    </div>   
+                </div>
+                 
+                
+            </div>
+        
+        
+        <div class="col-sm-2 celda horaDocencia" id="celda_2_1"  data-dia="2" data-hora="1">HªFIL-2BACH
+    <div class="icono_tarea" id="icono_tarea_2_1">
+      <img id="imagen_2_1" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_2_1" data-dia="2" data-hora="1">
+    </div>
+    </div><div class="col-sm-2 celda horaLibre" id="celda_3_1"  data-dia="3" data-hora="1">
+    <div class="icono_tarea" id="icono_tarea_3_1">
+      <img id="imagen_3_1" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_3_1" data-dia="3" data-hora="1">
+    </div>
+    </div><div class="col-sm-2 celda horaDocencia" id="celda_4_1"  data-dia="4" data-hora="1">HªFIL-2BACH
+    <div class="icono_tarea" id="icono_tarea_4_1">
+      <img id="imagen_4_1" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_4_1" data-dia="4" data-hora="1">
+    </div>
+    </div><div class="col-sm-2 celda horaDocencia" id="celda_5_1"  data-dia="5" data-hora="1">HªFIL-2BACH
+    <div class="icono_tarea" id="icono_tarea_5_1">
+      <img id="imagen_5_1" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_5_1" data-dia="5" data-hora="1">
+    </div>
+    </div>
+          
+          
+    </div>
+          
+    <div class="row"><div class="col-sm-2 bg-celda-info celdaHora">2</div><div class="col-sm-2 celda horaGuardia" id="celda_1_2"  data-dia="1" data-hora="2">GUARDIA
+    <div class="icono_tarea" id="icono_tarea_1_2">
+      <img id="imagen_1_2" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_1_2" data-dia="1" data-hora="2">
+    </div>
+    </div><div class="col-sm-2 celda horaGuardia" id="celda_2_2"  data-dia="2" data-hora="2">GUARDIA
+    <div class="icono_tarea" id="icono_tarea_2_2">
+      <img id="imagen_2_2" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_2_2" data-dia="2" data-hora="2">
+    </div>
+    </div><div class="col-sm-2 celda horaLibre" id="celda_3_2"  data-dia="3" data-hora="2">
+    <div class="icono_tarea" id="icono_tarea_3_2">
+      <img id="imagen_3_2" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_3_2" data-dia="3" data-hora="2">
+    </div>
+    </div><div class="col-sm-2 celda horaDocencia" id="celda_4_2"  data-dia="4" data-hora="2">ED-DH - 2ESO
+    <div class="icono_tarea" id="icono_tarea_4_2">
+      <img id="imagen_4_2" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_4_2" data-dia="4" data-hora="2">
+    </div>
+    </div><div class="col-sm-2 celda horaDocencia" id="celda_5_2"  data-dia="5" data-hora="2">HªFIL-2BACH
+    <div class="icono_tarea" id="icono_tarea_5_2">
+      <img id="imagen_5_2" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_5_2" data-dia="5" data-hora="2">
+    </div>
+    </div></div><div class="row"><div class="col-sm-2 bg-celda-info celdaHora">3</div><div class="col-sm-2 celda horaGuardia" id="celda_1_3"  data-dia="1" data-hora="3">GUARDIA
+    <div class="icono_tarea" id="icono_tarea_1_3">
+      <img id="imagen_1_3" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_1_3" data-dia="1" data-hora="3">
+    </div>
+    </div><div class="col-sm-2 celda horaDocencia" id="celda_2_3"  data-dia="2" data-hora="3">VE-3ESO
+    <div class="icono_tarea" id="icono_tarea_2_3">
+      <img id="imagen_2_3" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_2_3" data-dia="2" data-hora="3">
+    </div>
+    </div><div class="col-sm-2 celda horaLibre" id="celda_3_3"  data-dia="3" data-hora="3">
+    <div class="icono_tarea" id="icono_tarea_3_3">
+      <img id="imagen_3_3" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_3_3" data-dia="3" data-hora="3">
+    </div>
+    </div><div class="col-sm-2 celda horaDocencia" id="celda_4_3"  data-dia="4" data-hora="3">ED-DH - 2ESO
+    <div class="icono_tarea" id="icono_tarea_4_3">
+      <img id="imagen_4_3" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_4_3" data-dia="4" data-hora="3">
+    </div>
+    </div><div class="col-sm-2 celda horaLibre" id="celda_5_3"  data-dia="5" data-hora="3">
+    <div class="icono_tarea" id="icono_tarea_5_3">
+      <img id="imagen_5_3" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_5_3" data-dia="5" data-hora="3">
+    </div>
+    </div></div><div class="row"><div class="col-sm-2 bg-celda-info celdaHora">4</div><div class="col-sm-2 celda horaDocencia" id="celda_1_4"  data-dia="1" data-hora="4">FIL-1BACH
+    <div class="icono_tarea" id="icono_tarea_1_4">
+      <img id="imagen_1_4" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_1_4" data-dia="1" data-hora="4">
+    </div>
+    </div><div class="col-sm-2 celda horaLibre" id="celda_2_4"  data-dia="2" data-hora="4">
+    <div class="icono_tarea" id="icono_tarea_2_4">
+      <img id="imagen_2_4" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_2_4" data-dia="2" data-hora="4">
+    </div>
+    </div><div class="col-sm-2 celda horaDocencia" id="celda_3_4"  data-dia="3" data-hora="4">REUNIÓN
+    <div class="icono_tarea" id="icono_tarea_3_4">
+      <img id="imagen_3_4" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_3_4" data-dia="3" data-hora="4">
+    </div>
+    </div><div class="col-sm-2 celda horaDocencia" id="celda_4_4"  data-dia="4" data-hora="4">2PMAR -ED-DH
+    <div class="icono_tarea" id="icono_tarea_4_4">
+      <img id="imagen_4_4" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_4_4" data-dia="4" data-hora="4">
+    </div>
+    </div><div class="col-sm-2 celda horaDocencia" id="celda_5_4"  data-dia="5" data-hora="4">VE-4ESO
+    <div class="icono_tarea" id="icono_tarea_5_4">
+      <img id="imagen_5_4" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_5_4" data-dia="5" data-hora="4">
+    </div>
+    </div></div><div class="row"><div class="col-sm-2 bg-celda-info celdaHora">5</div><div class="col-sm-2 celda horaDocencia" id="celda_1_5"  data-dia="1" data-hora="5">VE-4ESO
+    <div class="icono_tarea" id="icono_tarea_1_5">
+      <img id="imagen_1_5" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_1_5" data-dia="1" data-hora="5">
+    </div>
+    </div><div class="col-sm-2 celda horaLibre" id="celda_2_5"  data-dia="2" data-hora="5">
+    <div class="icono_tarea" id="icono_tarea_2_5">
+      <img id="imagen_2_5" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_2_5" data-dia="2" data-hora="5">
+    </div>
+    </div><div class="col-sm-2 celda horaDocencia" id="celda_3_5"  data-dia="3" data-hora="5">HªFIL-2BACH
+    <div class="icono_tarea" id="icono_tarea_3_5">
+      <img id="imagen_3_5" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_3_5" data-dia="3" data-hora="5">
+    </div>
+    </div><div class="col-sm-2 celda horaLibre" id="celda_4_5"  data-dia="4" data-hora="5">
+    <div class="icono_tarea" id="icono_tarea_4_5">
+      <img id="imagen_4_5" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_4_5" data-dia="4" data-hora="5">
+    </div>
+    </div><div class="col-sm-2 celda horaLibre" id="celda_5_5"  data-dia="5" data-hora="5">
+    <div class="icono_tarea" id="icono_tarea_5_5">
+      <img id="imagen_5_5" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_5_5" data-dia="5" data-hora="5">
+    </div>
+    </div></div><div class="row"><div class="col-sm-2 bg-celda-info celdaHora">6</div><div class="col-sm-2 celda horaDocencia" id="celda_1_6"  data-dia="1" data-hora="6">VE-3ESO
+    <div class="icono_tarea" id="icono_tarea_1_6">
+      <img id="imagen_1_6" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_1_6" data-dia="1" data-hora="6">
+    </div>
+    </div><div class="col-sm-2 celda horaDocencia" id="celda_2_6"  data-dia="2" data-hora="6">FIL-1BACH
+    <div class="icono_tarea" id="icono_tarea_2_6">
+      <img id="imagen_2_6" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_2_6" data-dia="2" data-hora="6">
+    </div>
+    </div><div class="col-sm-2 celda horaDocencia" id="celda_3_6"  data-dia="3" data-hora="6">VE-3ESO
+    <div class="icono_tarea" id="icono_tarea_3_6">
+      <img id="imagen_3_6" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_3_6" data-dia="3" data-hora="6">
+    </div>
+    </div><div class="col-sm-2 celda horaLibre" id="celda_4_6"  data-dia="4" data-hora="6">
+    <div class="icono_tarea" id="icono_tarea_4_6">
+      <img id="imagen_4_6" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_4_6" data-dia="4" data-hora="6">
+    </div>
+    </div><div class="col-sm-2 celda horaDocencia" id="celda_5_6"  data-dia="5" data-hora="6">FIL-1BACH
+    <div class="icono_tarea" id="icono_tarea_5_6">
+      <img id="imagen_5_6" class="sin_tarea" src="imagenes/icono_sin_tarea.png" width="40px" height="40px"/>
+    </div>
+    <div class="observacion" id="observaciones_5_6" data-dia="5" data-hora="6">
+    </div>
+    </div></div>  </div></div> 
+
+    <div id="form_observaciones" style="display: none" title="Observaciones">
+        <textarea id="campo_obs" style="width:100%;height:100%"></textarea>
+    </div>

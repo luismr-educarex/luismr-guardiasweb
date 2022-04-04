@@ -1,0 +1,64 @@
+Array ( 
+[0] => Horario Object ( 
+        [docente] => Profesor1 
+        [tipo_horario] => diurno 
+        [horas] => Array ( 
+            [LUNES] => Array ( 
+                [1] => HªFIL-2BACH 2º BACH B (AULA 2BBach) 
+                [2] => GUARDIA Guardia 
+                [3] => GUARDIA G. Biblio 
+                [4] => FIL-1BACH 1º BACH C (AULA 1CBach) 
+                [5] => VE-4ESO 4º ESO B (AULA 4B) 
+                [6] => VE-3ESO 3º ESO B (D2) 
+                [7] => ) 
+            [MARTES] => Array ( 
+                [1] => HªFIL-2BACH 2º BACH C (AULA 2CBach) 
+                [2] => GUARDIA Guardia 
+                [3] => VE-3ESO 3º ESO D (D5) 
+                [4] => VE-3ESO 3º ESO A (AULA 3A) 3ºD PMAR 
+                [5] => 
+                [6] => FIL-1BACH 1º BACH C (AULA 1CBach) 
+                [7] => ) 
+            [MIERCOLES] => Array ( 
+                [1] => 
+                [2] => 
+                [3] => 
+                [4] => REUNIÓN DEPFIL 
+                [5] => HªFIL-2BACH 2º BACH C (AULA 2CBach) 
+                [6] => VE-3ESO 3º ESO C (D5) 
+                [7] => ) 
+            [JUEVES] => Array ( 
+                [1] => HªFIL-2BACH 2º BACH B (AULA 2BBach) 
+                [2] => ED-DH - 2ESO 2º ESO B (AULA 2B) 
+                [3] => ED-DH - 2ESO 2º ESO A (AULA 2A) 
+                [4] => 2PMAR -ED-DH 2ºD PMAR (AULA 2D PMAR) 
+                [5] => 
+                [6] => 
+                [7] => ) 
+            [VIERNES] => Array ( 
+                [1] => HªFIL-2BACH 2º BACH C (AULA 2CBach) 
+                [2] => HªFIL-2BACH 2º BACH B (AULA 2BBach) 
+                [3] => 
+                [4] => VE-4ESO 4º ESO D (D5) 
+                [5] => VE-4ESO 4º ESO C (D5) 4ºPRAGE 
+                [6] => FIL-1BACH 1º BACH C (AULA 1CBach) 
+                [7] => ) 
+            ) 
+        )
+        
+Array ( 
+    [1] => HªFIL-2BACH 2º BACH B (AULA 2BBach) 
+    [2] => GUARDIA Guardia 
+    [3] => GUARDIA G. Biblio 
+    [4] => FIL-1BACH 1º BACH C (AULA 1CBach) 
+    [5] => VE-4ESO 4º ESO B (AULA 4B) 
+    [6] => VE-3ESO 3º ESO B (D2) 
+    [7] => ) 
+Array ( 
+    [1] => HªFIL-2BACH 2º BACH C (AULA 2CBach) 
+    [2] => GUARDIA Guardia 
+    [3] => VE-3ESO 3º ESO D (D5) 
+    [4] => VE-3ESO 3º ESO A (AULA 3A) 3ºD PMAR 
+    [5] => 
+    [6] => FIL-1BACH 1º BACH C (AULA 1CBach) 
+    [7] => )

@@ -1,0 +1,17 @@
+CREATE TABLE guardia (
+      id bigint AUTO_INCREMENT NOT NULL,
+      idProfesor bigint,
+      semana bigint,
+      dia bigint,
+      hora bigint,
+      grupo varchar(255),
+      aula varchar(255),
+      idProfGuardia bigint,
+      tarea bigint,
+      observaciones varchar(255),
+      cancelada bigint,
+      creadoPor varchar(255),
+      fechaCreacion date,
+      fechaGuardia date,
+PRIMARY KEY(id),
+INDEX guardia_id_INDEX (id));

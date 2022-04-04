@@ -1,0 +1,465 @@
+Materias o asignaturas;Abreviatura;Nombre largo;Departamento;Es de tutoría;Prof. Técnico;Lectivas;Clave externa;Se imparte en cursos
+1 ASIR FHW;1 ASIR FHW;1 ASIR Fundamentos Hardware;<ninguno>;;;3;;1 ASIR, 2 PCPI, 4 ESO
+1 ASIR FOL;1 ASIR FOL;1 ASIR Formación y Orientación Laboral;<ninguno>;;;3;;1 ASIR
+1 ASIR GBD;1 ASIR GBD;1 ASIR Gestión de Bases de Datos;<ninguno>;;;6;;1 ASIR
+1 ASIR ISO;1 ASIR ISO;1 ASIR Implantación de Sistemas Operativos;<ninguno>;;;7;;1 ASIR
+1 ASIR PAR;PAR;1 ASIR Planificación y Administración de Redes;<ninguno>;;;7;;1 ASIR
+1 DAM BD;1 DAM BD;1 DAM BASES DE DATOS;<ninguno>;;;6;;1 DAM/DAW
+1 DAM ED;1 DAM ED;1 DAM ENTORNOS DE DESARROLLO;<ninguno>;;;4;;1 DAM/DAW
+1 DAM FOL;1 DAM FOL;1 DAM FORMACIÓN Y ORIENTACIÓN LABORAL;<ninguno>;;;3;;1 DAM/DAW
+1 DAM LMSGI;1 DAM LMSGI;1 DAM Lenguajes de Macas y Sistemas de Gestión de;<ninguno>;;;4;;1 DAM/DAW
+1 DAM PROG;1 DAM PROG;1 DAM PROGRAMACIÓN;<ninguno>;;;7;;1 DAM/DAW
+1 DAM SI;1 DAM SI;1 DAM SISTEMAS INFORMÁTICOS;<ninguno>;;;6;;1 DAM/DAW
+1 FPB CA;1 FPB CA;1 FPB Ciencias Aplicadas;<ninguno>;;;5;;1 FPB
+1 FPB CS;1 FPB CS;1 FPB Comunicación y Sociedad;<ninguno>;;;5;;1 FPB
+1 FPB ING;1 FPB ING;1FPB Inglés;<ninguno>;;;2;;1 FPB
+1 FPB MMS;1 FPB MMS;1 FPB Montaje y Mantenimiento de Sistemas;<ninguno>;;;10;;1 FPB
+1 FPB OAC;1 FPB OAC;1 FPB Operaciones Auxiliares de Configuración;<ninguno>;;;7;;1 FPB
+1 FPB TUT;1 FPB TUT;1 FPB Tutoría;<ninguno>;*;;1;;1 FPB
+1 SMR AO;AO;1º FPGM (SMR) Aplic Ofimaticas;<ninguno>;;;9;11726;1 SMR
+1 SMR FOL;FOL;1º FPGM (SMR) Formación y Orientación Laboral;<ninguno>;;;3;22808;1 SMR
+1 SMR RL;RL;1º FPGM (SMR)  Redes Locales;<ninguno>;;;7;11724;1 SMR
+1 SMR SEG;SEG;1º FPGM (SMR) Seguridad;<ninguno>;;;6;11725;1 SMR
+1 SMR SOM;SOM;1º FPGM (SMR) Sistemas Operativos;<ninguno>;;;5;11727;1 SMR
+1ASIR LM;1ASIR LM;1ASIR Lenguajes de Marcas;<ninguno>;;;4;;1 ASIR
+2 ASIR ASGBD;ASGBD;2º FPGS (ASIR) Admon de Sistemas Gestores de BBDD;<ninguno>;;;4;;2 ASIR
+2 ASIR ASO;ASO;2º FPGS (ASIR) Admon. de Sistemas Operativos;<ninguno>;;;8;7721;2 ASIR
+2 ASIR EIE;EIE;2º FPGS (ASIR) Empresa e Iniciativa Emprendedora;<ninguno>;;;3;7718;2 ASIR
+2 ASIR FCT;FCT;2º FPGS (ASIR) Formación en Centros de Trabajo;<ninguno>;;;;7717;2 ASIR
+2 ASIR IAW;IAW;2º FPGS (ASIR) Implantación de Aplicaciones Web;<ninguno>;;;5;7720;2 ASIR
+2 ASIR SAD;SAD;2º FPGS (ASIR) Seguridad y Alta Disponibilidad;<ninguno>;;;4;;2 ASIR
+2 ASIR SERI;SERI;2º FPGS (ASIR) Servicios de Red e Internet;<ninguno>;;;6;7722;2 ASIR
+2 DAM AD;AD;2º FPGS (DAM) Acceso a Datos;<ninguno>;;;7;7715;2 DAM
+2 DAM DI;DI;2º FPGS (DAM) Desarrollo de Interfaces;<ninguno>;;;7;;2 DAM
+2 DAM EIE;EIE;2º FPGS (DAM) Empresa e Iniciativa Emprendedora;<ninguno>;;;;;2 DAM
+2 DAM PMME;PMME;2º FPGS (DAM) Programación Multimedia y Disp. Móv.;<ninguno>;;;5;;2 DAM
+2 DAM PROY;2 DAM PROY;2º FPGS (DAM) Proyecto;<ninguno>;;;;;
+2 DAM PSP;PSP;2º FPGS (DAM) Programación de Servicios y Procesos;<ninguno>;;;4;7714;2 DAM
+2 DAM SGE;SGE;2º FPGS (DAM) Sistemas de Gestión Empresarial;<ninguno>;;;4;7716;2 DAM
+2 DAW DAWEB;2 DAW DAWEB;2 DAW Despliegue de Aplicaciones Web;<ninguno>;;;5;;2 DAW
+2 DAW DIW;2 DAW DIW;2 DAW Diseño de Interfaces Web;<ninguno>;;;7;;2 DAW
+2 DAW DWEC;2 DAW DWEC;2 DAW Desarrollo Web en entorno Cliente;<ninguno>;;;7;;2 DAW
+2 DAW DWES;2 DAW DWES;2 DAW Desarrollo Web en entorno Servidor;<ninguno>;;;8;;2 DAW
+2 DAW EIE;2 DAW EIE;2 DAW Emprsa e Inuiciativa Emprendedora;<ninguno>;;;3;;2 DAW
+2 FPB CA;2 FPB CA;2 FPB Ciencias Aplicadas;<ninguno>;;;5;;2 FPB
+2 FPB CS;2 FPB CS;2 FPB Comunicación y Sociedad;<ninguno>;;;5;;2 FPB
+2 FPB IMR;2 FPB IMR;2 FPB Instalación Manteminiento de Redes;<ninguno>;;;8;;2 FPB
+2 FPB ING;2 FPB ING;2 FPB Inglés;<ninguno>;;;2;;2 FPB
+2 FPB OAD;2 FPB OAD;2 FPB Ofimática y Archivo de Documentos;<ninguno>;;;9;;2 FPB
+2 FPB TUT;2 FPB TUT;2 FPB Tutoría;<ninguno>;*;;1;;2 FPB
+2 SMR AW;AW;2º FPGM (SMR) Aplicaciones Web;<ninguno>;;;6;11747;2 SMR
+2 SMR EIE;EIE;2º FPGM (SMR) Empresa e Iniciativa Emprendedora;<ninguno>;;;3;11748;2 SMR
+2 SMR MME;MME;2º FPGM (SMR) Montaje y Mantenimiento de Equipos;<ninguno>;;;8;11749;2 SMR
+2 SMR SER;SER;2º FPGM (SMR) Servicios en Red;<ninguno>;;;7;11746;2 SMR
+2 SMR SOR;SOR;2º FPGM (SMR) Sistemas Operativos en Red;<ninguno>;;;6;;2 SMR
+2PMAR - ACM;2PMAR - ACM;Ambito Cientifico Matematico -2PMAR;<ninguno>;;;8;;2PMAR
+2PMAR - MUS;2PMAR - MUS;2PMAR - Música;<ninguno>;;;2;;2PMAR
+2PMAR- ALS;2PMAR- ALS;2PMAR- ALS;<ninguno>;;;7;;2PMAR
+2PMAR AP-NT;2PMAR AP-NT;2PMAR Ambito Práctico -Nuevas Tecnologias;<ninguno>;;;4;;2PMAR
+2PMAR -ED-DH;2PMAR -ED-DH;2PMAR -Ed. Ciudadanía y Der.Humanos;<ninguno>;;;1;;2PMAR
+2PMAR- VE;2PMAR- VE;2PMAR- Valores Eticos;<ninguno>;;;;;2PMAR
+2PMAR-EF;2PMAR-EF;2PMAR- Educación Física;<ninguno>;;;;;2PMAR
+2PMAR-LE-Fr;2PMAR-LE-Fr;2PMAR-Lengua Extranjera -Frances;<ninguno>;;;;;2PMAR
+2PMAR-LE-In;2PMAR-LE-In;2PMAR-Lengua Extranjera -Inglés;<ninguno>;;;;;2PMAR
+2PMAR-REL;2PMAR-REL;2PMAR-Religión;<ninguno>;;;;;2PMAR
+3PMAR - CC;3PMAR - CC;Cultura Clásica - 3PMAR;<ninguno>;;;;;3PMAR
+3PMAR - EPVA;3PMAR - EPVA;3PMAR - Ed. Plastica y audiovisual;<ninguno>;;;;;3PMAR
+3PMAR - PEx;3PMAR - PEx;3PMAR - Plastica en Extremadura;<ninguno>;;;;;3PMAR
+3PMAR - REL;3PMAR - REL;3PMAR - Religion;<ninguno>;;;;;3PMAR
+3PMAR - VE;3PMAR - VE;3PMAR - Valores Éticos;<ninguno>;;;;;3PMAR
+3PMAR- ACM;3PMAR- ACM;Ámbito Científico y Matemático 3PMAR;<ninguno>;;;18;;3PMAR
+3PMAR AP-NT;3PMAR AP-NT;Ámbito práctico y Nuevas Tecnologías;<ninguno>;;;8;;3PMAR, 3 ESO, 4 ESO (DIV)
+3PMAR-ALS;3PMAR-ALS;Ámbito Lingüístico y Social 3PMAR;<ninguno>;;;14;;3PMAR
+3PMAR-EF;3PMAR-EF;3PMAR - Educación Física;<ninguno>;;;;;3PMAR
+3PMAR-ERMA;3PMAR-ERMA;Energías renovables y medio ambiente 3PMAR;<ninguno>;;;4;;3PMAR, 3 ESO
+3PMAR-IAEE;3PMAR-IAEE;Iniciación Actividad Emprendedora-Empresarial 3PMA;<ninguno>;;;;;3PMAR
+3PMAR-LE-Fr;3PMAR-LE-Fr;3PMAR-Lengua Extranjera -Francés;<ninguno>;;;4;;3PMAR
+3PMAR-LE-In;3PMAR-LE-In;3PMAR-Lengua Extranjera - Inglés;<ninguno>;;;8;;3PMAR
+3PMAR-TUT;3PMAR-TUT;Tutoría 3PMAR;<ninguno>;*;;2;;3PMAR
+AA-1BACH;;Anatomia Aplicada 1 BACH;<ninguno>;;;4;;
+ACom. 1;;Ámbito de la Comunicación 1º.;<ninguno>;;;6;;3ESPA
+ACom. 2;;Ámbito de la Comunicación 2º.;<ninguno>;;;6;;4ESPA
+ACT 1;;Ámbito Científico Técnico 1º.;<ninguno>;;;8;;3ESPA
+ACT 2;;Ámbito Científico Técnico 2º.;<ninguno>;;;8;;4ESPA
+ACT-4DIVER;ACT4DIVER;Ámbito científico tecnológico 4DIVER;<ninguno>;;;;;3 ESO, 4 ESO (DIV)
+AED-4ESO;AED-4ESO;Artes Escénicas y Danza 4ESO;<ninguno>;;;2;;4 ESO
+AFDO-2BACH;AFDO-2BACH;Actividad Física, Deporte y Ocio Activo 2 BACH;<ninguno>;;;1;;
+AFDO-2BNoc;AFDO-2BNoc;Actividad Física, Deporte y Ocio 2B noc;<ninguno>;;;1;;
+AM-1BACH;AM-1BACH;Analisis Musical 1 BACH;<ninguno>;;;;;
+AM-1BNoc;AM-1BNoc;Análisis musical 1 Bach. Nocturno;<ninguno>;;;2;;
+AM-2BACH;AM-2BACH;Análisis Musical -2BACH;<ninguno>;;;;;
+AM-2BN;AM-2BN;Análisis Musical 2 Bachillerato Nocturno;<ninguno>;;;3;;
+APOYO-GH-1ES;APOYO-GH-1ESO;Apoyo de geografía e Historia 1ESO;<ninguno>;;;;;1 ESO
+APOYO-LCL-1E;APOYO-LCL-1ESO;Apoyo LCL 1 ESO;<ninguno>;;;;;1 ESO
+ASL-4DIVER;ASL-4DIVER;Ámbito sociolingüístico 4DIVER;<ninguno>;;;;;3 ESO, 4 ESO (DIV)
+ASoc. 1;;Ámbito de la Sociedad 1º.;<ninguno>;;;4;;3ESPA
+ASoc. 2;;Ámbito de la Sociedad 2º.;<ninguno>;;;4;;4ESPA
+BG-1ESO;BG-1ESO;Biologia-Geologia 1º ESO;<ninguno>;;;15;;1 ESO
+BG-2BCN;BG-2BCN;Biología 2º Bachillerato Ciencias Nocturno;<ninguno>;;;4;;2BCN
+BG-3ESO;BG-3ESO;BG-3ESO;<ninguno>;;;12;;3 ESO
+BG-4ESOG1;BG-4ESOG1;Biología 4º ESO G1;<ninguno>;;;3;;4 ESO
+BG-4ESOG2;BG-4ESOG2;Biología 4º ESO G2;<ninguno>;;;3;;4 ESO
+BG-4ESOG3;BG-4ESOG3;Biología 4º ESO G3;<ninguno>;;;;;
+BG-ACNEE-1ES;BG-ACNEE-1ESO;Biología necesidades educativas 1 ESO;<ninguno>;;;;;1 ESO
+BG-ACNEE-3ES;BG-ACNEE-3ESO;Biología necesidades educativas 3 ESO;<ninguno>;;;;;3 ESO
+BG-CCNN3ESO;BG-CCNN3ESO;Biología-Geología y Ciencias Naturales 3ESO;<ninguno>;;;;;3 ESO
+BG-GEO-1BCN;BG-GEO-1BCN;Biología y Geología 1 Bach. Ciencia Nocturno;<ninguno>;;;4;;2BCN
+BioGeo1BchG1;BIOLGEO-1BACH;Biología y Geología 1º Bachillerato;<ninguno>;;;4;;1 Bach (CT)
+BioGeo1BchG2;;BioGeo1BchG2;<ninguno>;;;;;
+BIOL-2Bac;Biol2Bach;Biología 2º Bach;<ninguno>;;;4;;2 Bach (CT)
+BIOL-2Bac-G2;BIOL-2Bac-G2;Biología 2º Bach G2;<ninguno>;;;;;
+CAU;CAU;Cultura Audiovisual;<ninguno>;;;;;
+CAU-1BachG1;CAU-1BachD;Cultura Audiovisual 1Bach. G1;<ninguno>;;;;;1 Bach (CT), 1 Bach (HCS)
+CAU-1BachG2;CAU-1BachAB;Cultura Audiovisual 1Bach. G2;<ninguno>;;;;;1 Bach (CT)
+CAU-1BachG3;CAU-1BachC;Cultura Audiovisual 1Bach. G3;<ninguno>;;;;;1 Bach (HCS)
+CC-1BACH;CC-1BACH;Cultura Cientifica 1BACH;<ninguno>;;;;;
+CC-1BNoc;CC-1BNoc;Cultura Científica 1 Bach Nocturno;<ninguno>;;;2;;
+CC-4ESO;CC-4ESO;Cultura Científica 4ESO;<ninguno>;;;2;;4 ESO
+CCAA-AP-4ESO;CCAA-AP-4ESO;Ciencias Aplicadas a la Act. Prof. 4ESO;<ninguno>;;;;;
+CCAAP-4ESO;;CCAAP-4ESO;<ninguno>;;;3;;4 ESO
+CClasic-3ESO;CClasic-3ESO;Cultura Clásica 3º ESO;<ninguno>;;;;;3 ESO
+CClasic-4ESO;CClasic-4ESO;Cultura Clásica -4ESO;<ninguno>;;;3;;4 ESO
+CCP;CCP;Comisión de Coordinación Pedagógica;<ninguno>;;;1;;
+CMC;;Ciencias para el Mundo Contemporáneo CT y HCS;<ninguno>;;;;;1BCN, 1BCS
+CMC-1Bach;CMC-1BACH;Ciencias para el Mundo Cont. 1º Bach;<ninguno>;;;;;1 Bach (CT), 1 Bach (HCS)
+CTM 2º;CTM 2º;Ciencias e la tierra y medioambiental;<ninguno>;;;;;
+CTM-2Bach;CTM-2BACH;Ciencias de la Tierra y Medioamb. - 2º Bach;<ninguno>;;;;;2 Bach (CT)
+DFRA1Sfr1ESO;DFRA1Sfr1ESO;Desdoble de Frances seccion 1ESO;<ninguno>;;;;;1 ESO
+DFRA1Sfr2ESO;DFRA1Sfr2ESO;Desdoble de Frances seccion 2ESO;<ninguno>;;;;;2 ESO
+DFRA2-1ESO;DFRA2-1ESO;Desdoble de frances 2 en 1 ESO;<ninguno>;;;1;;1 ESO
+DFRA2-2ESO;DFRA2-2ESO;Desdoble de frances 2 en 2 ESO;<ninguno>;;;;;2 ESO
+DFRA2-3ESO;DFRA2-3ESO;Desdoble de frances 2 en 3 ESO;<ninguno>;;;;;
+DFRA2-4ESO;DFRA2-4ESO;Desdoble de Francés 2 4ESO;<ninguno>;;;;;4 ESO
+DGH-3ESO;DGH-3ESO;Desdoble de GH 3ESO;<ninguno>;;;;;3 ESO
+Dib Tec1;Dib Tec1;Dibujo Técnico 1Bach;<ninguno>;;;4;;
+Dib Tec2Bac;Dib Tec2Bac;Dibujo Técnico 2º Bach;<ninguno>;;;4;;
+DibTécn1Bac;DIBTÉCN I-1BACH;Dibujo Técnico 1º Bach;<ninguno>;;;;;1 Bach (CT)
+DibTécn2B;DIBTÉCN II-2BACH;Dibujo Técnico II 2º Bach;<ninguno>;;;;;2 Bach (CT)
+DibTécn2B-G2;DIBTÉCN II-2BACH G2;Dibujo Técnico II 2º Bach G2;<ninguno>;;;;;1 Bach (CT)
+DING-1Bach;DING-1Bach;Desdoble de Ingles de 1Bach;<ninguno>;;;1;;1 Bach (CT)
+DING-1ESO;DING-1ESO;Desdoble de ingles 1ESO;<ninguno>;;;;;1 ESO
+DING2-2ESO;DING2-2ESO;Desdoble de Ingles 2 de 2ESO;<ninguno>;;;;;2 ESO
+DING2-3ESO;DING2-3ESO;Desdoble de Ingles 2 de 3ESO;<ninguno>;;;1;;3 ESO
+DING-2Bach;DING-2Bach;Desdoble Ingles2 Bach;<ninguno>;;;;;
+DING-2ESO;DING-2ESO;Desdoble de Ingles 2ESO;<ninguno>;;;1;;2 ESO
+DING-3ESO;DING-3ESO;Desdoble de inglés 3ESO;<ninguno>;;;1;;3 ESO
+DING-4ESO;DING-4ESO;Desdoble de inglés 4ESO;<ninguno>;;;;;4 ESO
+DING-SIng1ES;DING-SIng1ES;Desdoble de ingles 1ESO seccción bil;<ninguno>;;;1;;1 ESO
+DING-SIng2ES;DING-SIng2ES;Desdoble de ingles 2ESO seccción bil;<ninguno>;;;1;;2 ESO
+DING-SIng3ES;DING-Sing3ES;Desdoble de ingles 3ESO seccción bil;<ninguno>;;;1;;3 ESO
+DING-SIng4ES;DING-SIng4ES;Desdoble de Ingles de Sección de Ingles 4ESO;<ninguno>;;;3;;4 ESO
+DLCL-1ESO;DLCL-1ESO;Desdoble de Lengua 1ESO;<ninguno>;;;;;1 ESO
+DMAT-1ESO;DMAT-1ESO;Desdoble de Matemáticas 1ESO;<ninguno>;;;;;1 ESO
+DTEC-2ESO;DTEC2-ESO;Desdoble de Tecnología 2ESO;<ninguno>;;;;;2 ESO
+DTEC-3ESO;DTEC-3ESO;Desdoble de Tecnología 3ESO;<ninguno>;;;;;3 ESO
+ECO1Bach-G1;ECO1Bach-G1;Economía 1º Bach G1;<ninguno>;;;4;;1 Bach (HCS)
+ECO1Bach-G2;ECO1Bach-G2;Economía 1º Bach G2;<ninguno>;;;4;;
+ECO1Bach-G3;ECO1Bach-G3;Economía 1º Bach G3;<ninguno>;;;;;
+Eco-1BHCNoc;Eco-1BHCNoc;Economía 1º Hum Cien Noctunro.;<ninguno>;;;4;;1BCS
+ECO-4ESO-G1;ECO-4ESO-G1;Economía 4ESO grupo 1;<ninguno>;;;3;;4 ESO
+ECO-4ESO-G2;ECO-4ESO-G2;Economía 4ESO G2;<ninguno>;;;3;;4 ESO
+ECOCENTROS;ECOCENTROS;1 hora de Ecocentros para jubilación de Felipe;<ninguno>;;;;;
+EcoEm 2Ba G1;EcoEm 2Ba G1;Economía Empresa 2ºBach G1;<ninguno>;;;4;;2 Bach (HCS)
+EcoEm 2Ba G2;EcoEm 2Ba G2;Economía Empresa 2ºBach G2;<ninguno>;;;4;;
+EcoEm-2BHCNo;EcoEm-2BHCNo;Economía de Empresa 2º BHC Nocturno.;<ninguno>;;;4;;2BCS
+ED-DH - 2ESO;ED-DH - 2ESO;Ed.Ciudadania y Derechos Humano 2ESO;<ninguno>;;;6;;2 ESO
+EducCiud3ESO;EC-3ESO;Educación para la ciudadanía 3º ESO;<ninguno>;;;;;3 ESO
+EF1Bach;EF-1BACH;Educación Física 1º Bach;<ninguno>;;;8;;1 Bach (CT), 1 Bach (HCS)
+EF-1BNoc;EF-1BNoc;Educación Física 1 Bach Nocturno;<ninguno>;;;2;;1BCN, 1BCS
+EF-1ESO;EF-1ESO;Educación Física 1º ESO;<ninguno>;;;6;;1 ESO
+EF-2ESO;EF-2ESO;Educación Física 2º ESO;<ninguno>;;;6;;2 ESO
+EF-3ESO;EF-3ESO;Educación Física 3º ESO;<ninguno>;;;6;;3 ESO
+EF-4ESO;EF-4ESO;Educación Física 4º ESO;<ninguno>;;;6;;4 ESO, 4 ESO (DIV)
+EF-SIng-1ESO;EF-SIng-1ESO;Educación Física Sección Inglés 1 ESO;<ninguno>;;;4;;1 ESO
+EF-SIng-2ESO;;EF-Sing-2ESO;<ninguno>;;;4;;2 ESO
+EF-SIng-3ESO;EF-SIng-3ESO;Educación Física - 3ESO Bilingüe;<ninguno>;;;2;;3 ESO
+EF-SIng-4ESO;EF-SIng-4ESO;Educación Física - 4ESO Bilingüe;<ninguno>;;;2;;4 ESO
+ELEC;ELEC;Electrotecnia;<ninguno>;;;;;
+Elect2BachG1;Elect2BachG1;Electrotecnia 2º Bach G1;<ninguno>;;;;;2 Bach (CT)
+Elect2BachG2;Elect2BachG2;Electrotecnia 2º Bach G2;<ninguno>;;;;;
+EPV(A)-1ESO;EPV(A)-1ESO;Educación Plástica y Visual 1ESO;<ninguno>;;;6;;1 ESO
+EPV(A)-3ESO;EPV(A)-3ESO;Educación Plástica  y Visual 3ESO;<ninguno>;;;6;;3 ESO
+EPV(A)4ESO;EPV(A)-4ESO;Educación plástica y Visual 4º ESO;<ninguno>;;;3;;4 ESO
+EPV(A)4ESOG2;EPV(A)4ESOG2;Educación plástica y Visual 4º ESO G2;<ninguno>;;;3;;4 ESO
+EPV(A)-PRAGE;EPV(A)-PRAGE;EPV(A)-PRAGE;<ninguno>;;;;;
+EPVA-SIng-1E;EPVA-SIng-1E;Educación plástica y visual sección bil. ing 1ESO;<ninguno>;;;4;;1 ESO
+EPVA-SIng-3E;EPVA-SIng-3E;Educación plástica y visual sección bil. ing 3ESO;<ninguno>;;;2;;3 ESO
+Est.;;Estudio Asistido;<ninguno>;;;;;1BCN, 1BCS, 2BCN, 2BCS
+Estudio1Bach;EST-1BACH;Estudio 1º Bach;<ninguno>;;;;;1 Bach (CT), 1 Bach (HCS)
+Estudio2Bach;EST-2BACH;Estudio 2º Bach;<ninguno>;;;;;2 Bach (CT), 2 Bach (HCS)
+Ética4ESO;ÉTI-4ESO;Educación ético cívica 4º ESO;<ninguno>;;;;;4 ESO, 4 ESO (DIV)
+Ética4ESO SB;Ética4ESO SB;Educación ético cívica 4º ESO Sección Bilingüe;<ninguno>;;;;;4 ESO
+ETyCIU-1BACH;ETyCIU-1BACH;Ética y Ciudadanía -1BACH;<ninguno>;;;;;
+ETyCIU-1BNoc;ETyCIU-1BNoc;Etica y Ciudadanía 1 Bach nocturno;<ninguno>;;;;;
+ETyCIU-2BACH;ETyCIU-2BACH;Etica y Ciudadania 2BACH;<ninguno>;;;;;
+ETyCIU-2BNoc;ETyCIU-2BNoc;Etica y Cuidadania 2 bach nocturno;<ninguno>;;;;;
+FAG-2Bach;FAG-2BACH;Fundamentos Administración Gestión 2Bach;<ninguno>;;;4;;2 Bach (HCS)
+FAG-2BNoc;FAG-2BNoc;Fundamentos Adm. Gest. 2 Bach. Nocturno;<ninguno>;;;4;;
+FCT ASIR;FCT ASIR;Formación en Centros de Trabajo ASIR;<ninguno>;;;5;;
+FCT DAM;FCT DAM;Formación en Centros de Trabajo DAM;<ninguno>;;;5;;
+FCT DAW;FCT DAW;Formación en Centros de Trabajo DAW;<ninguno>;;;4;;
+FCT SMR;FCT SMR;Formación en Centros de Trabajo SMR;<ninguno>;;;5;11751;
+FIL- 1Bach;FIL-1BACH;Filosofía y ciudadanía 1º Bach;<ninguno>;;;12;;1 Bach (CT), 1 Bach (HCS)
+FIL- 4ESO;FIL- 4ESO;Filosofia- 4ESO;<ninguno>;;;;;4 ESO
+FIL-1BNoc;FIL-1BNoc;Filosofía 1 Bach. Nocturno;<ninguno>;;;3;;1BCN, 1BCS
+Fís 2Bach G1;Fís 2Bach G1;Física 2º Bach G1;<ninguno>;;;4;;2 Bach (CT)
+Fís 2Bach G2;Fís 2Bach G2;Física 2º Bach G2;<ninguno>;;;;;
+FIS-2BCN;FIS-2BCN;Física 2B Ciencia Noctuno;<ninguno>;;;4;;2BCN
+FísQ 1Bac G1;FísQ 1Bac G1;Física y Química 1ºBach G1;<ninguno>;;;8;;1 Bach (CT)
+FísQ 1Bac G2;FísQ 1Bac G2;Física y Química 1ºBach G2;<ninguno>;;;;;1 Bach (CT)
+FísQ 1Bac G3;FísQ 1Bac G3;Física y Química 1ºBach G3;<ninguno>;;;;;
+FísQ 1Bac G4;FísQ 1Bac G4;Física y Química 1ºBach G4;<ninguno>;;;;;
+FQ-1BCN;FQ-1BCN;Física y Química 1B Ciencias Nocturno;<ninguno>;;;4;;1BCN
+FQ-2ESO;FQ-2ESO;Física y Química-2ESO;<ninguno>;;;18;;2 ESO
+FQ-3ESO;FQ-3ESO;Física y química 3º ESO;<ninguno>;;;12;;3 ESO
+FQ-4ESO-G1;FQ-4ESO-G1;Físíca química 4º ESO;<ninguno>;;;3;;4 ESO
+FQ-4ESO-G2;FQ-4ESO-G2;Físíca química 4º ESO G2;<ninguno>;;;3;;4 ESO
+FQ-4ESO-G3;FQ-4ESO-G3;Físíca química 4º ESO G3;<ninguno>;;;;;4 ESO
+FQ-ACNEE-2ES;FQ-ACNEE-2ESO;Fisica y Quimica necesidades educativas 2ESO;<ninguno>;;;;;2 ESO
+FQ-ACNEE-3ES;FQ-ACNEE-3ESO;Fisica y Quimica necesidades educativas 3ESO;<ninguno>;;;;;3 ESO
+FRA1-1BACH;FRA1-1BACH;Francés 1º Bach;<ninguno>;;;3;;1 Bach (CT), 1 Bach (HCS)
+FRA1-1BNoc;FRA1-1BNoc;Francés 1 Bachillerato Nocturno;<ninguno>;;;3;;
+FRA1-1ESO;FRA1-1ESO;Francés 1º ESO;<ninguno>;;;4;;1 ESO
+FRA1-2BACH;FRA1-2BACH;Francés 2º Bach;<ninguno>;;;3;;2 Bach (CT), 2 Bach (HCS)
+FRA1-2BNoc;FRA1-2BNoc;Francés primer idioma 2ºBNocturno;<ninguno>;;;;;
+FRA1-2ESO;FRA1-2ESO;Francés 2º ESO;<ninguno>;;;8;;2PMAR, 2 ESO
+FRA1-3ESO;FRA1-3ESO;Francés 3º ESO;<ninguno>;;;3;;3 ESO
+FRA1-4ESO;FRA1-4ESO;Francés 4º ESO;<ninguno>;;;4;;4 ESO
+FRA1-SFr1ESO;FRA1-SFr1ESO;Frances 1 Sección Bilingüe France´s 1ESO;<ninguno>;;;;;1 ESO
+FRA1-SFr2ESO;FRA1-SFr2ESO;Frances 1 sección bilingüe Frances 2ESO;<ninguno>;;;;;2 ESO
+FRA1-SFr3ESO;FRA1-SFr3ESO;Francés 1sección bil frances 3ESO;<ninguno>;;;3;;3 ESO
+FRA1-SFr4ESO;FRA1-SFr4ESO;Francés 1 Sección Francés 4ESO;<ninguno>;;;4;;4 ESO
+FRA2-1B G1;;FRA2-1B G1;<ninguno>;;;;;
+FRA2-1B G2;FRA2-1B G2;Francés 2 1º Bach Grupo 2;<ninguno>;;;;;
+FRA2-1Bach;FRA2-1Bach;Francés 2 1º Bachillerato;<ninguno>;;;4;;1 Bach (CT), 1 Bach (HCS)
+FRA2-1BNoc;FRA2-1BNoc;Francés segundo idioma 1ºBNocturno;<ninguno>;;;;;
+FRA2-1ESO;FRA2-1ESO;Francés 2 1º ESO;<ninguno>;;;6;;1 ESO
+FRA2-2BACH;FRA2-2BACH;Francés 2 de 2 bachillerato;<ninguno>;;;3;;
+FRA2-2BN;FRA2-2BN;Francés 2 2º Bach Nocturno;<ninguno>;;;;;2 Bach (CT), 2 Bach (HCS)
+FRA2-2ESO;FRA2-2ESO;Francés 2 2º ESO;<ninguno>;;;6;;2 ESO
+FRA2-3ESO;FRA2-3ESO;Francés 2 3º ESO;<ninguno>;;;4;;3 ESO
+FRA2-4ESO G1;FRA2-4ESO G1;Francés 2- 4º ESO Grupo1;<ninguno>;;;2;;4 ESO
+FRA2-4ESO G2;FRA2-4ESO G2;Francés 2-4ESO Grupo 2;<ninguno>;;;;;4 ESO
+FRA3-4ESO;FRA3-4ESO;France´s de 3 horas de 4ESO;<ninguno>;;;3;;4 ESO
+Geo 2Bach-G1;GEO2BACH-G1;Geografía 2º Bach G1;<ninguno>;;;4;;2 Bach (HCS)
+Geo 2Bach-G2;GEO2BACH-G2;Geografía 2º Bach G2;<ninguno>;;;4;;
+GEOG-2BHCNoc;GEOG-2BHCNoc;Geografía 2º Bachillerato hum y CCSS Nocturno.;<ninguno>;;;4;;2BCS
+Geol 2Bach;GEOL-2BACH;Geología 2º Bach CT;<ninguno>;;;;;2 Bach (CT)
+GH_SBFr-2ESO;GH_SBFr-2ESO;Geografía e Historia Sección Bilingüe Frances 2ESO;<ninguno>;;;;;
+GH-1ESO;GH-1ESO;Geografía-Histotia 1º ESO;<ninguno>;;;15;;1 ESO
+GH-2ESO;GH-2ESO;Geografía-Historia  2º ESO;<ninguno>;;;24;;2 ESO
+GH-3ESO;GH-3ESO;Geografía-Historia 3º ESO;<ninguno>;;;9;;3 ESO
+GH-4ESO;GH-4ESO;Geografía-Historia 4º ESO;<ninguno>;;;9;;4 ESO
+GH-4ESO-G1;GH-4ESO-G1;Geografía-Histortia 4º ESO-G1;<ninguno>;;;;;4 ESO
+GH-4ESO-G2;GH-4ESO-G2;Geografía-Histortia 4º ESO-G2;<ninguno>;;;;;
+GH-ACNEE-1ES;GH-ACNEE-1ESO;Geografía Historia necesidades educativas 1 ESO;<ninguno>;;;;;1 ESO
+GH-ACNEE-2ES;GH-ACNEE-2ESO;Geografía Historia necesidades educativas 2 ESO;<ninguno>;;;;;2 ESO
+GH-ACNEE-3ES;GH-ACNEE-3ESO;Geografía Historia necesidades educativas 3 ESO;<ninguno>;;;;;3 ESO
+GH-ACNEE-4ES;GH-ACNEE-4ESO;Geografía Historia necesidades educativas 4 ESO;<ninguno>;;;;;4 ESO
+GH-SBFr-1ESO;GH-SBFr-1ESO;Geografía e Historia Sección Bilingüe Frances 1ESO;<ninguno>;;;;;
+GH-SBFr-3ESO;GH-SBFr-3ESO;Geografía e Historia Sección Bil. Frances 3ESO;<ninguno>;;;3;;3 ESO
+GH-SBFr-4ESO;GH-SBFr-4ESO;Geografía e Historia Sección de Francés 4ESO;<ninguno>;;;3;;4 ESO
+GH-SBIn-4ESO;GH-SBIn-4ESO;Geografía e Historia Sección de Inglés 4ESO;<ninguno>;;;3;;4 ESO
+Gri. 1º.;;Griego 1º.;<ninguno>;;;;;1BCS
+Gri. 2º.;;Griego 2º.;<ninguno>;;;;;2BCS
+Griego 1Bach;GRIE-1BACH;Griego I 1º Bach;<ninguno>;;;4;;1 Bach (HCS)
+Griego 2Bach;GRIEGOII-2BACH;Griego II 2º Bach;<ninguno>;;;4;;2 Bach (HCS)
+HAr-2BHNoc;HAr-2BHNoc;Historia del Arte 2 Bachillerato Humanidades Noctu;<ninguno>;;;4;;2BCS
+HArt2BachG1;HArt2BachG1;Historia del arte 2º Bach Grupo 1;<ninguno>;;;4;;2 Bach (HCS)
+HArt2BachG2;HArt2BachG2;Historia del arte 2º Bach Grupo 2;<ninguno>;;;;;
+HCR1ESO;HCR-1ESO;Historia y cultura de las religiones 1º ESO;<ninguno>;;;;;1 ESO
+HCR2ESO;HCR-2ESO;Historia y cultura de las religiones 2º ESO;<ninguno>;;;;;2 ESO
+HCR3ESO;HCR-3ESO;Historia y cultura de las religiones 3º ESO;<ninguno>;;;;;3 ESO
+HCR4ESO;HCR-4ESO;Historia y cultura de las religiones 4º ESO;<ninguno>;;;;;4 ESO
+HEs-2BNoc;HEs-2BNoc;Historia de España 2 Bach Nocturno;<ninguno>;;;8;;2BCN, 2BCS
+HFIL-2BNoc;HFIL-2BNoc;Historia de la Filosofía 2 Bach Nocturno;<ninguno>;;;6;;2BCN, 2BCS
+HIS-ESP2Bach;HªESP-2BACH;Historia España 2º Bach;<ninguno>;;;16;;2 Bach (CT), 2 Bach (HCS)
+HIS-FIL2Bach;HªFIL-2BACH;Historia de la Filosofía 2º Bach;<ninguno>;;;12;;2 Bach (CT), 2 Bach (HCS)
+HMC1BachG1;HMC1BachG1;Historia Mundo Contemporáneo 1º Bach G1;<ninguno>;;;8;;1 Bach (HCS)
+HMC1BachG2;HMC1BachG2;Historia Mundo Contemporáneo 1º Bach G2;<ninguno>;;;;;
+HMC1BachG3;HMC1BachG3;Historia Mundo Contemporáneo 1º Bach G3;<ninguno>;;;;;
+HMC-1BHCNoc;HMC-1BHCNoc;Historia del Mundo Contemporáneo 1 BHC Nocturno;<ninguno>;;;4;;1BCS
+HMusDa-2B;HMusDa-2B;Historia de la Música y Danza 2 Bach;<ninguno>;;;;;
+IAEE-3ESO;IAEE-3ESO;Iniciación Actividad Emprendedora-Empresarial 3ESO;<ninguno>;;;4;;3 ESO
+IAEE-4ESO-G1;IAEE-4ESO-G1;Iniciacion a la actividad Empresarial y E-4ESO;<ninguno>;;;3;;4 ESO
+IAEE-4ESO-G2;IAEE-4ESO-G2;Iniciacion a la actividad Empresarial y E-4ESO;<ninguno>;;;3;;4 ESO
+Inf4ESO-G1;Inf4ESO-G1;Informática 4º ESO.G1;<ninguno>;;;2;;4 ESO
+Inf4ESO-G2;Inf4ESO-G2;Informática 4º ESO.G2;<ninguno>;;;2;;4 ESO
+Inf4ESO-G3;Inf4ESO-G3;Informática 4º ESO.G3;<ninguno>;;;2;;4 ESO
+Inf4ESO-G4;Inf4ESO-G4;Informática 4º ESO.G4;<ninguno>;;;;;4 ESO
+ING PA CCFF;ING PA CCFF;Inglés. Curso Prueba de Acceso a Ciclos;<ninguno>;;;;;PA CCFF
+ING-1Bach;ING-1BACH;Inglés 1º Bach;<ninguno>;;;12;;1 Bach (CT), 1 Bach (HCS)
+ING-1BNoc;ING-1BNoc;Inglés 1ºBach Nocturno.;<ninguno>;;;3;;1BCN, 1BCS
+ING-1ESO;ING-1ESO;Inglés 1º ESO;<ninguno>;;;20;;1 ESO
+ING1-SIng-1E;ING1-SIng-1E;ING1 Sección Bilingüe ing 1ESO;<ninguno>;;;8;;1 ESO
+ING1-SIng-2E;ING1-SIng-2E;ING1 Sección Bilingüe ing 2ESO;<ninguno>;;;8;;2 ESO
+ING1-SIng-3E;ING1-SIng-3E;ING1 Sección Bilingüe ing 3ESO;<ninguno>;;;3;;3 ESO
+ING1-SIng-4E;ING1-Sing-4E;ING1 Sección Bilingüe ing 4ESO;<ninguno>;;;4;;4 ESO
+ING2-1Bach;ING2-1Bach;;<ninguno>;;;;;
+ING2-1ESO;ING2-1ESO;Inglés segundo idioma 1ESO;<ninguno>;;;;;1 ESO
+ING2-2Bach;ING2-2Bach;;<ninguno>;;;3;;
+ING2-2ESO;ING2-2ESO;Inglés segundo idioma 2 ESO;<ninguno>;;;2;;2 ESO
+ING2-3ESO;ING2-3ESO;Inglés segundo idioma 3ESO;<ninguno>;;;2;;3 ESO
+ING2-4ESO;ING2-4ESO;Inglés segundo idioma 4ESO;<ninguno>;;;2;;4 ESO
+ING-2Bach;ING-2BACH;Inglés 2º Bach;<ninguno>;;;12;;2 Bach (CT), 2 Bach (HCS)
+ING-2BNoc;ING-2BNoc;Inglés 2º Bach Nocturno.;<ninguno>;;;6;;2BCN, 2BCS
+ING-2ESO;ING-2ESO;Inglés 2º ESO;<ninguno>;;;16;;2 ESO
+ING3-4ESO;ING3-4ESO;Ingles de 4ESO de 3 horas;<ninguno>;;;3;;4 ESO
+ING-3ESO;ING-3ESO;Inglés 3º ESO;<ninguno>;;;6;;3 ESO
+ING-4ESO;ING-4ESO;Inglés 4º ESO;<ninguno>;;;12;;4 ESO, 4 ESO (DIV)
+IP;IP;Iniciación profesional;<ninguno>;;;;;4 ESO (DIV)
+IS-2BACH;IS-2BACH;Imagen y Sonido 2 BACH;<ninguno>;;;;;
+JEF-TEC;JEF-TEC;2h de jef de tecnología para  jubilación FELIPE;<ninguno>;;;;;
+LAB_AA-1Bach;LAB_AA-1Bach;Laboratorio de Anatomia aplicada 1 BAch;<ninguno>;;;1;;
+LAB_BG-1ESO;LAB_BG-1ESO;Laboratorio de biología 1ESO;<ninguno>;;;;;
+LAB_BG-2Bach;;LAB_BG-2Bach;<ninguno>;;;;;
+LAB_BG-3ESO;LAB_BG-3ESO;Laboratirio de biologia 3ESO;<ninguno>;;;;;3 ESO
+LAB_BG-4ESG1;LAB_BG-4ESG1;Laboratorio de biología 4ESO grupo 1;<ninguno>;;;;;4 ESO
+LAB_BG-4ESG2;LAB_BG-4ESG2;Laboratorio de biología 4ESO grupo 2;<ninguno>;;;;;4 ESO
+LAB_TUT;LAB_TUT;Lab. TUTORIA - stuacion Ampara antes de irse;<ninguno>;;;;;
+LAB-AA-1Bach;LAB-AA-1Bach;Laboratorio de Anatomia Aplicacada 1Bach;<ninguno>;;;;;
+LabCCNN2ESO;LabCCNN2ESO;Laboratorio CCNN 2º ESO;<ninguno>;;;;;2 ESO
+LAB-FIS-2Bac;LAB-FIS-2Bach;Laboratorio de Física en 2Bach;<ninguno>;;;;;
+LabFísQuím1B;LABFÍSQUÍM-1BACH;Laboratorio Física Química 1º Bach;<ninguno>;;;;;1 Bach (CT)
+LAB-FQ-1Bach;;LAB-FQ-1Bach;<ninguno>;;;;;
+LAB-FQ-2ESO;LAB-FQ-2ESO;Laboratorio FQ 2ESO;<ninguno>;;;;;
+LAB-FQ-4ESO;;LAB-FQ-4ESO;<ninguno>;;;1;;4 ESO
+LAB-QUI-2Bac;LAB-QUI-2Bach;Laboratorio de Quimica 2 Bach;<ninguno>;;;;;
+LAT-1BacG1.;LAT-1BACH;Latín I 1º Bach;<ninguno>;;;4;;1 Bach (HCS)
+LAT-1BacG2;LAT-1BacG2;LAT-1BacG2;<ninguno>;;;;;
+LAT-1BHCNoc;LAT-1BHCNoc;Latín 1ºBachillerato Hum y CCSS Nocturno.;<ninguno>;;;4;;1BCS
+LAT-2BACH;LAT-2BACH;LAT-2BACH;<ninguno>;;;4;;2 Bach (HCS)
+LAT-2BHCNoc;LAT-1BHCNoc;Latín 2º Bach. Hum y CCSS Nocturno;<ninguno>;;;4;;2BCS
+LAT-4ESO-G1;LAT-4ESO-G1;Latin-4ESO-G1;<ninguno>;;;;;4 ESO
+LAT-4ESO-G2;LAT-4ESO-G2;Latin4ESO-G2;<ninguno>;;;3;;4 ESO
+LAT-4ESO-G3;LAT-4ESO-G3;Latín 4º ESO;<ninguno>;;;;;4 ESO
+LCL PA CCFF;LCL PA CCFF;Lengua. Curso Prueba de Acceso a Ciclos;<ninguno>;;;;;PA CCFF
+LCL-1Bach;LCL-1BACH;Lengua castellana y literatura 1º Bach;<ninguno>;;;16;;1 Bach (CT), 1 Bach (HCS)
+LCL-1BNoc;LCL-1BNoc;Lengua y Literatura Castellana 1º Bach Noc;<ninguno>;;;4;;1BCN, 1BCS
+LCL-1ESO;LCL-1ESO;Lengua castellana y literatura 1º ESO;<ninguno>;;;25;;1 ESO
+LCL-2Bach;LCL-2BACH;Lengua castellana y literatura 2º Bach;<ninguno>;;;16;;2 Bach (CT), 2 Bach (HCS)
+LCL-2BNoc;LCL-2BNoc;Lengua y Literatura Castellana 2º Bach Nocturno.;<ninguno>;;;8;;2BCN, 2BCS
+LCL-2ESO;LCL-2ESO;Lengua castellana y literatura 2º ESO;<ninguno>;;;24;;2 ESO
+LCL-3ESO;LCL-3ESO;Lengua castellana y literatura 3º ESO;<ninguno>;;;16;;3 ESO
+LCL-4ESO;LCL-4ESO;Lengua castellana y literatura 4º ESO;<ninguno>;;;20;;4 ESO
+LCL-ACNEE-1E;LCL-ACNEE-1ESO;LCL atención a necesidades educativas 1 ESO;<ninguno>;;;;;1 ESO
+LCL-ACNEE-2E;LCL-ACNEE-2ESO;LCL atención a necesidades educativas 2 ESO;<ninguno>;;;;;2 ESO
+LCL-ACNEE-3E;LCL-ACNEE-3ESO;LCL atención a necesidades educativas 3 ESO;<ninguno>;;;;;3 ESO
+LCL-ACNEE-4E;LCL-ACNEE-4ESO;LCL atención a necesidades educativas 4 ESO;<ninguno>;;;;;4 ESO
+LenguaCom1ES;LenguaCom1ESO;Lengua Compensatoria 1ESO;<ninguno>;;;;;1 ESO
+LenguaCom2ES;LenguaCom2ES;Lengua Compensatoria 2ESO;<ninguno>;;;;;2 ESO
+LI-1Bach-G1;LI-1Bach-G1;Literatura Uni. 1BAH;<ninguno>;;;4;;
+LI-1Bach-G2;;LI-1Bach-G2;<ninguno>;;;;;
+LiUni-1BHCN;LiUni-1BHCN;Lit. Univ.1 Bach HC Nocturno;<ninguno>;;;4;;
+LiUni-2Bach;LiUni2Bach;Literatura Universal 2º Bach;<ninguno>;;;;;2 Bach (HCS)
+LiUni2BachG2;LiUni2BachG2;Literatura Universal 2º Bach G2;<ninguno>;;;;;
+LPM-1BACH-G1;LPM-1BACH-G1;Lenguaje y Práctica Musical 1 BACH G1;<ninguno>;;;4;;
+LPM-1BACH-G2;LPM-1BACH-G2;Lenguaje y Práctica Musical 1 BACH G2;<ninguno>;;;;;
+LPM-1BNoc;LPM-1BNoc;Lenguaje y práctica musical 1 Bach Nocturno;<ninguno>;;;4;;
+Mat 1Bach G1;Mat 1Bach G1;Matemáticas 1º Bach G1;<ninguno>;;;8;;1 Bach (CT)
+Mat 1Bach G2;Mat 1Bach G2;Matemáticas 1º Bach G2;<ninguno>;;;;;1 Bach (CT)
+Mat 1Bach G3;Mat 1Bach G3;Matemáticas 1º Bach G3;<ninguno>;;;;;
+Mat 2Bach;Mat 2Bach;Matemáticas 2º Bach;<ninguno>;;;8;;2 Bach (CT)
+Mat 2Bach G2;Mat 2Bach G2;Matemáticas 2º Bach G2;<ninguno>;;;;;
+Mat 2ESO SFR;Mat 2ESO SFR;Matemáticas 2ESO Sección Bilingüe Francés;<ninguno>;;;;;2 ESO
+MAT PA CCFF;MAT PA CCFF;Matemáticas. Curso Prueba de Acceso a Ciclos;<ninguno>;;;;;PA CCFF
+MAT.AC ACNEE;MAT.AC ACNEE-3ESO;Mat.cadémicas necesidades educativas 3 ESO;<ninguno>;;;;;3 ESO
+MAT.AC-3ESO;MAT.AC-3ESO;Matemáticas Academicas 3 ESO;<ninguno>;;;12;;3 ESO
+MAT.AC-4ESO;MAT.AC-4ESO;Matemáticas Academicas  4º ESO;<ninguno>;;;12;;4 ESO
+MAT.AP ACNEE;MAT.AP ACNEE-4ESO;Mat.Aplicadas necesidades educativas 4 ESO;<ninguno>;;;;;4 ESO
+MAT.AP-3ESO;MAT.AP-3ESO;Matematicas Aplicadas 3ESO;<ninguno>;;;8;;3 ESO
+MAT-1BCNoc;MAT-1BCNoc;Matemáticas 1 Bach Ciencias Nocturno;<ninguno>;;;4;;1BCN
+MAT-1ESO;MAT-1ESO;Matemáticas 1º ESO;<ninguno>;;;25;;1 ESO
+MAT-2BCNoc;MAT-2BCNoc;Matemáticas 2º bach Ciencias nocturno.;<ninguno>;;;4;;2BCN
+MAT-2ESO;MAT-2ESO;Matemáticas 2º ESO;<ninguno>;;;24;;2 ESO
+MAT-3ESO;MAT-3ESO;Matemáticas 3º ESO;<ninguno>;;;;;3 ESO
+Mat-AC4ESOG2;Mat-AC4ESOG2;Matemáticas Academicas 4º ESO Grupo 2;<ninguno>;;;;;4 ESO
+MAT-ACNEE-1E;MAT-ACNEE-1ESO;Matemáticas necesidades educativas 1ESO;<ninguno>;;;;;1 ESO
+MAT-ACNEE-2E;MAT-ACNEE-2ESO;Matemáticas necesidades educativas 2ESO;<ninguno>;;;;;
+Mat-AP4ESO;Mat-AP4ESO;Matemáticas Aplicadas 4º ESO;<ninguno>;;;8;;4 ESO
+Mat-AP4ESOG2;Mat-AP4ESOG2;Matemáticas Aplicadas 4º ESO Grupo 2;<ninguno>;;;;;4 ESO
+MatCCSS1B-G1;MatCCSS1B-G1;Matemáticas aplicadas a las CCSS 1º Bach G1;<ninguno>;;;4;;1 Bach (HCS), 2 Bach (HCS)
+MatCCSS1B-G2;MatCCSS1B-G2;Matemáticas aplicadas a las CCSS 1º Bach G2;<ninguno>;;;;;
+MatCCSS1BNoc;MatCCSS1BNoc;Matemáticas CCSS 1Bach Nocturno;<ninguno>;;;4;;
+MatCCSS2B-G1;MATCCSS-2BACH;Matemáticas aplicadas a las CCSS 2º Bach G1;<ninguno>;;;4;;2 Bach (HCS)
+MatCCSS2B-G2;MatCCSS2B-G2;Matemáticas aplicadas a las CCSS 2º Bach G2;<ninguno>;;;;;
+MatCCSS2BNoc;MatCCSS2BNoc;Matemáticas CCSS 2Bach Nocturno;<ninguno>;;;4;;
+MatCom1ESO;;MatCom1ESO;<ninguno>;;;;;1 ESO
+MatCom2ESO;;MatCom2ESO;<ninguno>;;;;;
+MatSFRA1ESO;MatSFRA1ESO;Matemáticas Secc. Bil. Francés 1º ESO;<ninguno>;;;;;1 ESO
+MCS 1º.;;Matemáticas Ciencias Sociales;<ninguno>;;;;;1BCS
+MCS 2º.;;Matemáticas Ciencias Sociales 2º.;<ninguno>;;;;;2BCS
+MUS-1ESO;MUS-1ESO;Música 1º ESO;<ninguno>;;;10;;1 ESO
+MUS-1ESO SFR;MUS-1ESO SFR;Música 1ESO Sección Bilingüe Francés;<ninguno>;;;;;1 ESO
+MUS-2BACH;MUS-2BACH;Música 2º Bach;<ninguno>;;;;;2 Bach (CT), 2 Bach (HCS)
+MUS-2ESO;MUS-2ESO;Música 2º ESO;<ninguno>;;;8;;2 ESO
+MUS-2ESO-SBI;;Musica 2ESO sección de Ingles;<ninguno>;;;4;;2 ESO
+MUS-3ESO;MUS-3ESO;Música 3ESO;<ninguno>;;;;;3 ESO
+MUS-4ESO;MUS-4ESO;Música 4º ESO;<ninguno>;;;3;;4 ESO
+PLEX-3SO;PLEX-3ESO;Plástica en Extremadura 3ESO;<ninguno>;;;;;3 ESO
+POR2-3ESO;POR2-3ESO;Portugués 2 - 3ESO;<ninguno>;;;;;
+POR3-1ESO;POR3-1ESO;Portugués 3 - 1ESO;<ninguno>;;;;;
+POR3-3ESO;POR3-3ESO;Portugués 3 de ·ESO;<ninguno>;;;;;
+Portug. 1-2;;Portug. 1-2;<ninguno>;;;;;2 ESO
+Portug. 3-4;;Portug. 3-4;<ninguno>;;;;;4 ESO
+PrInv-2BACH;PrInv-2BACH;Proyecto de Investigación 2 Bach;<ninguno>;;;;;
+PrInv-2BNoc;PrInv-2BNoc;Proyecto de Investigación 2B Nocturno;<ninguno>;;;;;
+PSICO-2B-G1;PSICO-2B-G1;Psicología 2ºBach.;<ninguno>;;;3;;2 Bach (CT), 2 Bach (HCS)
+PSICO-2B-G2;PSICO-2B-G2;Psicología 2ºBach. G2;<ninguno>;;;;;
+PSICO-2BNoc;PSICO-2BNoc;Psicología 2 Bach Nocturno;<ninguno>;;;3;;2BCN, 2BCS
+Quí 2Bach G1;QUÍM-2BACH G1;Química 2º Bach Grupo 1;<ninguno>;;;4;;2 Bach (CT)
+Quí 2Bach G2;Quí 2Bach G2;Química 2º Bach Grupo 2;<ninguno>;;;;;2 Bach (CT)
+QUI-2BCN;QUI-2BCN;Química 2BC Nocturno;<ninguno>;;;4;;2BCN
+Ref Lengua;R LEN 3º ESO;Refuerzo Lengua 3º ESO;<ninguno>;;;;;3 ESO
+Ref Matemat;R MAT 3º ESO;Refuerzo Matematáticas 3º ESO;<ninguno>;;;;;3 ESO
+Rel. 1º.;;Religión Católica 1º-;<ninguno>;;;;;1BCN, 1BCS
+Rel. 2º.;;Religión Católica 2º.;<ninguno>;;;1;;2BCN, 2BCS
+REL-1BACH;REL-1BACH;Religión 1º Bach;<ninguno>;;;1;;1 Bach (CT), 1 Bach (HCS)
+REL-1BNoc;REL-1BNoc;Religión 1Bch Nocturno;<ninguno>;;;1;;
+REL-1ESO;REL-1ESO;Religión 1º ESO;<ninguno>;;;4;;1 ESO
+REL-2BACH;REL-2BACH;Religión 2º Bach;<ninguno>;;;1;;2 Bach (CT), 2 Bach (HCS)
+REL-2ESO;REL-2ESO;Religión 2º ESO;<ninguno>;;;3;;2 ESO
+REL-3ESO;REL-3ESO;Religión 3º ESO;<ninguno>;;;4;;3 ESO
+REL-4ESO;REL-4ESO;Religión 4º ESO;<ninguno>;;;4;;4 ESO, 4 ESO (DIV)
+Reun Direcc;Reun Direcc;Reunión de Dirección;<ninguno>;;;;;
+RLE-1ESO-G1;RLE-1ESO-G1;Refuerzo de Lengua 1º ESO grupo1;<ninguno>;;;3;;1 ESO
+RLE-1ESO-G2;RLE-1ESO-G2;Refuerzo en Lengua 1ESO Grupo2;<ninguno>;;;3;;1 ESO
+RLE-2ESO-G1;;RLE-2ESO-G1;<ninguno>;;;4;;2 ESO
+RLE-2ESO-G2;;RLE-2ESO-G2;<ninguno>;;;;;2 ESO
+RMA - 2ESO;RMA - 2ESO;Refuerzo Mat.  2ESO;<ninguno>;;;4;;2 ESO
+RMA-1ESO-G1;RMA-1ESO-G1;Refuerzo Mat. 1ESO 1ESO grupo1;<ninguno>;;;3;;1 ESO
+RMA-1ESO-G2;RMA-1ESO-G2;Refuerzo Matemáticas 1ESO grupo 2;<ninguno>;;;3;;1 ESO
+RMA-2ESO-G1;;RMA-2ESO-G1;<ninguno>;;;;;2 ESO
+RMA-2ESO-G2;;RMA-2ESO-G2;<ninguno>;;;;;2 ESO
+SFRA1ESO;SFRA1ESO;Francés Secc. Bil. Francés 1º ESO;<ninguno>;;;;;1 ESO
+SFRA2ESO;SFRA2ESO;Francés Secc. Bil. Francés 2º ESO;<ninguno>;;;;;2 ESO
+TEC-1ESO;TEC-1ESO;Tecnología 1ESO;<ninguno>;;;;;1 ESO
+TEC-2ESO;TEC-2ESO;Tecnología 2º ESO;<ninguno>;;;12;;2 ESO
+TEC-3ESO;Tec-3ESO;Tecnología 3ºESO;<ninguno>;;;8;;3 ESO
+TEC-4ESO-G1;Tec-4ESO-G1;Tecnología 4º ESO;<ninguno>;;;9;;4 ESO
+TEC-4ESO-G2;Tec-4ESO-G2;Tec-4ESO-G2;<ninguno>;;;3;;4 ESO
+TEC-AP-4ESO;TEC-AP-4ESO;Tecnología para aplicadas 4 ESO;<ninguno>;;;;;4 ESO
+TECIND 1B G1;TECIND 1B G1;Tecnología Industrial 1º Bach;<ninguno>;;;4;;1 Bach (CT)
+TECIND 1B G2;TECIND 1B G2;Tecnología Industrial 1º Bach G2;<ninguno>;;;;;
+TECIND-2B-G1;TECIND-2BACH-G1;Tecnología Industrial 2º Bach-G1;<ninguno>;;;4;;2 Bach (CT)
+TECIND-2B-G2;TECIND-2B-G2;TEInd2B-G2;<ninguno>;;;;;
+TEI;;Tecnología Industrial;<ninguno>;;;;;1BCN
+TIC-1Bach G1;TIC-1Bach G1;Tecnologías de la Inf. y Com. 1º Bach;<ninguno>;;;2;;1 Bach (CT), 1 Bach (HCS)
+TIC-1Bach G2;TIC-1BACH G2;TIC-1Bach G2;<ninguno>;;;2;;
+TIC-1Bach G3;;TIC-1Bach G3;<ninguno>;;;2;;
+TIC-1BNoc;TIC-1BNoc;TIC 1 Bach Nocturno;<ninguno>;;;2;;1BCN, 1BCS, 2BCN, 2BCS
+TIC-2BACH;TIC-2BACH;TIC-2BACH;<ninguno>;;;3;;
+TIC-2BNoc;TIC-2BNoc;TIC 2 Bach Nocturno;<ninguno>;;;3;;
+TIC-PRAGE;;TIC-PRAGE;<ninguno>;;;;;
+Tutoría1ESO;TUT-1ESO;Tutoría 1º ESO;<ninguno>;;;4;;1 ESO
+Tutoría2ESO;TUT-2ESO;Tutoría 2º ESO;<ninguno>;;;5;;2 ESO
+Tutoría3ESO;TUT-3ESO;Tutoría 3º ESO;<ninguno>;;;4;;3 ESO, 3 ESO (DIV)
+Tutoría4ESO;TUT-4ESO;Tutoría 4º ESO;<ninguno>;;;5;;4 ESO, 4 ESO (DIV)
+TVAA;TVAA;Transición a la vida adulta y activa;<ninguno>;;;;;4 ESO (DIV)
+VE-1BAC;VE-1BAC;Val. Éticos- 1º Bach;<ninguno>;;;1;;
+VE-1BNoc;VE-1BNoc;Valores Eticos 1 Bach Noc;<ninguno>;;;1;;
+VE-1ESO;VE-1ESO;Val. Éticos- 1ESO;<ninguno>;;;5;;1 ESO
+VE-2BAC;VE-2BACH;Val. Éticos-2 Bach;<ninguno>;;;;;
+VE-2ESO;VE-2ESO;Val. Éticos- 2ESO;<ninguno>;;;3;;2 ESO
+VE-3ESO;VE-3ESO;Val. Éticos-3ESO;<ninguno>;;;5;;3 ESO
+VE-4ESO;VE-4ESO;Val. Éticos-4ESO;<ninguno>;;;3;;4 ESO, 4 ESO (DIV)

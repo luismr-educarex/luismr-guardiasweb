@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GUARDIAS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        .celda{
+            height:8em;
+        }
+        
+        .celdaCabecera{
+              height:2em;
+        }
+        .selectPG{
+            
+            height: 29px;
+            padding: 5px 6px;
+            font-size: 11px;
+        }
+        .botonOpcion{
+            height: 53px;
+        }
+        .fila{
+            
+            border-bottom: 1px solid white;
+ 
+        }
+        .fondo{
+            background-color: #2196F3!important
+        }
+    
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+<div class="w3-row fondo" >
+    <div class="w3-col m12 w3-indigo w3-center fondo">  <h2>GUARDIAS</h2></div>
+    
+
+    </div>
+<div class="w3-row" >
+  <div class="w3-col m1 w3-indigo w3-center celdaCabecera fondo"><p>Hora</p></div>
+  <div class="w3-col m2 w3-green w3-center celdaCabecera"><p>Ausencia</p></div>
+  <div class="w3-col m1 w3-green w3-center celdaCabecera"><p>Grupo</p></div>
+  <div class="w3-col m2 w3-green w3-center celdaCabecera"><p>Aula</p></div>
+  <div class="w3-col m2 w3-green w3-center celdaCabecera"><p>Tareas</p></div>
+    <div class="w3-col m2 w3-green w3-center celdaCabecera"><p>Observaciones</p></div>
+  <div class="w3-col m2 w3-green w3-center celdaCabecera"><p>Sustitución</p></div>
+</div>
+<div class="w3-row fila">
+  <div class=" w3-col m1 w3-blue w3-center celda celda"><p>1</p>  <p><a href="tablon_grupo.html"><i class='glyphicon glyphicon-equalizer' style='font-size:36px'></i></a></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p>Profesor Ausente 1</p>
+    <p>Profesor Ausente 2</p>
+    <p>Profesor Ausente 3</p></div>
+  <div class="w3-col m1 w3-light-blue w3-center celda"><p>2DAM</p><p>2DAM</p><p>2DAM</p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p>IFC-1</p><p>IFC-1</p><p>IFC-1</p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p><img src="imagenes/icono_tarea.png" width="30" height="30"></p><p><img src="imagenes/icono_tarea.png" width="30" height="30"></p></div>
+    <div class="w3-col m2 w3-light-blue w3-center celda"><p>Tareas en Jefatura</p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p> <select class="form-control selectPG" id="sel1">
+    <option>PG1</option>
+    <option>PG2</option>
+    <option>PG3</option>
+    <option>PG4</option>
+  </select>
+      <select class="form-control selectPG" id="sel1">
+    <option>PG1</option>
+    <option>PG2</option>
+    <option>PG3</option>
+    <option>PG4</option>
+  </select>
+      <select class="form-control selectPG" id="sel1">
+    <option>PG1</option>
+    <option>PG2</option>
+    <option>PG3</option>
+    <option>PG4</option>
+  </select>
+     
+      
+      
+      </p></div>
+</div>
+<div class="w3-row fila">
+  <div class=" w3-col m1 w3-blue w3-center celda"><p>2</p><p><a href="tablon_grupo.html"><i class='glyphicon glyphicon-equalizer' style='font-size:36px'></i></a></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p>Profesor Ausente 4</p></div>
+  <div class="w3-col m1 w3-light-blue w3-center celda"><p>2DAM</p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p>IFC-1</p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p> <img src="imagenes/icono_tarea.png" width="30" height="30"></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p>Tareas en Jefatura</p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p> <select class="form-control selectPG" id="sel1">
+    <option>PG1</option>
+    <option>PG2</option>
+    <option>PG3</option>
+    <option>PG4</option>
+  </select></p></div>
+</div>
+    <div class="w3-row fila">
+  <div class=" w3-col m1 w3-blue w3-center celda"><p>3</p><p><a href="tablon_grupo.html"><i class='glyphicon glyphicon-equalizer' style='font-size:36px'></i></a></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m1 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+        <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+</div>
+    <div class="w3-row fila">
+  <div class=" w3-col m1 w3-blue w3-center celda"><p>4</p><p><a href="tablon_grupo.html"><i class='glyphicon glyphicon-equalizer' style='font-size:36px'></i></a></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m1 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+        <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+</div>
+    <div class="w3-row fila">
+  <div class=" w3-col m1 w3-blue w3-center celda"><p>5</p><p><a href="tablon_grupo.html"><i class='glyphicon glyphicon-equalizer' style='font-size:36px'></i></a></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m1 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+        <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+</div>
+    <div class="w3-row fila">
+  <div class=" w3-col m1 w3-blue w3-center celda"><p>6</p><p><a href="tablon_grupo.html">
+      
+      
+      <i class='glyphicon glyphicon-equalizer' style='font-size:36px'></i></a></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m1 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+  <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+    <div class="w3-col m2 w3-light-blue w3-center celda"><p></p></div>
+</div>
+</div>
+
+</body>
+</html>
