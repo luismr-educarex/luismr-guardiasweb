@@ -131,8 +131,12 @@ Las horas que están libres no se hace nada aunque se haga click sobre ellas.
         
                 id_imagen='#imagen_tarea_'+dia+'_'+hora;
                 icono='#icono_tarea_'+dia+'_'+hora;
+
+                console.info(id_imagen);
                 
-                if ($(this).hasClass('sin_tarea')){ 
+                //Se cambia el icono y la clase del div icono_tarea_x_y donde x es el dia e y la hora
+                if ($(this).hasClass('sin_tarea')){   // si no hay tarea, es que se ha hecho clik para poner la tarea. 
+                    console.info("Cambiamos el icono");
                     cambiarIconoHayTarea(icono,id_imagen);
                     guardar_tarea(docente,semana,dia,hora);
                 }
@@ -147,7 +151,7 @@ Las horas que están libres no se hace nada aunque se haga click sobre ellas.
     }); // fin click en icono tarea
        
 
-  $(".icono_obsevaciones").click(function(event) {
+  $(".icono_observaciones").click(function(event) {
 
             console.info("Observaciones");
 
@@ -156,6 +160,8 @@ Las horas que están libres no se hace nada aunque se haga click sobre ellas.
              
             id_celda="#celda_"+dia+"_"+hora;
             id_observacion="#observaciones_"+dia+"_"+hora;
+
+            console.info(id_celda);
          
             $("#formObservaciones #dia").val(dia);
             $("#formObservaciones #hora").val(hora);
@@ -182,11 +188,13 @@ Las horas que están libres no se hace nada aunque se haga click sobre ellas.
 function cambiarIconoHayTarea(icono,imagen){      
          $(imagen).attr('src', '../imagenes/icono_tarea2.png');
          $(icono).removeClass('sin_tarea'); 
+         console.info("Se ha puesto el icono de tarea");
 }
     
 function cambiarIconoNoHayTarea(icono,imagen){ 
           $(imagen).attr('src', '../imagenes/icono_sin_tarea.png');
           $(icono).addClass('sin_tarea');  
+          console.info("Se ha puesto el icono de no hay tarea");
 }
        
 function cambiarIconoHayObservaciones(imagen){  
@@ -512,8 +520,8 @@ function borrar_tarea(docente,semana,dia,hora){
     
     </script>
 
-<!-- Modal -->
-  <div class="modal fade" id="modal_observaciones" role="dialog">
+<!-- Modal para registrar las observaciones de una guardia en una hora concreta -->
+  <div class="modal fade" id="modalObservaciones" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
@@ -541,6 +549,9 @@ function borrar_tarea(docente,semana,dia,hora){
     </div>
   </div>
     <!-- FIN Modal -->
+
+
+
 <?php
 
  require('../bd/conexion.php');
@@ -830,7 +841,7 @@ function construirHTML_hora2($fecha,$semana,$info){
                    <img id="imagen_tarea_'.$dia.'_'.$hora.'" src="'.$iconotarea.'" width="40px" height="40px"/>
                  </div>
                     
-                 <div class="icono_obsevaciones" id="icono_observaciones_'.$dia.'_'.$hora.'" data-dia="'.$dia.'" data-hora="'.$hora.'" data-target="#v" data-toggle="modal">
+                 <div class="icono_observaciones" id="icono_observaciones_'.$dia.'_'.$hora.'" data-dia="'.$dia.'" data-hora="'.$hora.'" data-target="#modalObservaciones" data-toggle="modal">
                    <img id="imagen_observacion_'.$dia.'_'.$hora.'" src="'.$iconoObservaciones.'" width="40px" height="40px"/>
                  </div>
                 
