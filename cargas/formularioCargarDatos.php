@@ -27,7 +27,7 @@
     
 </head>
 <?php
-
+require_once '../comun/cabecera.php';
     
     
     

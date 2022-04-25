@@ -28,7 +28,7 @@
 </head>
 <?php
 
-    
+require_once '../comun/cabecera.php';  
     
     
 
@@ -63,7 +63,7 @@
 
 </form>
 <div class="text-right">
-            <a href="cargarDatos.php" class="btn btn-warning" role="button">Volver</a>
+            <a href="../configuracion/configuracion.php" class="btn btn-warning" role="button">Volver</a>
   </div>
 </div>
 </body>

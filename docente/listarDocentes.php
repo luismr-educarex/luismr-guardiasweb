@@ -2,9 +2,9 @@
 
 <?php
 require_once '../comun/cabecera.php';
-require_once '../docente/docenteDAO.php';
+require_once '../docente/DocenteDao.php';
 
-$docente_dao = new docenteDAO();
+$docente_dao = new DocenteDao();
 
 
 $lista_docentes = $docente_dao->cargar_docentes();

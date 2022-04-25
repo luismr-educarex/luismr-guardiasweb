@@ -43,6 +43,8 @@
 </head>
 
 <?php
+// Motrar todos los errores de PHP
+error_reporting(E_ALL);
 
 require_once "horario.php";
 require_once './docente/DocenteDAO.php';
@@ -56,14 +58,17 @@ $docenteDTO = new DocenteDTO();
 
 $ruta_fichero="";
 if(isset($_GET["fichero"]))
-      $ruta_fichero = $_GET["fichero"]; 
+      $fichero = $_GET["fichero"]; 
+
+echo $fichero;
 
 $tipos_horarios= [
     "diurno" => 1,
     "nocturno" => 2,
     "avanza" => 3,
-    "partido" => 4
-];
+    "partido" => 4];
+
+$ruta_fichero = "subidas/".$fichero;
 
 $ficheroHorarios = fopen($ruta_fichero, "r") or die("No se puede abrir el fichero!");
 
@@ -189,15 +194,13 @@ function cargarHorarioDocente($datos_docente){
     
     $horario = new Horario();
     
-    //toda fila del csv tiene 66 posiciones, donde la primera corresponde con el nombre
-    //del docente.
+    //toda fila del csv tiene 66 posiciones, donde la primera corresponde con el nombre del docente.
     $horario->setDocente($datos_docente[0]);
     //obtenemos que tipo de horario tiene el docente:diurno,nocturno,partido o avanza.
     $tipo_horario = obtenerTipoHorario($datos_docente);
     $horario->setTipo_horario($tipo_horario);
     
-     //Actualizamos el objeto horario con la lista de horas dependiendo del tipo 
-            //de horario.
+     //Actualizamos el objeto horario con la lista de horas dependiendo del tipo de horario.
     if($tipo_horario=='diurno') { // para un horario diurno
         $horario->setHoras(obtenerHorasDiurno($datos_docente));
     }else if($tipo_horario=='nocturno'){ // para un horario nocturno
@@ -252,6 +255,8 @@ function obtenerTipoHorario($fila_horas){
     return $tipo_horario;
 }
 
+
+//Devuelve un array bidimensional, donde por cada día hay un array con las horas
 function obtenerHorasDiurno($lista_horas){
     
     //LUNES 1..7/ MARTES 14..20/ MIERCOLES 27..33/ JUEVES 40..46/ VIERNES 53..59

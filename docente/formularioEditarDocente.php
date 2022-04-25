@@ -1,10 +1,13 @@
- 
 <?php
+// Motrar todos los errores de PHP
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
   require_once '../comun/cabecera.php';
-  require_once 'docenteDAO.php';
+  require_once 'DocenteDao.php';
 
-  $docente_dao = new docenteDAO();
+  $docente_dao = new DocenteDao();
 
   if(isset($_GET["id"]))
       $id = $_GET["id"]; 
@@ -17,19 +20,22 @@
 
 <body>
 
-<div class="container">
+<div class="container   bloque_contenido">
        
    
-<form action="editarDocente.php" method="POST">
+<form class="form-inline" action="editarDocente.php" method="POST">
 <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $docente['id'] ?>">
-  <div class="form-group">
-    <label for="nombre">Nombre:</label>
-    <input type="input" class="form-control" id="nombre" name="nombre" value="<?php echo $docente['nombre'] ?>">
-  </div>
-  <div class="form-group">
-    <label for="dpto">Departamento:</label>
-    <input type="input" class="form-control" id="dpto" name="departamento" value="<?php echo $docente['departamento'] ?>">
-  </div>
+
+  
+  <span class="textoDatosDocente"> Docente</span> <input type="input" class="form-control" id="nombre" name="nombre" value="<?php echo $docente['nombre'] ?>">
+
+ 
+  <?php
+      include 'mostrarFormularioHorario.php';
+
+  ?>
+
+
   
   <button type="submit" class="btn btn-info">Grabar</button>
 </form>

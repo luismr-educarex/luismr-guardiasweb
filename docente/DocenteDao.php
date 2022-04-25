@@ -14,7 +14,7 @@ class DocenteDao {
      * clone() method in it!
      */
     function createValueObject() {
-          return new Docente();
+         // return new Docente();
     }
 
 
@@ -27,7 +27,7 @@ class DocenteDao {
     function getObject(&$conn, $id) {
 
           $valueObject = $this->createValueObject();
-          $valueObject->setId($id);
+          //$valueObject->setId($id);
           $this->load($conn, $valueObject);
           return $valueObject;
     }
@@ -434,6 +434,7 @@ public function cargar_docentes_guardias($dia,$hora) {
           $searchResults = array();
           $result = $conn->execute($sql);
 
+          /*
           while ($row = $conn->nextRow($result)) {
                $temp = $this->createValueObject();
 
@@ -446,6 +447,7 @@ public function cargar_docentes_guardias($dia,$hora) {
                array_push($searchResults, $temp);
           }
 
+          */
           return $searchResults;
     }
 }

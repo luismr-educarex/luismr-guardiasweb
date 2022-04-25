@@ -335,6 +335,8 @@ function registrarAusencia(docente,semana,dia,hora,ausencia,idhora,fecha){
      
 function guardar_ausencia(docente,semana,dia,hora,idhora,fecha){
 
+
+       
         
                var valores = {"profesor":docente,
                               "semana":semana,
@@ -343,6 +345,7 @@ function guardar_ausencia(docente,semana,dia,hora,idhora,fecha){
                               "idhora":idhora,
                               "fecha":fecha
                              };
+
 
                 //var contloader=document.getElementById('contenedorMensajes');
                 //var mostrarResultado = document.getElementById('resultado');

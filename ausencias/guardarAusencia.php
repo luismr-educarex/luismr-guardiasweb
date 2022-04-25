@@ -28,9 +28,9 @@ $guardia->setFechaGuardia($fecha);
 
 $ausenciaDAO = new AusenciasDAO();
 
-$id = $ausenciaDAO ->crear_ausencia($guardia);
+$resultado = $ausenciaDAO ->crear_ausencia($guardia);
 
-echo $id;
+echo $resultado;
 
 
 ?>
