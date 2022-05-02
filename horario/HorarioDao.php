@@ -169,7 +169,41 @@ class HorarioDao {
           return true;
     }
     
-    
+    function modificarHorario($idDocente,$horario){
+
+     require('../bd/conexion.php');
+
+          // preparar y vincular
+
+     $stmt = $connection->prepare("UPDATE horario SET materia=?, aula=?,grupo=?,dia=?,hora=?  WHERE id=?");
+
+     $stmt->bind_param("sssiii", $materia, $aula,$grupo,$dia,$hora,$id);
+
+
+
+     // establecemos los parámetros y ejecutamos
+
+     foreach($horario as $hora){
+          echo "DATOS HORA:id: ". $hora->getId()." - materia:".$hora->getMateria()." - aula:". $hora->getAula()." -grupos:".$hora->getGrupo().'<br>';
+          $id = $hora->getId();
+          $materia = $hora->getMateria();
+          $grupo = $hora->getGrupo();
+          $aula = $hora->getAula();
+          $dia = $hora->getDia();
+          $hora = $hora->getHora();
+         
+
+          $stmt->execute();
+    }
+
+
+     $stmt->close();
+
+     $connection->close();
+
+     return true;
+
+    }
 
 
     /**

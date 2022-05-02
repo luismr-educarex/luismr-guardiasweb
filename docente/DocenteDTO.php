@@ -13,7 +13,7 @@ class DocenteDTO {
     var $rol;
     var $tipo_horario;
 
-    function DocenteDTO () {
+    function __construct() {
 
     }
 

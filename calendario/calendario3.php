@@ -46,13 +46,14 @@ $ObjetoFecha = new DateTime($fecha);
 
 $numeroDias = $ObjetoFecha->format('t');
 
-$diaSemana = $ObjetoFecha->format('w');
+$diaInicioSemana = $ObjetoFecha->format('w');
 // Domingo es 0, así que en este caso lo convertimos a 7 si es domingo
-$diaSemana = $diaSemana == 0 ? 7 : $diaSemana;
+$diaInicioSemana = $diaInicioSemana == 0 ? 7 : $diaInicioSemana;
    
 //Sacamos la semana del día uno usando el objeto creado en el punto 1.
 //Si es Enero directamente lo inicializamos a cero
 $semanaPrimerDia = $ObjetoFecha->format('n') == 1 ? 0 : $ObjetoFecha->format('W');
+
 
 //Movemos la fecha hacia delante el numero de días
 //que tiene el mes menos uno.
@@ -62,6 +63,7 @@ $ObjetoFecha->modify("+" . $intervalo . " days");
 //Y sacamos la semana en la que estamos
 $semanaUltimoDia = $ObjetoFecha->format('W');
 //sumamos 1 porque la primera semana tambien hay que contarla
+
 
 $anio = $ObjetoFecha->format('Y');
 //$diaActual = $ObjetoFecha->format('d');
@@ -73,12 +75,12 @@ else
 $numeroSemanas=6;
 /*
 echo "Dia actual:".$diaActual;
-echo $fecha;
-echo "Numero de dias:".$numeroDias;
-echo "Empieza el día:".$diaSemana;
-echo "Semana primer día:".$semanaPrimerDia;
-echo "Semana ultimo día:".$semanaUltimoDia;
-echo "Numero de semanas:".$numeroSemanas;
+echo $fecha."<br>";
+echo "Numero de dias:".$numeroDias."<br>";
+echo "Empieza el día:".$diaInicioSemana."<br>";
+echo "Semana primer día:".$semanaPrimerDia."<br>";
+echo "Semana ultimo día:".$semanaUltimoDia."<br>";
+echo "Numero de semanas:".$numeroSemanas."<br>";
 */
 $meses=array(1=>"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
 "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
@@ -101,6 +103,7 @@ $ausenciaDAO = new AusenciasDAO();
 //array en el que viene semana-dia-cantidad de ausencias
 $cantidad_ausencias = $ausenciaDAO -> obtener_ausencias_por_dia_en_mes($semanaPrimerDia,$semanaUltimoDia);
 
+
 $diferenciaSemanas =$semanaUltimoDia-$semanaPrimerDia+1;
 
 $listaGuardias = array();
@@ -109,6 +112,7 @@ $numSemana=1;
         while($guardia = $cantidad_ausencias->fetch_assoc()) {       
             $numSemana = $diferenciaSemanas - ($semanaUltimoDia-$guardia['semana']);
             $listaGuardias [$numSemana]= $guardia;  
+           
             //$numSemana++; 
         } 
     } 
@@ -133,28 +137,35 @@ $numSemana=1;
   <thead class="tituloDias">
     
     <th>Lunes</th><th>Martes</th><th>Miercoles</th>
-    <th>Jueves</th><th>Viernes</th><th>Sábado</th><th>Domingo</th>
+    <th>Jueves</th><th>Viernes</th>
   </thead>
   <tbody>
   <?php
     $semana = $semanaPrimerDia;  
     $numSemanaEnMes=1;
-    for($i=1;$i<=$numeroSemanas;$i++){
+    
+    for($i=$semanaEnMes;$i<=$numeroSemanas;$i++){ //bucle de las semanas
         
         ?><tr><?php
-            for($d=1;$d<=7;$d++){
-                if($i==1){
-                    if($d>=$diaSemana){
+            for($d=1;$d<=7;$d++){  //bucle de los dias en la semana
+                if($i==1){ //si es la primera semana, hay que preguntar cuando empieza el mes. Ese dato está en $diaInicioSemana
+                    if($d>=$diaInicioSemana){
+                       
                         $dia=isset($dia) ? $dia+1:1;
                     }
-                }elseif(isset($dia) && $dia <$numeroDias){
+                }elseif(isset($dia) && $dia <$numeroDias){ //si no es la primera semana se comprueba que estamos dentro del mnes
+                  
                     $dia++;
+                 
+                    
                 }
                 else{
+                 
                     unset($dia);
                 }
                 
                 if(isset($dia)){
+                 
                   
                       $fecha=$dia.'-'.$mes.'-'.$anio;
                     
@@ -165,7 +176,7 @@ $numSemana=1;
                            $estiloDia="diafuturo";
                       }
                      
-                    
+                      if($d<=5){ // IMPORTANTE -> No pintamos los sábados y domingos. 
                       echo '<td class="dianormal  '.$estiloDia.'" width="200" height="100" padding="0"><a href="../ausencias/listarAusenciasGuardias3.php?semana='.$semana.'&dia='.$d.'&fecha='.$fecha.'">';
                         ?>  
                         <table width="100%" height="100%">
@@ -176,27 +187,29 @@ Si queremos abrir el modal al hacer click sobre un día del calendario, en el td
 
  -->
                                          
-                                      <?php 
+                                 <?php 
+                 
                                           if(in_array($dia.'-'.$mes,$feriados)){  
-                                              echo '<td class="elementoCelda festivo">';
-                                              echo $dia;
-                                              echo '</td>';
-                                          }
-                                          else{
-                                              echo '<td class="elementoCelda">';
-                                              
-                                              echo $dia;
-                                              if(isset($listaGuardias[$numSemanaEnMes]['dia'])){
-                                                if($listaGuardias[$numSemanaEnMes]['dia']==$d){
-                                                  echo '<div class="contenedorNumAusencias"><span class="numeroGuardiasEnDia">';
-                                                  echo 'Ausencias:'.$listaGuardias[$numSemanaEnMes]['total_ausencias'];
-                                                  echo '</span></div>';
-                                                }
-                                               
-                                              }
-                                               
-                                              echo '</td>';
+                                            echo '<td class="elementoCelda festivo">';
+                                            echo $dia;
+                                            echo '</td>';
                                         }
+                                        else{
+                                            echo '<td class="elementoCelda">';
+                                            
+                                            echo $dia;
+                                            if(isset($listaGuardias[$numSemanaEnMes]['dia'])){
+                                              if($listaGuardias[$numSemanaEnMes]['dia']==$d){
+                                                echo '<div class="contenedorNumAusencias"><span class="numeroGuardiasEnDia">';
+                                                echo 'Ausencias:'.$listaGuardias[$numSemanaEnMes]['total_ausencias'];
+                                                echo '</span></div>';
+                                              }
+                                             
+                                            }
+                                             
+                                            echo '</td>';
+                                          }
+                                          
                                         ?>
                                 </tr>
                                 <tr>
@@ -215,6 +228,8 @@ Si queremos abrir el modal al hacer click sobre un día del calendario, en el td
                       
                     <?php 
                     echo '</a></td>';
+
+                  }
                 }
                 else{
                     ?><td class="dianomes">&nbsp;</td><?php

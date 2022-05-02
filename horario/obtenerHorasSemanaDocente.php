@@ -733,11 +733,11 @@ function mostrarHorariosDocentes2($horario,$id_docente,$docente){
     <div class="container bloque_contenido">
       <div class="horario" data-semana='.$semana.'>
     <div class="row">
-    <div class="col-sm-4 docente" data-docente='.$id_docente.'>
+    <div class="col-sm-6 docente" data-docente='.$id_docente.'>
       DOCENTE: '.$docente.'- SEMANA'.$semana.'
     </div>
    
-     <div class="col-sm-7">
+     <div class="col-sm-5">
       
      
     

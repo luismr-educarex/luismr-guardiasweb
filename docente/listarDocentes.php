@@ -39,7 +39,7 @@ echo '<div class="container bloque_contenido">
          <th></th>
           <th></th>
             <th></th>
-         <th></th>
+      
       </tr>
     </thead><tbody>';
          
@@ -53,7 +53,7 @@ echo '<div class="container bloque_contenido">
           <td> <a href="../horario/obtenerHorasSemanaDocente.php?docente='.$docente["id"].'" class="btn btn-info btn-sm" role="button">HORARIO</a></td>
            <td><a href="../ausencias/obtenerAusenciasDocente.php?docente='.$docente["id"].'" class="btn btn-info btn-sm" role="button">AUSENCIAS</a></td>
           <td><a href="formularioEditarDocente.php?id='.$docente["id"].'" class="btn btn-info btn-sm" role="button">EDITAR</a></td>
-          <td><a href="#" class="btn btn-info btn-sm" role="button">DAR DE BAJA</a></td>
+         
 
         </tr>';
         

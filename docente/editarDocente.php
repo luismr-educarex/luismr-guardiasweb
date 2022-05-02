@@ -7,6 +7,8 @@ error_reporting(E_ALL);
 require_once '../comun/cabecera.php';
 require_once 'DocenteDao.php';
 require_once 'DocenteDTO.php';
+require_once '../horario/HorarioDao.php';
+require_once '../horario/Hora.php';
 
  
 $docente_dao = new DocenteDao();
@@ -19,6 +21,8 @@ if(isset($_POST["nombre"]))
       $nombre = $_POST["nombre"]; 
 
 
+$horario = array();
+
 for($dia=1;$dia<=5;$dia++){
       for($hora=0;$hora<=5;$hora++){
 
@@ -27,27 +31,29 @@ for($dia=1;$dia<=5;$dia++){
            $aula =  $_POST["aula_".$dia."_".$hora];
            $grupos =  $_POST["grupos_".$dia."_".$hora];
 
-           echo "DATOS HORA:id: ". $idHora." - materia:". $materia." - aula:". $aula." -grupos:".$grupos.'<br>';
+          // echo "DATOS HORA:id: ". $idHora." - materia:". $materia." - aula:". $aula." -grupos:".$grupos.'<br>';
+           $objetoHora = new Hora($idHora,$materia,$aula,$grupos,$dia,$hora);
+           array_push($horario,$objetoHora);
+
 
       }
 }
 
-
-
-
-
-
-
-
+foreach($horario as $hora){
+      echo "DATOS HORA:id: ". $hora->getId()." - materia:".$hora->getMateria()." - aula:". $hora->getAula()." -grupos:".$hora->getGrupo().'<br>';
+}
 
 
 
 $docenteDTO->setId($id);
 $docenteDTO->setNombre($nombre);
 
+$horarioDAO = new HorarioDao();
+
+$horarioDAO->modificarHorario($id,$horario);
 
 
-//$resultado = $docente_dao->guardar($docenteDTO);
+$resultado = $docente_dao->guardar($docenteDTO);
 
 //header("Location: listarDocentes.php");
 //die();

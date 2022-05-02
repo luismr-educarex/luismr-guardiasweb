@@ -192,7 +192,7 @@ public function obtener_ausencias_por_dia_en_mes($semanainicio,$semanafin){
     
   require('../bd/conexion.php');
      
-  $sql  = "SELECT semana,dia,COUNT(*) total_ausencias FROM guardia WHERE semana>=".$semanainicio." AND semana<=".$semanafin." GROUP BY dia ORDER BY semana
+  $sql  = "SELECT semana,dia,COUNT(*) total_ausencias FROM guardia WHERE semana>=".$semanainicio." AND semana<=".$semanafin." GROUP BY dia,semana  ORDER BY semana
   ";
 
   $result = mysqli_query($connection,$sql) or die ("MENSAJE:No se ha ejecutado la senctencia sql:".$sql);

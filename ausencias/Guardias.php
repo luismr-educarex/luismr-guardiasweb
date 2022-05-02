@@ -39,7 +39,7 @@ class Guardia {
      * argument, which is the primary key of the corresponding table.
      */
 
-    function Guardia () {
+    function __construct () {
 
     }
 
