@@ -184,7 +184,6 @@ class HorarioDao {
      // establecemos los parámetros y ejecutamos
 
      foreach($horario as $hora){
-          echo "DATOS HORA:id: ". $hora->getId()." - materia:".$hora->getMateria()." - aula:". $hora->getAula()." -grupos:".$hora->getGrupo().'<br>';
           $id = $hora->getId();
           $materia = $hora->getMateria();
           $grupo = $hora->getGrupo();

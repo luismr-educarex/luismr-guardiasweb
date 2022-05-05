@@ -23,6 +23,7 @@ if(isset($_POST["nombre"]))
 
 $horario = array();
 
+//Recorrer los datos del formulario del horario
 for($dia=1;$dia<=5;$dia++){
       for($hora=0;$hora<=5;$hora++){
 
@@ -39,11 +40,6 @@ for($dia=1;$dia<=5;$dia++){
       }
 }
 
-foreach($horario as $hora){
-      echo "DATOS HORA:id: ". $hora->getId()." - materia:".$hora->getMateria()." - aula:". $hora->getAula()." -grupos:".$hora->getGrupo().'<br>';
-}
-
-
 
 $docenteDTO->setId($id);
 $docenteDTO->setNombre($nombre);
@@ -55,8 +51,8 @@ $horarioDAO->modificarHorario($id,$horario);
 
 $resultado = $docente_dao->guardar($docenteDTO);
 
-//header("Location: listarDocentes.php");
-//die();
+header("Location: listarDocentes.php");
+die();
 
 
 

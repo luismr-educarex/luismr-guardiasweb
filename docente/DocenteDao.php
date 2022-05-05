@@ -137,7 +137,7 @@ public function cargar_docentes_guardias($dia,$hora) {
 
       require('../bd/conexion.php');
 
-      $sql = "UPDATE Docente SET nombre = '".$valueObject->getNombre()."' ";
+      $sql = "UPDATE docente SET nombre = '".$valueObject->getNombre()."' ";
 
       //$sql = $sql."codigoProfesor = '".$valueObject->getCodigo()."', ";
      
@@ -147,7 +147,7 @@ public function cargar_docentes_guardias($dia,$hora) {
       
       $sql = $sql." WHERE id = ".$valueObject->getId()." ";
       
-      $result = mysqli_query($connection,$sql) or die ("MENSAJE:No se ha ejecutado la senctencia sql:".$sql);
+      $result = mysqli_query($connection,$sql) or die ("MENSAJE:No se ha ejecutado la senctencia sql:".$sql." en DocenteDao");
       //$result = $this->databaseUpdate($connection, $sql);
 
 
