@@ -23,6 +23,13 @@
     width: 15%;
 }
 
+.botones_navegacion_semanal{
+    margin-left: 40%;
+}
+
+.barra_horario{
+    margin-bottom: 0.5em;
+}
 
 .texto_titulo{
            width: 170px;
@@ -148,7 +155,7 @@
     }
     .docente{
         color: #87CEEB;
-        font-size: 2em;
+        font-size: 1.5em;
       
     }
     .icono_tarea{
@@ -554,6 +561,7 @@ font-weight: bold;
 }
 .navegacionMeses{
     margin-top: 10px;
+    
 }
 .actual{
     background-color:#008CBA ;

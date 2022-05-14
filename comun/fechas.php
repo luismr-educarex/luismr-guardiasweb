@@ -40,7 +40,7 @@ function obtenerUltimoDiaSemana(){
     
 }
     
-function obtenerVectorDiasSemana($semana){
+function obtenerVectorDiasSemana(){
     
     $vectorDias = array();
     $primerDia = obtenerPrimerDiaSemana();
@@ -53,10 +53,14 @@ function obtenerVectorDiasSemana($semana){
    
 }
     
-function obtenerVectorDiasSemanaSiguiente(){
+/**
+ * Función que recibe el numero de semanas que hay que calcular hacia delante. 
+ */
+function obtenerVectorDiasSemanaSiguiente($distancia){
     $vectorDiasSemanaSiguiente=array();
     $primerDia = obtenerPrimerDiaSemana();
-    $primerDia = date("d-m-Y",strtotime($primerDia."+ 7 days"));
+    $salto = $distancia*7;
+    $primerDia = date("d-m-Y",strtotime($primerDia."+ ".$salto." days"));
     array_push ( $vectorDiasSemanaSiguiente , $primerDia );
     for($i=1;$i<5;$i++){
          array_push ( $vectorDiasSemanaSiguiente , date("d-m-Y",strtotime($primerDia."+ ".$i." days")) );
@@ -64,11 +68,14 @@ function obtenerVectorDiasSemanaSiguiente(){
                       
     return $vectorDiasSemanaSiguiente;
 }
-    
-function obtenerVectorDiasSemanaAnterior(){
+/**
+ * Función que recibe el numero de semanas que hay que calcular hacia detrás. 
+ */
+function obtenerVectorDiasSemanaAnterior($distancia){
     $vectorDiasSemanaSiguiente=array();
     $primerDia = obtenerPrimerDiaSemana();
-    $primerDia = date("d-m-Y",strtotime($primerDia."- 7 days"));
+    $salto = $distancia*7;
+    $primerDia = date("d-m-Y",strtotime($primerDia."- ".$salto." days"));
     array_push ( $vectorDiasSemanaSiguiente , $primerDia );
     for($i=1;$i<5;$i++){
          array_push ( $vectorDiasSemanaSiguiente , date("d-m-Y",strtotime($primerDia."+ ".$i." days")) );

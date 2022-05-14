@@ -748,9 +748,22 @@ function recuperarAusencia($listaAusencias,$dia,$hora){
 
 function mostrarHorariosDocentes2($horario,$id_docente,$docente,$semana){
     
-     $vectorDias = obtenerVectorDiasSemana($semana);  
-     $fecha = new DateTime();
-     //$semana= obtenerNumeroSemana($fecha);
+
+     $fechaActual = new DateTime();
+     $semanaActual= obtenerNumeroSemana($fechaActual);
+     $diferencia_semana = $semanaActual-$semana;
+     
+     if($diferencia_semana>0){ // La semana es anterior a las semana actual
+      $distancia = abs($diferencia_semana);
+      $vectorDias =obtenerVectorDiasSemanaAnterior($distancia);
+     }else if($diferencia_semana<0){ // La semana es posterior a la semana actual
+      $distancia = abs($diferencia_semana);
+      $vectorDias =obtenerVectorDiasSemanaSiguiente($distancia);
+     }else{
+      $vectorDias = obtenerVectorDiasSemana();  
+     }
+     
+    
      
     $html='
     <div class="container bloque_contenido">
@@ -758,23 +771,24 @@ function mostrarHorariosDocentes2($horario,$id_docente,$docente,$semana){
 
 
       <div class="horario" data-semana='.$semana.'>
-    <div class="row">
+    <div class="row barra_horario">
     <div class="col-sm-6 docente" data-docente='.$id_docente.'>
       DOCENTE: '.$docente.'- SEMANA'.$semana.'
     </div>
    
-    <div class="col-sm-5">
-    <div class="navegacionMeses">      <ul class="pager">
-    <li><a href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.($semana-1).'">Anterior</a></li>
+    <div class="col-sm-4">
+   
+    <div class="botones_navegacion_semanal">     
+    <a class="btn btn-info" href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.($semana-1).'">Semana Anterior</a>
           <span class="tituloMes"><?php echo $meses[$mes]." ".$anio?></span> 
-  <li><a href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.($semana+1).'">Siguiente</a></li>
-</ul>
-    </div>
-     
+    <a  class="btn btn-info" href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.($semana+1).'">Semana Siguiente</a>
     
-       <!--<a href="../docente/listarDocentes.php" class="btn btn-info btn-volver boton" role="button">Volver </a>-->
+    </div>
+    
+      
 </div>
-<div class="col-sm-1">
+<div class="col-sm-2">
+
 </div>
     </div>
     <div class="row">
