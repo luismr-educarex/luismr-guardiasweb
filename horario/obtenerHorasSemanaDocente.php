@@ -294,7 +294,7 @@
                 }else{
                       console.info('observacion vacía');
                     cambiarIconoNoHayObservaciones(imagen);
-                    guardar_observacion(docente,semana,dia,hora,observacion);
+                     guardar_observacion(docente,semana,dia,hora,observacion);
                     //borrar_observacion(docente,semana,dia,hora);
                 }
         
@@ -572,8 +572,7 @@
   if(isset($_GET["docente"]))
       $id_docente = $_GET["docente"]; 
 
-  
-  
+ 
 
 /** RECUPERAR DATOS DEL DOCENTE */
 $sql_docente="SELECT * FROM docente WHERE id=".$id_docente; 
@@ -609,7 +608,12 @@ if ($horas_docente->num_rows > 0) {
 
 /** RECUPERAR AUSENCIAS DEL DOCENTE EN LA SEMANA ACTUAL */
 $fecha = new DateTime();
-$semana= obtenerNumeroSemana($fecha);
+if(isset($_GET['semana'])){
+  $semana=$_GET['semana'];
+}else{
+  $semana= obtenerNumeroSemana($fecha);
+}
+
 
 $sql_recuperar_ausencias="SELECT g.id,horario,dia,hora,grupo,aula,idProfesor,nombre,tarea,observaciones FROM guardia g INNER JOIN docente d ON g.idProfesor=d.id WHERE d.id=".$id_docente.' AND g.semana='.$semana; 
 $horas_ausencias = mysqli_query($connection,$sql_recuperar_ausencias) or die ("MENSAJE:No se ha ejecutado la senctencia sql:".$sql_recuperar_ausencias);
@@ -629,7 +633,7 @@ if ($horas_ausencias->num_rows > 0) {
 
 //$codigo_html = mostrarHorariosDocentes(obtenerHorario($datosHoras),$id_docente,$docente,obtenerAusencias($datosAusencias),obtenerInformacion($datosAusencias));
 
-$codigo_html2 = mostrarHorariosDocentes2(obtenerHorario2($datosHoras,$datosAusencias),$id_docente,$docente);
+$codigo_html2 = mostrarHorariosDocentes2(obtenerHorario2($datosHoras,$datosAusencias),$id_docente,$docente,$semana);
 
 
   echo $codigo_html2;
@@ -692,7 +696,7 @@ function recuperaHoras2($listaHoras,$listaAusencias,$dia){
 
 
              //estos tres datos vienen de la tabla guardia
-            /* $ausencia = recuperarAusencia($listaAusencias,$dia,$hora);
+            $ausencia = recuperarAusencia($listaAusencias,$dia,$hora);
            
            
              if($ausencia!=null){ // si hay ausencia
@@ -700,11 +704,12 @@ function recuperaHoras2($listaHoras,$listaAusencias,$dia){
               $horaDocente->setTarea($ausencia->getTarea());
               $horaDocente->setObservaciones($ausencia->getObservaciones());
 
-             }*/
+             }
            
-            $horaDocente->setAusencia($listaHoras[$num_clase]['ausencia']);
+            /*$horaDocente->setAusencia($listaHoras[$num_clase]['ausencia']);
             $horaDocente->setTarea($listaHoras[$num_clase]['tarea']);
             $horaDocente->setObservaciones($listaHoras[$num_clase]['observaciones']);
+            */
            //----------------------------
 
             $clases[$hora]=$horaDocente;
@@ -741,22 +746,30 @@ function recuperarAusencia($listaAusencias,$dia,$hora){
 }
 
 
-function mostrarHorariosDocentes2($horario,$id_docente,$docente){
+function mostrarHorariosDocentes2($horario,$id_docente,$docente,$semana){
     
-     $vectorDias = obtenerVectorDiasSemana();  
+     $vectorDias = obtenerVectorDiasSemana($semana);  
      $fecha = new DateTime();
-     $semana= obtenerNumeroSemana($fecha);
+     //$semana= obtenerNumeroSemana($fecha);
      
     $html='
     <div class="container bloque_contenido">
+
+
+
       <div class="horario" data-semana='.$semana.'>
     <div class="row">
     <div class="col-sm-6 docente" data-docente='.$id_docente.'>
       DOCENTE: '.$docente.'- SEMANA'.$semana.'
     </div>
    
-     <div class="col-sm-5">
-      
+    <div class="col-sm-5">
+    <div class="navegacionMeses">      <ul class="pager">
+    <li><a href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.($semana-1).'">Anterior</a></li>
+          <span class="tituloMes"><?php echo $meses[$mes]." ".$anio?></span> 
+  <li><a href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.($semana+1).'">Siguiente</a></li>
+</ul>
+    </div>
      
     
        <!--<a href="../docente/listarDocentes.php" class="btn btn-info btn-volver boton" role="button">Volver </a>-->

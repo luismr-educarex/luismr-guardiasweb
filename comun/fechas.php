@@ -18,7 +18,8 @@ function obtenerPrimerDiaSemana(){
     $year=date('y');
     $month=date('m');
     $day=date('d');
- 
+
+
     # Obtenemos el día de la semana de la fecha dada. Con N, los lunes=1 y los domingos=7
     $diaSemana=date("N",mktime(0,0,0,$month,$day,$year));
     # A la fecha recibida, le restamos el dia de la semana y obtendremos el lunes
@@ -27,13 +28,19 @@ function obtenerPrimerDiaSemana(){
 }
     
 function obtenerUltimoDiaSemana(){
+    $year=date('y');
+    $month=date('m');
+    $day=date('d');
+ 
+    # Obtenemos el día de la semana de la fecha dada. Con N, los lunes=1 y los domingos=7
+    $diaSemana=date("N",mktime(0,0,0,$month,$day,$year));
     # A la fecha recibida, le sumamos el dia de la semana menos 5 y obtendremos el viernes
     $ultimoDia=date("d-m-Y",mktime(0,0,0,$month,$day+(5-$diaSemana),$year));
     return $ultimoDia;
     
 }
     
-function obtenerVectorDiasSemana(){
+function obtenerVectorDiasSemana($semana){
     
     $vectorDias = array();
     $primerDia = obtenerPrimerDiaSemana();
