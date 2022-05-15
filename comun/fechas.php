@@ -18,7 +18,8 @@ function obtenerPrimerDiaSemana(){
     $year=date('y');
     $month=date('m');
     $day=date('d');
- 
+
+
     # Obtenemos el día de la semana de la fecha dada. Con N, los lunes=1 y los domingos=7
     $diaSemana=date("N",mktime(0,0,0,$month,$day,$year));
     # A la fecha recibida, le restamos el dia de la semana y obtendremos el lunes
@@ -27,6 +28,12 @@ function obtenerPrimerDiaSemana(){
 }
     
 function obtenerUltimoDiaSemana(){
+    $year=date('y');
+    $month=date('m');
+    $day=date('d');
+ 
+    # Obtenemos el día de la semana de la fecha dada. Con N, los lunes=1 y los domingos=7
+    $diaSemana=date("N",mktime(0,0,0,$month,$day,$year));
     # A la fecha recibida, le sumamos el dia de la semana menos 5 y obtendremos el viernes
     $ultimoDia=date("d-m-Y",mktime(0,0,0,$month,$day+(5-$diaSemana),$year));
     return $ultimoDia;
@@ -46,10 +53,14 @@ function obtenerVectorDiasSemana(){
    
 }
     
-function obtenerVectorDiasSemanaSiguiente(){
+/**
+ * Función que recibe el numero de semanas que hay que calcular hacia delante. 
+ */
+function obtenerVectorDiasSemanaSiguiente($distancia){
     $vectorDiasSemanaSiguiente=array();
     $primerDia = obtenerPrimerDiaSemana();
-    $primerDia = date("d-m-Y",strtotime($primerDia."+ 7 days"));
+    $salto = $distancia*7;
+    $primerDia = date("d-m-Y",strtotime($primerDia."+ ".$salto." days"));
     array_push ( $vectorDiasSemanaSiguiente , $primerDia );
     for($i=1;$i<5;$i++){
          array_push ( $vectorDiasSemanaSiguiente , date("d-m-Y",strtotime($primerDia."+ ".$i." days")) );
@@ -57,11 +68,14 @@ function obtenerVectorDiasSemanaSiguiente(){
                       
     return $vectorDiasSemanaSiguiente;
 }
-    
-function obtenerVectorDiasSemanaAnterior(){
+/**
+ * Función que recibe el numero de semanas que hay que calcular hacia detrás. 
+ */
+function obtenerVectorDiasSemanaAnterior($distancia){
     $vectorDiasSemanaSiguiente=array();
     $primerDia = obtenerPrimerDiaSemana();
-    $primerDia = date("d-m-Y",strtotime($primerDia."- 7 days"));
+    $salto = $distancia*7;
+    $primerDia = date("d-m-Y",strtotime($primerDia."- ".$salto." days"));
     array_push ( $vectorDiasSemanaSiguiente , $primerDia );
     for($i=1;$i<5;$i++){
          array_push ( $vectorDiasSemanaSiguiente , date("d-m-Y",strtotime($primerDia."+ ".$i." days")) );

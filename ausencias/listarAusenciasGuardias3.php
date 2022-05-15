@@ -2,12 +2,16 @@
 
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once '../comun/cabecera.php';
 require_once 'AusenciasDAO.php';
 require_once 'Guardias.php';
 require_once '../comun/fechas.php';
 require_once '../DTO/HorasSemanasDocente.php';
-require_once '../docente/DocenteDAO.php';
+require_once '../docente/DocenteDao.php';
 
 
 $ausenciaDAO = new AusenciasDAO();
@@ -26,10 +30,13 @@ $ausencias = $ausenciaDAO ->obtener_ausencias($semana,$dia);
 // se pasa los resultados obtenidos de la consulta de la base de datos a un array asociativo.
 $listaAusencias = array();
 if ($ausencias->num_rows > 0) {
-    while($ausencia = $ausencias->fetch_assoc()) {       
+    while($ausencia = $ausencias->fetch_assoc()) {   
+        echo "se añade ausencia";    
         $listaAusencias []= $ausencia;   
     } 
 } 
+
+print_r($listaAusencias);
 
 //obtenemos el codigo html del cuadrante por día de las ausencias y guardias
 $contenido = mostrarCuadranteAusencia($listaAusencias,$dia,$fecha,$semana);
