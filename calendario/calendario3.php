@@ -41,7 +41,7 @@ if($mes>12){
 
 $fecha=$anio.'-'.$mes.'-01';
 
-//Ejemplo: Queremos mostrar Agosto 2018
+//PASO 1: CEAR OBJETO DateTime
 $ObjetoFecha = new DateTime($fecha);
 
 $numeroDias = $ObjetoFecha->format('t');
@@ -50,9 +50,10 @@ $diaInicioSemana = $ObjetoFecha->format('w');
 // Domingo es 0, así que en este caso lo convertimos a 7 si es domingo
 $diaInicioSemana = $diaInicioSemana == 0 ? 7 : $diaInicioSemana;
    
-//Sacamos la semana del día uno usando el objeto creado en el punto 1.
+//Sacamos la semana del día 1 del mes usando el objeto creado en el punto 1.
 //Si es Enero directamente lo inicializamos a cero
 $semanaPrimerDia = $ObjetoFecha->format('n') == 1 ? 0 : $ObjetoFecha->format('W');
+
 
 
 //Movemos la fecha hacia delante el numero de días
@@ -73,6 +74,12 @@ if($semanaPrimerDia<$semanaUltimoDia)
 $numeroSemanas   = $semanaUltimoDia-$semanaPrimerDia+1;
 else
 $numeroSemanas=6;
+
+//Si la semana empieza un sábado o un domingo, laboralmente el mes empieza la semana siguiente. 
+/*if($diaInicioSemana==6 || $diaInicioSemana==7){
+  $semanaPrimerDia++;
+}
+*/
 /*
 echo "Dia actual:".$diaActual;
 echo $fecha."<br>";
@@ -101,18 +108,25 @@ $ausenciaDAO = new AusenciasDAO();
 //$result = $ausenciaDAO ->obtener_ausencias_por_dia_en_mes($mes);
 
 //array en el que viene semana-dia-cantidad de ausencias
-$cantidad_ausencias = $ausenciaDAO -> obtener_ausencias_por_dia_en_mes($semanaPrimerDia,$semanaUltimoDia);
+$ausencias = $ausenciaDAO -> obtener_ausencias_por_dia_en_mes($semanaPrimerDia,$semanaUltimoDia);
 
 
-$diferenciaSemanas =$semanaUltimoDia-$semanaPrimerDia+1;
+/*while($guardia = $ausencias->fetch_assoc()) {       
+  echo "semana:".$guardia["semana"]."<br>";  
+ 
+} 
+*/
+$diferenciaSemanas =($semanaUltimoDia-$semanaPrimerDia)+1;
+
 
 $listaGuardias = array();
-$numSemana=1;
-    if ($cantidad_ausencias->num_rows > 0) {
-        while($guardia = $cantidad_ausencias->fetch_assoc()) {       
-            $numSemana = $diferenciaSemanas - ($semanaUltimoDia-$guardia['semana']);
-            $listaGuardias [$numSemana]= $guardia;  
+$numSemana=1; // el numero de la semana en el mes. Empezamos en 1
+    if ($ausencias->num_rows > 0) {
+        while($guardia = $ausencias->fetch_assoc()) {       
+            //$numSemana = $diferenciaSemanas - ($semanaUltimoDia-$guardia['semana']);
            
+           // $listaGuardias [$numSemana]= $guardia;  
+            $listaGuardias[$guardia["semana"]][$guardia["dia"]]=$guardia;
             //$numSemana++; 
         } 
     } 
@@ -136,37 +150,30 @@ $numSemana=1;
     </div>
   <thead class="tituloDias">
     
-    <th>Lunes</th><th>Martes</th><th>Miercoles</th>
-    <th>Jueves</th><th>Viernes</th>
+  <th>Lunes</th><th>Martes</th><th>Miercoles</th><th>Jueves</th><th>Viernes</th>
   </thead>
   <tbody>
   <?php
+  
     $semana = $semanaPrimerDia;  
     $numSemanaEnMes=1;
     
-    for($i=$semanaEnMes;$i<=$numeroSemanas;$i++){ //bucle de las semanas
-        
+    for($i=$semanaPrimerDia;$i<=$semanaUltimoDia;$i++){ //bucle de las semanas
+       
         ?><tr><?php
+             
             for($d=1;$d<=7;$d++){  //bucle de los dias en la semana
-                if($i==1){ //si es la primera semana, hay que preguntar cuando empieza el mes. Ese dato está en $diaInicioSemana
-                    if($d>=$diaInicioSemana){
-                       
+                if($i==$semanaPrimerDia){ //si es la primera semana, hay que preguntar cuando empieza el mes. Ese dato está en $diaInicioSemana
+                    if($d>=$diaInicioSemana){     
                         $dia=isset($dia) ? $dia+1:1;
                     }
-                }elseif(isset($dia) && $dia <$numeroDias){ //si no es la primera semana se comprueba que estamos dentro del mnes
-                  
-                    $dia++;
-                 
-                    
+                }elseif(isset($dia) && $dia <$numeroDias){ //si no es la primera semana se comprueba que estamos dentro del mnes 
+                    $dia++;                    
                 }
                 else{
-                 
                     unset($dia);
                 }
-                
                 if(isset($dia)){
-                 
-                  
                       $fecha=$dia.'-'.$mes.'-'.$anio;
                     
                       $estiloDia="";
@@ -176,7 +183,8 @@ $numSemana=1;
                            $estiloDia="diafuturo";
                       }
                      
-                      if($d<=5){ // IMPORTANTE -> No pintamos los sábados y domingos. 
+                      if($d<=5){ // IMPORTANTE -> No pintamos los sábados y domingos. $d=6=sabado;$d=7=domingo
+                      
                       echo '<td class="dianormal  '.$estiloDia.'" width="200" height="100" padding="0"><a href="../ausencias/listarAusenciasGuardias3.php?semana='.$semana.'&dia='.$d.'&fecha='.$fecha.'">';
                         ?>  
                         <table width="100%" height="100%">
@@ -198,12 +206,13 @@ Si queremos abrir el modal al hacer click sobre un día del calendario, en el td
                                             echo '<td class="elementoCelda">';
                                             
                                             echo $dia;
-                                            if(isset($listaGuardias[$numSemanaEnMes]['dia'])){
-                                              if($listaGuardias[$numSemanaEnMes]['dia']==$d){
+
+                                            if(isset($listaGuardias[$i][$d])){
+                                             
                                                 echo '<div class="contenedorNumAusencias"><span class="numeroGuardiasEnDia">';
-                                                echo 'Ausencias:'.$listaGuardias[$numSemanaEnMes]['total_ausencias'];
+                                                echo 'Ausencias:'.$listaGuardias[$i][$d]['total_ausencias'];
                                                 echo '</span></div>';
-                                              }
+                                              
                                              
                                             }
                                              

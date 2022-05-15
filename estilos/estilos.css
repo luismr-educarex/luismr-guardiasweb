@@ -32,6 +32,11 @@
     padding-right: 10%;
 }
 
+.diaSemana{
+    background-color: #aedff3;
+   
+}
+
 .texto_titulo{
            width: 170px;
            height: 200px;
