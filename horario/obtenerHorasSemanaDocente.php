@@ -351,8 +351,11 @@
                                      };
         
         
-                        //var contloader=document.getElementById('contenedorMensajes');
-                        //var mostrarResultado = document.getElementById('resultado');
+                        console.info("docente:"+docente);
+                        console.info("semana:"+semana);
+                        console.info("dia:"+dia);
+                        console.info("hora:"+hora);
+                        console.info("idhora:"+idhora);
         
                         $.ajax({
                             url: "../ausencias/guardarAusencia.php",
@@ -567,6 +570,7 @@
  require_once '../ausencias/Guardias.php';
  require_once '../DTO/HorasSemanasDocente.php';
  require_once '../DTO/ausencia.php';
+ require_once '../docente/DocenteDTO.php';
 
 
   if(isset($_GET["docente"]))
@@ -577,8 +581,13 @@
 /** RECUPERAR DATOS DEL DOCENTE */
 $sql_docente="SELECT * FROM docente WHERE id=".$id_docente; 
   $resultado_consulta_docente = mysqli_query($connection,$sql_docente) or die ("MENSAJE:No se ha ejecutado la senctencia sql:".$sql_docente);
-  $datos_docente = $resultado_consulta_docente->fetch_assoc();   
-  $docente =  $datos_docente['nombre'];
+  $datos_docente = $resultado_consulta_docente->fetch_assoc();  
+  
+  
+  $docente =  new DocenteDTO();
+  $docente->setId($id_docente);
+  $docente->setNombre($datos_docente['nombre']);
+   
  /** -------------------------------------- */ 
 
 //$sql_recuperar_horario="SELECT h.id idhora,dia,hora,materia,grupo,aula,nombre FROM horario h INNER JOIN docente d ON h.idProfesor=d.id WHERE d.id=".$id_docente; 
@@ -630,13 +639,10 @@ if ($horas_ausencias->num_rows > 0) {
 
 /** -------------------------------------- */
 
-
-//$codigo_html = mostrarHorariosDocentes(obtenerHorario($datosHoras),$id_docente,$docente,obtenerAusencias($datosAusencias),obtenerInformacion($datosAusencias));
-
-$codigo_html2 = mostrarHorariosDocentes2(obtenerHorario2($datosHoras,$datosAusencias),$id_docente,$docente,$semana);
+$codigo_html = mostrarHorariosDocentes(obtenerHorario2($datosHoras,$datosAusencias),$docente,$semana);
 
 
-  echo $codigo_html2;
+  echo $codigo_html;
 
   //echo $codigo_html;
   echo ' <div id="edit-popup" style="display: none">
@@ -695,8 +701,8 @@ function recuperaHoras2($listaHoras,$listaAusencias,$dia){
              $horaDocente->setAula($listaHoras[$num_clase]['aula']);
 
 
-             //estos tres datos vienen de la tabla guardia
-            $ausencia = recuperarAusencia($listaAusencias,$dia,$hora);
+             //estos tres datos vienen de la tabla guardia en la bd
+             $ausencia = recuperarAusencia($listaAusencias,$dia,$hora);
            
            
              if($ausencia!=null){ // si hay ausencia
@@ -721,7 +727,11 @@ function recuperaHoras2($listaHoras,$listaAusencias,$dia){
     
 }
 
-
+/**
+ * Funcion que recibe un array con las ausencias recuperadas de la base de datos, el dia y la hora. Y busca en dicho array que haya una ausencia ese día en esa hora.
+ * Devuelve un objeto Ausencia que almacena la información de la ausencia.
+ * 
+ */
 function recuperarAusencia($listaAusencias,$dia,$hora){
 
   $ausencia=null;
@@ -730,7 +740,7 @@ function recuperarAusencia($listaAusencias,$dia,$hora){
 
   for($num_ausencia=0;$num_ausencia<$num_ausencias;$num_ausencia++){
       if($listaAusencias[$num_ausencia]['dia']==$dia && $listaAusencias[$num_ausencia]['hora']==$hora){ // si el array de ausencias hay un elemento que coincide en día y hora , significa que hay ausencia,
-        // entonces devolvemos el valor de 
+        
         $ausencia = new Ausencia();
         $ausencia->setId($listaAusencias[$num_ausencia]['id']);
         $ausencia->setDia($listaAusencias[$num_ausencia]['dia']);
@@ -745,8 +755,11 @@ function recuperarAusencia($listaAusencias,$dia,$hora){
 
 }
 
-
-function mostrarHorariosDocentes2($horario,$id_docente,$docente,$semana){
+/**
+ * Función que recibe el horario en foramto array, el objeto docente y la semana en el año
+ * 
+ */
+function mostrarHorariosDocentes($horario,$docente,$semana){
     
 
      $fechaActual = new DateTime();
@@ -763,8 +776,8 @@ function mostrarHorariosDocentes2($horario,$id_docente,$docente,$semana){
       $vectorDias = obtenerVectorDiasSemana();  
      }
      
-    
-     
+     $id_docente = $docente->getId();
+
     $html='
     <div class="container bloque_contenido">
 
@@ -773,23 +786,26 @@ function mostrarHorariosDocentes2($horario,$id_docente,$docente,$semana){
       <div class="horario" data-semana='.$semana.'>
     <div class="row barra_horario">
     <div class="col-sm-6 docente" data-docente='.$id_docente.'>
-      DOCENTE: '.$docente.'- SEMANA'.$semana.'
+      DOCENTE: '.$docente->getNombre().'- SEMANA '.$semana.'
     </div>
    
-    <div class="col-sm-4">
+    <div class="col-sm-6">
    
     <div class="botones_navegacion_semanal">     
-    <a class="btn btn-info" href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.($semana-1).'">Semana Anterior</a>
-          <span class="tituloMes"><?php echo $meses[$mes]." ".$anio?></span> 
-    <a  class="btn btn-info" href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.($semana+1).'">Semana Siguiente</a>
+    <a class="btn btn-info" href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.($semana-1).'">Semana Anterior</a>';
+     
+    if($distancia>=2){
+      $html.=' <a  class="btn btn-info" href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.$semanaActual.'">Semana Actual</a>';
+    }
+
+
+    $html.=' <a  class="btn btn-info" href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.($semana+1).'">Semana Siguiente</a>
     
     </div>
     
       
 </div>
-<div class="col-sm-2">
 
-</div>
     </div>
     <div class="row">
       <div class="col-sm-2 bg-celda-info celdaTituloH">H</div>
@@ -817,11 +833,11 @@ function mostrarHorariosDocentes2($horario,$id_docente,$docente,$semana){
                
              $html =$html.'<div class="row">';
              $html =$html.'<div class="col-sm-2 bg-celda-info celdaHora">'.$i.'</div>';
-             $html =$html.''.construirHTML_hora2($vectorDias[0],$semana,$horario['LUNES'][$i]);
-             $html =$html.''.construirHTML_hora2($vectorDias[1],$semana,$horario['MARTES'][$i]);
-             $html =$html.''.construirHTML_hora2($vectorDias[2],$semana,$horario['MIERCOLES'][$i]);
-             $html =$html.''.construirHTML_hora2($vectorDias[3],$semana,$horario['JUEVES'][$i]);
-             $html =$html.''.construirHTML_hora2($vectorDias[4],$semana,$horario['VIERNES'][$i]);
+             $html =$html.''.construirHTML_hora2($vectorDias[0],$horario['LUNES'][$i]);
+             $html =$html.''.construirHTML_hora2($vectorDias[1],$horario['MARTES'][$i]);
+             $html =$html.''.construirHTML_hora2($vectorDias[2],$horario['MIERCOLES'][$i]);
+             $html =$html.''.construirHTML_hora2($vectorDias[3],$horario['JUEVES'][$i]);
+             $html =$html.''.construirHTML_hora2($vectorDias[4],$horario['VIERNES'][$i]);
              $html =$html.'</div>';
            }
         
@@ -832,7 +848,7 @@ function mostrarHorariosDocentes2($horario,$id_docente,$docente,$semana){
 
 
 //Rrecibe la semana y un objeto de tipo HorasSemanasDocente con la variable $info
-function construirHTML_hora2($fecha,$semana,$info){
+function construirHTML_hora2($fecha,$info){
     
     $idhora=$info->getId();
     $dia=$info->getDia();

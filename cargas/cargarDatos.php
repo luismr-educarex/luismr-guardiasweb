@@ -43,16 +43,19 @@
 </head>
 
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 
-require_once './docente/DocenteDAO.php';
-require_once './docente/Docente.php';
+require_once '../docente/DocenteDao.php';
+require_once './docente/DocenteDTO.php';
 require './bd/Datasource.php';
 $config = parse_ini_file('./bd/configBD.ini');
 
 $ds = new Datasource('localhost',$config['dbname'],$config['username'],$config['password']);
 $docenteDAO = new DocenteDAO();
-$docente = new Docente();  
+$docente = new DocenteDTO();  
 
 $ruta_fichero="";
 if(isset($_GET["fichero"]))

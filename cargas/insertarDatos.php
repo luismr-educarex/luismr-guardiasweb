@@ -164,7 +164,7 @@ function grabarhorarios($docente,$horas_docente,$dia){
     $guardia;
     $materia;
     //$num_horas = sizeof($horas_docente);
-    for($hora=0;$hora<6;$hora++){
+    for($hora=1;$hora<=6;$hora++){
         //La información de cada elemento (celda en el csv) está separada por un \n
         //Utilizamos el caracter \n para obtener los elementos en un array
         $datosHora =  explode("\n", $horas_docente[$hora]);
