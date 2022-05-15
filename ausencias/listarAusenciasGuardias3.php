@@ -31,12 +31,11 @@ $ausencias = $ausenciaDAO ->obtener_ausencias($semana,$dia);
 $listaAusencias = array();
 if ($ausencias->num_rows > 0) {
     while($ausencia = $ausencias->fetch_assoc()) {   
-        echo "se añade ausencia";    
+         
         $listaAusencias []= $ausencia;   
     } 
 } 
 
-print_r($listaAusencias);
 
 //obtenemos el codigo html del cuadrante por día de las ausencias y guardias
 $contenido = mostrarCuadranteAusencia($listaAusencias,$dia,$fecha,$semana);
