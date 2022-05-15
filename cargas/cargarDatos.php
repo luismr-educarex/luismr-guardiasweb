@@ -49,7 +49,7 @@ error_reporting(E_ALL);
 
 
 require_once '../docente/DocenteDao.php';
-require_once './docente/DocenteDTO.php';
+require_once '../docente/DocenteDTO.php';
 require './bd/Datasource.php';
 $config = parse_ini_file('./bd/configBD.ini');
 
