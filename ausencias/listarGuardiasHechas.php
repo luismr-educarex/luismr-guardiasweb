@@ -1,12 +1,15 @@
 
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 require_once '../comun/cabecera.php';
 require_once 'AusenciasDAO.php';
-require_once 'GuardiaDAO.php';
+require_once 'GuardiaDao.php';
 
 $ausenciaDAO = new AusenciasDAO();
-$guardiaDAO = new GuardiaDAO();
+$guardiaDAO = new GuardiaDao();
 
 if(isset($_GET["semana"]))
       $semana = $_GET["semana"]; 
@@ -21,54 +24,64 @@ if(isset($_GET["hora"]))
 
 
 $datosVolver='semana='.$semana.'&dia='.$dia.'&fecha='.$fecha; 
-//obtener un array con los id de los profesores que están de guardia en un dia y hora determinados
+//PASO 1: obtener un array con los id de los profesores que están de guardia en un dia y hora determinados
 $docentesEnGuardia = $guardiaDAO -> obtenerDocentesGuardia($dia,$hora);
+
+
 $listaIdsDocentesGuardia = array();
+$listaDocentesGuardia =  array();
 if ($docentesEnGuardia->num_rows > 0) {
     while($docente = $docentesEnGuardia->fetch_assoc()) {       
-        array_push($listaIdsDocentesGuardia ,$docente["idProfesor"]); 
+        //array_push($listaIdsDocentesGuardia ,$docente["idProfesor"]); 
+        //inicializamos el array que continene en cada elemento el id del docente asociado a la guardia que inicialmente esta vacia
+        $listaDocentesGuardia[$docente["idProfesor"]] =  "-";
+        $listaIdsDocentesGuardia[$docente["idProfesor"]]=$docente["nombre"];
     } 
 }
 
 
-$guardias = $ausenciaDAO ->obtener_guardias_hechas($dia,$hora);
 
-$guardiasFechas = $ausenciaDAO ->obtener_guardias_hechas_por_profesor($dia,$hora);
+//PASO 2: obtener el número de guardias hechas por cada docente en un dia y hora determinado NO FUNCIONA
+$guardiasHechas = $ausenciaDAO ->obtener_guardias_hechas($dia,$hora);
+foreach ($guardiasHechas as $guardiaHecha) {
+   
+        //usamos el array de los id de los docentes vacio
+        //echo $guardiaHecha['nombreDocente'].'---'.$guardiaHecha['guardiasHechas'];
+       
+    
+}
+
+//PASO 3: obtener guardias hechas por docente en un dia y hora.
+$guardiasHechasPorSemana = $ausenciaDAO ->obtener_guardias_hechas_por_profesor($dia,$hora);
 
 
 
 //obtener un array asociativo donde las claves son las fechas en las que se ha hecho guardia
 $listaFechas = array();
-foreach ($guardiasFechas as $guardia) {
-    if(!in_array($guardia['fechaGuardia'],$listaFechas)){
-        array_push($listaFechas,$guardia['fechaGuardia']);
+$datosGuardia =  array();
+foreach ($guardiasHechasPorSemana as $guardia) {
+    if(!array_key_exists($guardia['fechaGuardia'],$datosGuardia)){
+
+      
+        //echo $guardia['fechaGuardia'].'-'.$guardia['idProfGuardia'].'-'.$guardia['nombre'].'-'.$guardia['grupo'].'-'.$guardia['aula'] ;
+        //usamos el array de los id de los docentes vacio
+       //var_dump($guardia);
+       
+       $datosGuardia[$guardia['fechaGuardia']]=array();
+       $datosGuardia[$guardia['fechaGuardia']]=$listaDocentesGuardia;
+      
+        //$guardia['fechaGuardia']= $listaDocentesGuardia;
+       // $fecha= $guardia['fechaGuardia'];
+        //$listaFechas[$fecha];//=$listaDocentesGuardia;
+        //array_push($listaFechas,$guardia['fechaGuardia']);
+       
        
     }
-}
 
-$listaFechasGuardias = array();
-foreach ($guardiasFechas as $guardia) {
-    $fecha = $guardia['fechaGuardia'];
-    $profesorGuardia = $guardia['idProfGuardia'];
-   
-    $listaFechasGuardias[$fecha][$profesorGuardia] = $guardia['grupo'].'-'.$guardia['aula'];
-    
+    $datosGuardia[$guardia['fechaGuardia']][$guardia['idProfGuardia']]=$guardia['grupo'].'-'.$guardia['aula'];
 }
 
 
-// se recorre el array anterior pero comprobrando si están todos los docentes.
-//si no está un docente es que no ha hecho guardia ese día, entonces añadimos un símbolo -
-foreach ($guardiasFechas as $guardia) {
-    $fecha = $guardia['fechaGuardia'];
-    
-    foreach ($listaIdsDocentesGuardia as $docente) {
-        if(!isset($listaFechasGuardias[$fecha][$docente])){
-      
-         $listaFechasGuardias[$fecha][$docente] = "-";
-
-    }
-}
-}
 
 
 
@@ -86,34 +99,6 @@ switch($dia){
     case 5: $nombreDia='VIERNES';break;
 }
 
-
-// se pasa los resultados obtenidos de la consulta de la base de datos a un array asociativo.
-$listaGuardias = array();
-if ($guardias->num_rows > 0) {
-    while($guardia = $guardias->fetch_assoc()) {       
-        $listaGuardias []= $guardia;   
-    } 
-}
-
-function mostrarCabeceraTablaGuardias($lista){
-
-    $html='
-    <table class="w3-table w3-bordered w3-striped w3-border">
-<thead>
-<tr class="filaGuardias">
-  <th>Día</th>';
-
-  foreach($lista as $guardia){
-    $html.= '<th>'.$guardia["nombreDocente"].' <span class="w3-badge w3-large w3-padding w3-green">'.$guardia["guardiasHechas"].'</span></th>';
-  }
-
-
-  $html.='</tr></thead>'; 
-    
-   return $html;
-}
-
-
 ?>
 
 <div class="w3-row" >
@@ -121,32 +106,48 @@ function mostrarCabeceraTablaGuardias($lista){
     
     <div class="w3-col m4  w3-center "><a class="btn btn-info btn-volver boton" href="listarAusenciasGuardias3.php?<?php echo $datosVolver ?>">Volver </a></div>
 
-    </div>    
-</div>
+    </div> 
+    
+
 
 <?php
+echo '<div class="w3-container contenedortabla">';
+echo '<table class="w3-table">';
 
-$tabla =  mostrarCabeceraTablaGuardias($listaGuardias);
+echo '<tr class="fila2">';
+    echo '<td class="cabeceraTabla">';
 
-echo $tabla;
-
-
-foreach ($listaFechas as $fecha) {
-    echo '<tr class="filaGuardias">';
-    echo "<td>";
-    echo $fecha;
-    echo "</td>";
-    foreach ($listaIdsDocentesGuardia as $docente) {
-        echo "<td>";
-        echo '<span class=" w3-large w3-padding w3-green">'.$listaFechasGuardias[$fecha][$docente].'</span>';
-        echo "</td>";
-    
-   }
-   echo '</tr>';
-   
+    echo '</td>';
+foreach ($listaIdsDocentesGuardia as $docenteGuardia){
+    echo '<td class="cabeceraTabla">';
+         echo $docenteGuardia;
+    echo '</td>';
 }
-echo '</table>';
+echo '</tr>';
 
+foreach ($datosGuardia as $fecha => $guardias) {
+    echo '<tr class="fila2">';
+    echo '<td class="celdaGuardias">';
+    
+    //original date is in format YYYY-mm-dd
+    $timestamp = strtotime($fecha); 
+    $fechaFormateada = date("d-m-Y", $timestamp );
+    echo $fechaFormateada;
+    echo '</td>';
+    foreach ($guardias as $guardia) {
+        echo '<td class="celdaGuardias">';
+       
+            echo $guardia;
+       
+        
+        echo '</td>';
+    }
+   
+    echo '</tr>';
+}
+
+echo '</table>';
+echo '</div>';
 
 echo '</body>
 </html>

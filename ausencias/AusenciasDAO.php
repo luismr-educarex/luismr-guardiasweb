@@ -231,7 +231,7 @@ public function obtener_guardias_hechas_por_profesor($dia,$hora){
  FROM guardia g 
  INNER JOIN docente d ON g.idProfGuardia=d.id
  INNER JOIN horario h ON g.horario=h.id
- WHERE g.dia='.$dia.' AND g.hora='.$hora.' ORDER BY fechaGuardia DESC;';
+ WHERE g.dia='.$dia.' AND g.hora='.$hora.' ORDER BY fechaGuardia DESC,g.idProfGuardia ASC;';
 
   $result = mysqli_query($connection,$sql) or die ("MENSAJE:No se ha ejecutado la senctencia sql:".$sql);
     

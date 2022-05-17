@@ -101,6 +101,13 @@
             color: white;
             font-size: 1.2em;
         }
+
+.celdaGuardias{
+    background: #FFF;
+border: 0.01em solid #87CEEB !important;
+color: #87CEEB;
+font-weight: bold;
+}
        .boton_panel{
            width: 170px;
            height: 200px;
