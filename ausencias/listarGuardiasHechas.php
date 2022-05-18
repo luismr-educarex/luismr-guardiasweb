@@ -102,7 +102,7 @@ switch($dia){
 ?>
 
 <div class="w3-row" >
-    <div class="w3-col m8 w3-center">  <h2>GUARDIA <?php echo $nombreDia ?>  - <?php echo $hora ?>ªHORA </h2> </div>
+    <div class="w3-col m8 w3-center texto_titulo">  <h2>GUARDIA <?php echo $nombreDia ?>  - <?php echo $hora ?>ªHORA </h2> </div>
     
     <div class="w3-col m4  w3-center "><a class="btn btn-info btn-volver boton" href="listarAusenciasGuardias3.php?<?php echo $datosVolver ?>">Volver </a></div>
 
