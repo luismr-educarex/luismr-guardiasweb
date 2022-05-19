@@ -5,21 +5,32 @@ require_once '../comun/cabecera.php';
 
 if(isset($_GET["docente"])){
     $docente = $_GET["docente"]; 
+    $nombre = $_GET["nombre"]; 
 
     $ausenciaDAO = new AusenciasDAO();
     
     $listaAusencias = $ausenciaDAO ->obtener_ausencia_docente($docente);
+
+
     
-    mostrarListadoAusenciasDocente($listaAusencias);
+    mostrarListadoAusenciasDocente($nombre,$listaAusencias);
     
    
 }
 
 
-function mostrarListadoAusenciasDocente($ausencias){
+function mostrarListadoAusenciasDocente($nombre,$ausencias){
+
 
     $html='
     <div class="w3-container contenedortabla">
+
+    <div class="row">
+    <div class="col-sm-6 docente">
+    <div class="textoTabla">Docente'.$nombre.' Número total de ausencias:'.$ausencias->num_rows.'</div>
+    </div>
+    </div>
+   
     <table class="w3-table">
         <tr>
             <th class="cabeceraTabla">FECHA</th>

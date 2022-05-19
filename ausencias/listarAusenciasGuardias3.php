@@ -104,12 +104,12 @@ function mostrarCuadranteAusencia($lista,$dia,$fecha,$semana){
     <table class="w3-table">
     <tr>
       <th class="cabeceraTabla numeroHora">h</th>
-      <th class="cabeceraTabla">DOCENTE</th>
+      <th class="cabeceraTabla">DOCENTES AUSENTES</th>
       <th class="cabeceraTabla">GRUPO</th>
       <th class="cabeceraTabla">AULA</th>
       <th class="cabeceraTabla">TAREA</th>
       <th class="cabeceraTabla">OBSERVACIONES</th>
-      <th class="cabeceraTabla">GUARDIAS</th>
+      <th class="cabeceraTabla">DOCENTES EN GUARDIA</th>
     </tr>'; 
     
     for($hora=1;$hora<7;$hora++){    

@@ -185,7 +185,7 @@ $numSemana=1; // el numero de la semana en el mes. Empezamos en 1
                      
                       if($d<=5){ // IMPORTANTE -> No pintamos los sábados y domingos. $d=6=sabado;$d=7=domingo
                       
-                      echo '<td class="dianormal  '.$estiloDia.'" width="200" height="100" padding="0"><a href="../ausencias/listarAusenciasGuardias3.php?semana='.$semana.'&dia='.$d.'&fecha='.$fecha.'">';
+                      echo '<td class="dianormal  '.$estiloDia.'" width="250" height="123" padding="0"><a href="../ausencias/listarAusenciasGuardias3.php?semana='.$semana.'&dia='.$d.'&fecha='.$fecha.'">'
                         ?>  
                         <table width="100%" height="100%">
                             <tbody>

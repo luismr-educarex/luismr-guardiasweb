@@ -35,7 +35,7 @@ if ($docentesEnGuardia->num_rows > 0) {
         //array_push($listaIdsDocentesGuardia ,$docente["idProfesor"]); 
         //inicializamos el array que continene en cada elemento el id del docente asociado a la guardia que inicialmente esta vacia
         $listaDocentesGuardia[$docente["idProfesor"]] =  "-";
-        $listaIdsDocentesGuardia[$docente["idProfesor"]]=$docente["nombre"];
+        $listaIdsDocentesGuardia[$docente["idProfesor"]]["nombre"]=$docente["nombre"];
     } 
 }
 
@@ -43,10 +43,11 @@ if ($docentesEnGuardia->num_rows > 0) {
 
 //PASO 2: obtener el número de guardias hechas por cada docente en un dia y hora determinado NO FUNCIONA
 $guardiasHechas = $ausenciaDAO ->obtener_guardias_hechas($dia,$hora);
+
 foreach ($guardiasHechas as $guardiaHecha) {
    
-        //usamos el array de los id de los docentes vacio
-        //echo $guardiaHecha['nombreDocente'].'---'.$guardiaHecha['guardiasHechas'];
+        $listaIdsDocentesGuardia[$guardiaHecha["idDocente"]]["total"]=$guardiaHecha["guardiasHechas"];
+
        
     
 }
@@ -100,27 +101,30 @@ switch($dia){
 }
 
 ?>
-
+<div class="w3-container">
 <div class="w3-row" >
-    <div class="w3-col m8 w3-center texto_titulo">  <h2>GUARDIA <?php echo $nombreDia ?>  - <?php echo $hora ?>ªHORA </h2> </div>
+    <div class="w3-col m8 texto_titulo">  <h2>GUARDIA <?php echo $nombreDia ?>  - <?php echo $hora ?>ªHORA </h2> </div>
     
     <div class="w3-col m4  w3-center "><a class="btn btn-info btn-volver boton" href="listarAusenciasGuardias3.php?<?php echo $datosVolver ?>">Volver </a></div>
 
     </div> 
     
-
+    </div> 
 
 <?php
+
+
 echo '<div class="w3-container contenedortabla">';
 echo '<table class="w3-table">';
 
 echo '<tr class="fila2">';
     echo '<td class="cabeceraTabla">';
-
+    echo '<img class="icono_peque" src="../imagenes/icono_calendario.png">';
     echo '</td>';
 foreach ($listaIdsDocentesGuardia as $docenteGuardia){
     echo '<td class="cabeceraTabla">';
-         echo $docenteGuardia;
+         echo $docenteGuardia["nombre"];
+         echo "<span class='total_guardias'>TOTAL:".$docenteGuardia["total"]."</span>";
     echo '</td>';
 }
 echo '</tr>';

@@ -15,19 +15,18 @@ echo '<div class="container bloque_contenido">
        
          <div class="row">
     
-    <div class="col-sm-1 icono">
-   
-    </div>
-    <div class="col-sm-2">
+  
+    <div class="col-sm-3">
        <span class="texto_titulo">Docentes</span>
     </div>
     
-    <div class="col-sm-4 menu_alumnos">
+    <div class="col-sm-4">
        
      
    <div class="buscador">
    <input class="form-control" id="bucador_docente" type="text" placeholder="Buscar..">  
     </div>
+  </div>
   </div>';  
 
 
@@ -51,7 +50,7 @@ echo '<div class="container bloque_contenido">
        
            
           <td> <a href="../horario/obtenerHorasSemanaDocente.php?docente='.$docente["id"].'" class="btn btn-info btn-sm" role="button">HORARIO</a></td>
-           <td><a href="../ausencias/obtenerAusenciasDocente.php?docente='.$docente["id"].'" class="btn btn-info btn-sm" role="button">AUSENCIAS</a></td>
+           <td><a href="../ausencias/obtenerAusenciasDocente.php?docente='.$docente["id"].'&nombre='.$docente["nombre"].'" class="btn btn-info btn-sm" role="button">AUSENCIAS</a></td>
           <td><a href="formularioEditarDocente.php?id='.$docente["id"].'" class="btn btn-info btn-sm" role="button">EDITAR</a></td>
          
 
