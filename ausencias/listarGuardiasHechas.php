@@ -123,9 +123,14 @@ echo '<tr class="fila2">';
     echo '</td>';
 foreach ($listaIdsDocentesGuardia as $docenteGuardia){
     echo '<td class="cabeceraTabla">';
-         echo $docenteGuardia["nombre"];
-         echo "<span class='total_guardias'>TOTAL:".$docenteGuardia["total"]."</span>";
+         $nombre = $docenteGuardia["nombre"];
+         $posicion_coincidencia = strpos($nombre, '(');
+         
+         $nombre = substr($nombre, 0, $posicion_coincidencia-1);
+         echo "<div class='contenedor_nombre_docente'>".$nombre."</div>";
+         echo "<div class='contenedor_numero_guardias'><span class='badge badge-light numeroGuardias'>".$docenteGuardia['total']."</span></div>";
     echo '</td>';
+
 }
 echo '</tr>';
 

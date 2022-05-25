@@ -29,9 +29,9 @@
   </div>
  <div class="col-sm-9">
     <div class="menu_principal_paginas">
-    <a href="../docente/listarDocentes.php" class="btn btn-info boton_panel_menu boton" role="button">Docentes</a>
-    <a href="../calendario/calendario3.php" class="btn btn-info boton_panel_menu boton" role="button">Ausencias </a>
-       <a href="../configuracion/configuracion.php" class="btn btn-info boton_panel_menu boton" role="button">Configuración </a>
+    <a href="../docente/listarDocentes.php" class="btn  boton_panel_menu boton" role="button">Docentes</a>
+    <a href="../calendario/calendario3.php" class="btn boton_panel_menu boton" role="button">Ausencias </a>
+       <a href="../configuracion/configuracion.php" class="btn  boton_panel_menu boton" role="button">Configuración </a>
          
  
          

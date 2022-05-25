@@ -21,6 +21,7 @@
 
 .boton{
     width: 15%;
+    
 }
 
 .botones_navegacion_semanal{
@@ -111,8 +112,8 @@
 
 .celdaGuardias{
     background: #FFF;
-border: 0.01em solid #87CEEB !important;
-color: #87CEEB;
+border: 0.01em solid #008CBA !important;
+color: #008CBA;
 font-weight: bold;
 }
        .boton_panel{
@@ -121,7 +122,24 @@ font-weight: bold;
            font-size: 30px;
            text-align: center;
            padding-top: 60px;
+            
        }
+
+       .boton_panel_menu{
+        color: #fff;
+       background-color: #008CBA;
+       border-color: #008CBA;
+         
+    }
+    .boton_panel_menu:hover{
+        color: #fff;
+       background-color: #008CBA;
+       border-color: #008CBA;
+         
+    }
+
+
+       
        .panel{
            width: 900px;
            margin-left: 160px;
@@ -174,7 +192,7 @@ font-weight: bold;
         margin-right: 120px;
     }
     .docente{
-        color: #87CEEB;
+        color: #008CBA;
         font-size: 1.5em;
       
     }
@@ -318,7 +336,7 @@ border: 0px none #000000;
 }
 
 .textoDatosDocente {
-    color: #87CEEB;
+    color: #008CBA;
     font-weight: bold;
 }
 
@@ -377,7 +395,7 @@ display: table-row;
     width: 15%;
   padding: 12px;
   background: #ddd;
-    border-bottom: 0.01em solid #87CEEB!important; 
+    border-bottom: 0.01em solid #008CBA!important; 
 color: #87CEEB;
 font-weight: bold;
 
@@ -398,7 +416,7 @@ font-weight: bold;
 }
 
 .fila2{
-    border-bottom: 0.01em solid #87CEEB!important; 
+    border-bottom: 0.01em solid #008CBA!important; 
 
 }
 .celda_peque {
@@ -406,8 +424,8 @@ font-weight: bold;
     background: #FFF;
     text-align: center;
     width: 5%; 
-      border-bottom: 0.01em solid #87CEEB!important; 
-    color: #87CEEB;
+      border-bottom: 0.01em solid #008CBA!important; 
+    color: #008CBA;
     font-weight: bold;
 
 }
@@ -420,7 +438,7 @@ font-weight: bold;
 }
 
 .numeroHora{
-    background: #87CEEB;
+    background: #008CBA;
     color: #FFF;
     width: 3%;
     border-bottom: 0.01em solid #FFF!important;   
@@ -436,8 +454,8 @@ font-weight: bold;
 
 .celda2final {
     background: #FFF;
-     border-right: 0.01em solid #87CEEB!important;   
-    color: #87CEEB;
+     border-right: 0.01em solid #008CBA!important;   
+    color: #008CBA;
     font-weight: bold;
 
 }
@@ -449,7 +467,7 @@ font-weight: bold;
 }
 
 .cabeceraTabla{
-    background: #87CEEB;
+    background: #008CBA;
     color: #FFF;
     margin-bottom: 10px;
     border-color: white;
@@ -496,12 +514,31 @@ font-weight: bold;
     color: #008CBA!important;
 }
 
+.contenedor_nombre_docente{
+    width: 60%; 
+    position: relative;
+    float: left;
+    font-weight: bold;
+}
+
+.contenedor_numero_guardias{
+    width: 50px; 
+    position: relative;
+    float: right;
+}
+.numeroGuardias{
+   padding-left: 60%;
+   font-size: 100% !important;
+   color: #008CBA!important;
+
+}
+
 .observaciones{
     color: #008CBA;
 }
 
 .filaGuardias{
-    background-color: #87CEEB;
+    background-color: #008CBA;
 }
 
 /*************** SELECT ***********************/

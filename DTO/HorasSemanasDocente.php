@@ -34,7 +34,10 @@ class HorasSemanasDocente {
      * argument, which is the primary key of the corresponding table.
      */
 
-    function HorasSemanasDocente () {
+    function __construct()
+    {
+          
+   
 
     }
 
