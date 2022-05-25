@@ -103,7 +103,7 @@ public function cargar_docentes_guardias($dia,$hora) {
 
       $sql = "SELECT * 
       FROM horario h INNER JOIN docente d ON h.idProfesor=d.id
-       WHERE dia=".$dia." AND hora=".$hora." AND materia='GUARDIA' AND grupo='Guardia' AND tipo_horario=1";
+       WHERE dia=".$dia." AND hora=".$hora." AND materia='GUARDIA' AND grupo='Guardias' AND tipo_horario=1";
 
       $result = mysqli_query($connection,$sql) or die ("MENSAJE:No se ha ejecutado la senctencia sql:".$sql);
 

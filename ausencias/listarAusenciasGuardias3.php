@@ -31,12 +31,11 @@ $ausencias = $ausenciaDAO ->obtener_ausencias($semana,$dia);
 $listaAusencias = array();
 if ($ausencias->num_rows > 0) {
     while($ausencia = $ausencias->fetch_assoc()) {   
-        echo "se añade ausencia";    
+         
         $listaAusencias []= $ausencia;   
     } 
 } 
 
-print_r($listaAusencias);
 
 //obtenemos el codigo html del cuadrante por día de las ausencias y guardias
 $contenido = mostrarCuadranteAusencia($listaAusencias,$dia,$fecha,$semana);
@@ -105,12 +104,12 @@ function mostrarCuadranteAusencia($lista,$dia,$fecha,$semana){
     <table class="w3-table">
     <tr>
       <th class="cabeceraTabla numeroHora">h</th>
-      <th class="cabeceraTabla">DOCENTE</th>
+      <th class="cabeceraTabla">DOCENTES AUSENTES</th>
       <th class="cabeceraTabla">GRUPO</th>
       <th class="cabeceraTabla">AULA</th>
       <th class="cabeceraTabla">TAREA</th>
       <th class="cabeceraTabla">OBSERVACIONES</th>
-      <th class="cabeceraTabla">GUARDIAS</th>
+      <th class="cabeceraTabla">DOCENTES EN GUARDIA</th>
     </tr>'; 
     
     for($hora=1;$hora<7;$hora++){    

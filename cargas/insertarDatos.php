@@ -164,7 +164,7 @@ function grabarhorarios($docente,$horas_docente,$dia){
     $guardia;
     $materia;
     //$num_horas = sizeof($horas_docente);
-    for($hora=1;$hora<=6;$hora++){
+    for($hora=0;$hora<6;$hora++){
         //La información de cada elemento (celda en el csv) está separada por un \n
         //Utilizamos el caracter \n para obtener los elementos en un array
         $datosHora =  explode("\n", $horas_docente[$hora]);
@@ -208,7 +208,7 @@ function grabarhorarios($docente,$horas_docente,$dia){
         }
 
 
-        $sql='INSERT INTO `horario`(`idProfesor`, `dia`, `hora`,materia ,`grupo`, `aula`, `guardia`) VALUES ('.$docente.','.$dia.','.$hora.',"'.$materia.'","'.$grupo.'","'.$aula.'",'.$guardia.')';
+        $sql='INSERT INTO `horario`(`idProfesor`, `dia`, `hora`,materia ,`grupo`, `aula`, `guardia`) VALUES ('.$docente.','.$dia.','.($hora+1).',"'.$materia.'","'.$grupo.'","'.$aula.'",'.$guardia.')';
        
         mysqli_query($connection,$sql) or die ("MENSAJE:No se ha ejecutado la senctencia sql:".$sql);
 

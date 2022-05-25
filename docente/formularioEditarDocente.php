@@ -12,6 +12,7 @@ error_reporting(E_ALL);
   if(isset($_GET["id"]))
       $id = $_GET["id"]; 
   $docente = $docente_dao->cargar_docente_por_id($id);
+  $longitud = strlen($docente['nombre']);
 ?>
 
 
@@ -24,11 +25,32 @@ error_reporting(E_ALL);
        
    
 <form class="form-inline" action="editarDocente.php" method="POST">
+
+<div class="row">
+        <div class="col-md-8 col-md-offset-2">
+           
+                <div class="d-flex">
+                <span class="textoDatosDocente"> Docente</span> 
+  <input type="input" size="<?php echo $longitud ?>" class="form-control" id="nombre" name="nombre" value="<?php echo $docente['nombre'] ?>">
+                    <button type="submit" class="btn btn-info">Grabar</button>
+                </div>
+            
+        </div>
+    </div>
+
+
+
+
+<div class="row">
+
+
+ 
+</div>
+
 <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $docente['id'] ?>">
 
   
-  <span class="textoDatosDocente"> Docente</span> <input type="input" class="form-control" id="nombre" name="nombre" value="<?php echo $docente['nombre'] ?>">
-
+  
  
   <?php
       include 'mostrarFormularioHorario.php';

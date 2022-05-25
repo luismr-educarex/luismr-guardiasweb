@@ -269,11 +269,14 @@ class GuardiaDao {
         require('../bd/conexion.php');
            
       
-       $sql= "SELECT h.idProfesor 
+       $sql= "SELECT h.idProfesor,nombre
               FROM  horario h 
+              INNER JOIN docente d ON h.idProfesor=d.id
               WHERE h.dia=".$dia." 
               AND h.hora=".$hora." 
-              AND h.grupo='Guardia'"; 
+              AND h.materia='GUARDIA'
+              AND h.grupo='Guardias'
+              ORDER BY h.idProfesor"; 
       
         $result = mysqli_query($connection,$sql) or die ("MENSAJE:No se ha ejecutado la senctencia sql:".$sql);
           

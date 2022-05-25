@@ -152,15 +152,16 @@ public function obtener_ausencias($semana,$dia) {
   return $result;
 }
 
+
 public function obtener_ausencia_docente($idDocente){
 
   require('../bd/conexion.php');
      
-  //$sql  = "SELECT * FROM guardia g LEFT JOIN docente d ON g.idProfesor=d.id WHERE idProfesor=".$idDocente." ORDER BY semana,dia,hora";
+  //$sql  = "SELECT * FROM guardia g LEFT JOIN docente d ON g.idProfesor=d.id WHERE idProfesor=".$idDocente." ORDER BY semana DESC,dia DESC,hora DESC";
   $sql = "SELECT g.idProfesor,g.fechaGuardia,g.hora,h.grupo,h.aula FROM guardia g 
   LEFT JOIN docente d ON g.idProfesor=d.id 
   JOIN horario h ON h.id=horario
-  WHERE g.idProfesor=".$idDocente." ORDER BY g.semana,g.dia,g.hora;";
+  WHERE g.idProfesor=".$idDocente." ORDER BY g.semana DESC,g.dia DESC,g.hora ASC;";
 
   $result = mysqli_query($connection,$sql) or die ("MENSAJE:No se ha ejecutado la senctencia sql:".$sql);
     
@@ -209,10 +210,10 @@ public function obtener_guardias_hechas($dia,$hora){
 
   require('../bd/conexion.php');
      
-  $sql  = "SELECT d.nombre nombreDocente,COUNT(g.idProfGuardia) guardiasHechas FROM `horario` h 
+  $sql  = "SELECT d.id idDocente,d.nombre nombreDocente,COUNT(g.idProfGuardia) guardiasHechas FROM `horario` h 
   JOIN docente d ON h.idProfesor=d.id 
   LEFT JOIN guardia g ON g.idProfGuardia = d.id
-  WHERE h.dia=".$dia." AND h.hora=".$hora." AND materia LIKE 'GUARDIA' AND h.grupo LIKE 'Guardia'
+  WHERE h.dia=".$dia." AND h.hora=".$hora." AND materia LIKE 'GUARDIA' AND h.grupo LIKE 'Guardias'
   GROUP BY(d.id)";
 
   $result = mysqli_query($connection,$sql) or die ("MENSAJE:No se ha ejecutado la senctencia sql:".$sql);
@@ -231,7 +232,7 @@ public function obtener_guardias_hechas_por_profesor($dia,$hora){
  FROM guardia g 
  INNER JOIN docente d ON g.idProfGuardia=d.id
  INNER JOIN horario h ON g.horario=h.id
- WHERE g.dia='.$dia.' AND g.hora='.$hora.' ORDER BY fechaGuardia DESC;';
+ WHERE g.dia='.$dia.' AND g.hora='.$hora.' ORDER BY fechaGuardia DESC,g.idProfGuardia ASC;';
 
   $result = mysqli_query($connection,$sql) or die ("MENSAJE:No se ha ejecutado la senctencia sql:".$sql);
     
