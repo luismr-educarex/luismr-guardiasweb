@@ -44,7 +44,7 @@
           
            padding-top: 60px;
     
-         color: #87CEEB;
+         color: #008CBA;
 }
 
 .total_guardias{
@@ -52,7 +52,7 @@
    font-size: 20px;
 }
  .bg-celda-info{
-         background-color: #87CEEB;
+         background-color: #008CBA;
         color: white;
         font-size: 1.2em;
         text-align: center;
@@ -61,10 +61,10 @@
 
 .celda{
             height:7em;
-            border-color: #87CEEB;
+            border-color: #008CBA;
             border-width: 0.01em;
             border-style: solid;
-            color: #87CEEB;
+            color: #008CBA;
             font-weight: bold;
         text-align: center;
     padding-left: 4px;
@@ -138,6 +138,29 @@ font-weight: bold;
          
     }
 
+    .boton_navegacion_semanal{
+        color: #fff;
+       background-color: #008CBA;
+       border-color: #008CBA;
+    }
+    .boton_navegacion_semanal:hover{
+        color: #fff;
+       background-color: #008CBA;
+       border-color: #008CBA;
+    }
+
+    .boton_listado{
+        color: #fff;
+       background-color: #008CBA;
+       border-color: #008CBA;
+    }
+
+    .boton_listado:hover{
+        color: #fff;
+       background-color: #008CBA;
+       border-color: #008CBA;
+    }
+
 
        
        .panel{
@@ -185,7 +208,7 @@ font-weight: bold;
         background-color: white;
     }
     .horaGuardia{
-        color: #8FC9B0;
+        color: #006283;
     }
     .btn-volver{
       float: right;
@@ -237,6 +260,12 @@ font-weight: bold;
     z-index: 10;
     
     
+}
+
+.textoTabla{
+    color: #008CBA;
+    font-size: 20px;
+
 }
 
 .texto_observacion{

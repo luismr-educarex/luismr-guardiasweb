@@ -33,7 +33,7 @@ echo '<div class="container bloque_contenido">
   echo ' <table class="table" id="tabla_docente">
     <thead>
       <tr>
-        <th class="texto_cabecera_tabla">nombre</th>
+        <th ></th>
        
          <th></th>
           <th></th>
@@ -49,9 +49,9 @@ echo '<div class="container bloque_contenido">
           <td class="textoTabla">'.$docente["nombre"].'</td>
        
            
-          <td> <a href="../horario/obtenerHorasSemanaDocente.php?docente='.$docente["id"].'" class="btn btn-info btn-sm" role="button">HORARIO</a></td>
-           <td><a href="../ausencias/obtenerAusenciasDocente.php?docente='.$docente["id"].'&nombre='.$docente["nombre"].'" class="btn btn-info btn-sm" role="button">AUSENCIAS</a></td>
-          <td><a href="formularioEditarDocente.php?id='.$docente["id"].'" class="btn btn-info btn-sm" role="button">EDITAR</a></td>
+          <td> <a href="../horario/obtenerHorasSemanaDocente.php?docente='.$docente["id"].'" class="btn boton_listado btn-sm" role="button">HORARIO</a></td>
+           <td><a href="../ausencias/obtenerAusenciasDocente.php?docente='.$docente["id"].'&nombre='.$docente["nombre"].'" class="btn boton_listado btn-sm" role="button">AUSENCIAS</a></td>
+          <td><a href="formularioEditarDocente.php?id='.$docente["id"].'" class="btn boton_listado btn-sm" role="button">EDITAR</a></td>
          
 
         </tr>';

@@ -792,14 +792,14 @@ function mostrarHorariosDocentes($horario,$docente,$semana){
     <div class="col-sm-6">
    
     <div class="botones_navegacion_semanal">     
-    <a class="btn btn-info" href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.($semana-1).'">Semana Anterior</a>';
+    <a class="btn boton_navegacion_semanal" href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.($semana-1).'">Semana Anterior</a>';
      
     if($distancia>=2){
-      $html.=' <a  class="btn btn-info" href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.$semanaActual.'">Semana Actual</a>';
+      $html.=' <a  class="btn boton_navegacion_semanal" href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.$semanaActual.'">Semana Actual</a>';
     }
 
 
-    $html.=' <a  class="btn btn-info" href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.($semana+1).'">Semana Siguiente</a>
+    $html.=' <a  class="btn boton_navegacion_semanal" href="obtenerHorasSemanaDocente.php?docente='.$id_docente.'&semana='.($semana+1).'">Semana Siguiente</a>
     
     </div>
     
