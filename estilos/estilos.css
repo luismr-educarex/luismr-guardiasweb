@@ -42,7 +42,7 @@
            width: 170px;
            font-size: 35px;
           
-           padding-top: 60px;
+           padding-top: 0px;
     
          color: #008CBA;
 }
@@ -471,9 +471,17 @@ font-weight: bold;
 
 .numeroHora{
     background: #008CBA;
-    color: #FFF;
-    width: 3%;
+   
+    width: 2%;
     border-bottom: 0.01em solid #FFF!important;   
+    
+}
+
+.hora{
+    color: #FFF;
+    margin-top: 5%;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 .celda2 {
@@ -531,9 +539,29 @@ font-weight: bold;
 .campoDatosCorto{
     width: 5%; 
 }
-
 .campoDatosAusencia{
       width: 10%; 
+}
+.campoDocentesAusentes{
+    width: 12%; 
+}
+.campoGrupos{
+    width: 8%; 
+}
+.campoAula{
+    width: 8%;
+}
+.campoTarea{
+    width: 5%;
+}
+.campoObservaciones{
+    width: 15%;
+}
+.campoContador{
+    width: 4%;
+}
+.campoDatosCorto{
+    width: 5%; 
 }
 
 .campoDocente {
@@ -548,14 +576,14 @@ font-weight: bold;
 }
 
 .contenedor_nombre_docente{
-    width: 60%; 
+    width: 80%; 
     position: relative;
     float: left;
     font-weight: bold;
 }
 
 .contenedor_numero_guardias{
-    width: 50px; 
+    width: 10%; 
     position: relative;
     float: right;
 }
@@ -565,6 +593,22 @@ font-weight: bold;
    color: #008CBA!important;
 
 }
+
+.badge_numeroTotalGuardiasDocente{
+    display: inline-block;
+    padding: .25em .4em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        color: #fff;
+        background-color: #008CBA;
+        font-size: 25px;
+ 
+ }
 
 .observaciones{
     color: #008CBA;
@@ -622,6 +666,11 @@ font-weight: bold;
     background-color:#003366;
     color:#fff;
     font-weight:bold;
+}
+
+.celdaCalendario{
+    color:#fff;
+    font-size: 32px;
 }
 
 .hoy {

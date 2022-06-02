@@ -216,7 +216,12 @@ public function obtener_guardias_hechas($dia,$hora){
   LEFT JOIN guardia g ON g.idProfGuardia = d.id
   WHERE h.dia=".$dia." AND h.hora=".$hora." AND materia LIKE 'GUARDIA' AND h.grupo LIKE 'Guardias'
   GROUP BY(d.id)";
-
+/*
+  $sql="SELECT idProfGuardia idDocente,nombre nombreDocente, COUNT(idProfGuardia) guardiasHechas
+  FROM guardia g 
+  JOIN docente d ON g.idProfGuardia=d.id
+  where dia=".$dia." AND hora=".$hora." GROUP BY idProfGuardia";
+*/
   $result = mysqli_query($connection,$sql) or die ("MENSAJE:No se ha ejecutado la senctencia sql:".$sql);
     
   mysqli_close($connection);

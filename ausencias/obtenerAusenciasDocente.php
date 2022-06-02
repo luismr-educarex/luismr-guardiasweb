@@ -27,7 +27,7 @@ function mostrarListadoAusenciasDocente($nombre,$ausencias){
 
     <div class="row">
     <div class="col-sm-6 docente">
-    <div class="textoTabla"><img src="../imagenes/icono_docente.png"></img>'.$nombre.' Número total de ausencias:'.$ausencias->num_rows.'</div>
+    <div class="textoTabla"><img src="../imagenes/icono_docente.png"></img>'.$nombre.' Número total de ausencias:<span class="badge_numeroTotalGuardiasDocente">'.$ausencias->num_rows.'</span></div>
     </div>
     </div>
    
@@ -58,9 +58,7 @@ function mostrarListadoAusenciasDocente($nombre,$ausencias){
            
          
         }
-        } else {
-            $html .= "ESTE DOCENTE NO TIENE AUSENCIAS.";
-        }
+        } 
 
          
    $html =$html.'   </table></div> ';

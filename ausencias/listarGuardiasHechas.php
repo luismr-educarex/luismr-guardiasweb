@@ -36,26 +36,24 @@ if ($docentesEnGuardia->num_rows > 0) {
         //inicializamos el array que continene en cada elemento el id del docente asociado a la guardia que inicialmente esta vacia
         $listaDocentesGuardia[$docente["idProfesor"]] =  "-";
         $listaIdsDocentesGuardia[$docente["idProfesor"]]["nombre"]=$docente["nombre"];
+        $listaIdsDocentesGuardia[$docente["idProfesor"]]["total"]=0;
+     
     } 
 }
 
 
 
-//PASO 2: obtener el número de guardias hechas por cada docente en un dia y hora determinado NO FUNCIONA
-$guardiasHechas = $ausenciaDAO ->obtener_guardias_hechas($dia,$hora);
-
-foreach ($guardiasHechas as $guardiaHecha) {
-   
-        $listaIdsDocentesGuardia[$guardiaHecha["idDocente"]]["total"]=$guardiaHecha["guardiasHechas"];
-
-       
-    
-}
-
-//PASO 3: obtener guardias hechas por docente en un dia y hora.
+//PASO 2: obtener guardias hechas por docente en un dia y hora.
 $guardiasHechasPorSemana = $ausenciaDAO ->obtener_guardias_hechas_por_profesor($dia,$hora);
 
 
+//PASO 3: contar el número de veces que aparece el id del profe de guardia en el array obtenido en el paso 2
+foreach ($guardiasHechasPorSemana as $guardia) {
+
+    $listaIdsDocentesGuardia[$guardia['idProfGuardia']]["total"]++;
+   
+   
+}
 
 //obtener un array asociativo donde las claves son las fechas en las que se ha hecho guardia
 $listaFechas = array();
@@ -64,7 +62,7 @@ foreach ($guardiasHechasPorSemana as $guardia) {
     if(!array_key_exists($guardia['fechaGuardia'],$datosGuardia)){
 
       
-        //echo $guardia['fechaGuardia'].'-'.$guardia['idProfGuardia'].'-'.$guardia['nombre'].'-'.$guardia['grupo'].'-'.$guardia['aula'] ;
+       // echo $guardia['fechaGuardia'].'-'.$guardia['idProfGuardia'].'-'.$guardia['nombre'].'-'.$guardia['grupo'].'-'.$guardia['aula'] ;
         //usamos el array de los id de los docentes vacio
        //var_dump($guardia);
        
@@ -105,7 +103,7 @@ switch($dia){
 <div class="w3-row" >
     <div class="w3-col m8 texto_titulo">  <h2>GUARDIA <?php echo $nombreDia ?>  - <?php echo $hora ?>ªHORA </h2> </div>
     
-    <div class="w3-col m4  w3-center "><a class="btn btn-info btn-volver boton" href="listarAusenciasGuardias3.php?<?php echo $datosVolver ?>">Volver </a></div>
+    <div class="w3-col m4  w3-center "><a class="btn btn-info boton_panel_menu boton" href="listarAusenciasGuardias3.php?<?php echo $datosVolver ?>">Volver </a></div>
 
     </div> 
     

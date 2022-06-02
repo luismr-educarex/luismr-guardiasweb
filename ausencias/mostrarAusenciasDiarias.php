@@ -76,6 +76,11 @@ function seleccionarDocenteGuardia(docente,ausencia){
 $(document).ready(function() {	
     function comprobarHora() {
 
+
+        //obtenemos los tres datos del tiempo que necesitamos:
+        // dia en la semana 1=lunes,2=martes,...
+        // fecha actual en formato d-m-a
+        // semana en el año 
         const tiempoTranscurrido = Date.now();
         const hoy = new Date(tiempoTranscurrido);
         var diaEnSemana=hoy.getDay();
@@ -88,8 +93,6 @@ $(document).ready(function() {
         }
         var fecha = formatDate(date)
         
-
-
         currentdate = new Date();
         var oneJan = new Date(currentdate.getFullYear(),0,1);
         var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
@@ -99,13 +102,11 @@ $(document).ready(function() {
         $.ajax({
             type: "GET",
             //semana=21&dia=5&fecha=27-5-2022<<<<
-            url: "./obtenerAusencias.php?semana="+semana+"&dia="+diaEnSemana+"&fecha="+fecha,
+            url: "./obtenerAusencias.php?semana="+(semana-1)+"&dia="+diaEnSemana+"&fecha="+fecha,
             success: function(data) {
                 console.info("Datos recibidos correctamente");
                 
                 $("#contenidoAusencias").html(data);
-
-                
                 
             },
             error : function(xhr, status) {
@@ -119,7 +120,7 @@ $(document).ready(function() {
         });
        
     }
-    setInterval(comprobarHora, 10000);
+    setInterval(comprobarHora, 3000);
    
 });
 </script>

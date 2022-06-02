@@ -5,7 +5,8 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-$time = time();
+function obtenerHoraActualdeDocencia(){
+    $time = time();
 $horaActual = intval(date("H", $time));
 $minutoActual = intval(date("i", $time));
 
@@ -36,6 +37,12 @@ foreach($horas as $hora){
 }
 
 echo $horaActual.'---'.$minutoActual.'----'.$horalectiva;//rand(0,100);
+
+}
+
+obtenerHoraActualdeDocencia();
+
+
 
 
 ?>

@@ -31,6 +31,7 @@ $contenido = mostrarCuadranteAusencia($listaAusencias,$dia,$fecha,$semana);
 echo $contenido;
 
 
+
 //En esta función de obtiene un array asociativo bidimensional, por cada hora (1 hasta 6) obtenemos un array que almacena las ausencias de esa hora.
 //Las lista por horas están formadas por objetos DTO de tipo Guardia.
 function obtenerAusenciasPorHora($ausencias){
@@ -92,7 +93,7 @@ function mostrarCuadranteAusencia($lista,$dia,$fecha,$semana){
 
     <table class="w3-table">
     <tr>
-      <th class="cabeceraTabla numeroHora">h</th>
+      <th class="cabeceraTabla numeroHora">H</th>
       <th class="cabeceraTabla">DOCENTES AUSENTES</th>
       <th class="cabeceraTabla">GRUPO</th>
       <th class="cabeceraTabla">AULA</th>
@@ -125,7 +126,7 @@ function imprimirFila($fecha,$semana,$dia,$hora,$horaActualLectiva,$listaAusenci
     
     $html="";
     $numeroProfesoresAusentes=sizeof($listaAusencias[$hora]);
-    $num_fila=1;
+    $num_celda=1;
 
     $estiloFilaHoraActual="";
     if($hora==$horaActualLectiva){
@@ -134,10 +135,10 @@ function imprimirFila($fecha,$semana,$dia,$hora,$horaActualLectiva,$listaAusenci
     
     if($numeroProfesoresAusentes==0){ //no hay ausencias
         
-         $html =$html.' <tr id="'.$hora.'" class="fila2 '.$estiloFilaHoraActual.'">';
-          $html =$html.' <td class="fila2 numeroHora">'.$hora.'</td>';
-          $html =$html.' <td class="fila2 sinAusencias campoDocente" colspan="6">SIN AUSENCIAS</td>';
-          $html =$html.' <td class="celda2final" ></td>';
+         $html =$html.' <tr id="'.$hora.'" class="fila2">';
+          $html =$html.' <td class="fila2 numeroHora '.$estiloFilaHoraActual.'"><span class="hora">'.$hora.'</span></td>';
+          $html =$html.' <td class="fila2 sinAusencias campoDocente '.$estiloFilaHoraActual.'" colspan="6">SIN AUSENCIAS</td>';
+          $html =$html.' <td class="celda2final '.$estiloFilaHoraActual.'" ></td>';
          $html =$html.'</tr>';
     }
     
@@ -146,16 +147,16 @@ function imprimirFila($fecha,$semana,$dia,$hora,$horaActualLectiva,$listaAusenci
         for($num_ausencia=0;$num_ausencia<$num_ausencias;$num_ausencia++){
   
            $estiloFila="";
-           if($num_fila==$numeroProfesoresAusentes) //última fila, último tr
+           if($num_celda==$numeroProfesoresAusentes) //última fila, último tr
            {
                 $estiloFila="fila2";
            }
            
-           $html =$html.' <tr id="'.$hora.'" class="'.$estiloFila.' '.$estiloFilaHoraActual.'">';
+           $html =$html.' <tr id="'.$hora.'" class="'.$estiloFila.'">';
             
-            if($num_fila==1) //primera fila, primer tr
+            if($num_celda==1) //primera celda, es la que muestra la hora
            {
-              $html =$html.' <td rowspan="'.$numeroProfesoresAusentes.'" class="fila2 numeroHora">'.$hora.'<p></p></td>';
+              $html =$html.' <td rowspan="'.$numeroProfesoresAusentes.'" class="fila2 numeroHora"><span class="hora">'.$hora.'</span></td>';
            }  
         
             $estiloDocente="ausenciaSinGuardia";
@@ -168,27 +169,40 @@ function imprimirFila($fecha,$semana,$dia,$hora,$horaActualLectiva,$listaAusenci
                  $estiloAula= "textoAusenciaConGuardia"; 
             }
          
-            $html =$html.'<td class="celda2 datosAusencia campoDatosLargo campoDocente" data-idAusencia="'.$ausencias[$num_ausencia]->getId().'" ><div id="'.$ausencias[$num_ausencia]->getId().'"  class="'.$estiloDocente.'">'.$ausencias[$num_ausencia]->getNombreDocente().'</div></td>';
-        
-            $html =$html.'<td id="grupo_'.$ausencias[$num_ausencia]->getId().'" class="celda2 '.$estiloGrupo.' campoDatosAusencia">'.$ausencias[$num_ausencia]->getGrupo().'</td>';
+            $html =$html.'<td class="celda2 datosAusencia campoDocentesAusentes campoDocente '.$estiloFilaHoraActual.'" data-idAusencia="'.$ausencias[$num_ausencia]->getId().'" ><div id="'.$ausencias[$num_ausencia]->getId().'"  class="'.$estiloDocente.'">'.$ausencias[$num_ausencia]->getNombreDocente().'</div></td>';
+           
+            $html =$html.'<td id="grupo_'.$ausencias[$num_ausencia]->getId().'" class="celda2 '.$estiloGrupo.' campoGrupos '.$estiloFilaHoraActual.'">'.$ausencias[$num_ausencia]->getGrupo().'</td>';
             
             
-            $html =$html.'<td id="aula_'.$ausencias[$num_ausencia]->getId().'" class="celda2 '.$estiloAula.' campoDatosAusencia"> '.$ausencias[$num_ausencia]->getAula().'</td>';
+            $html =$html.'<td id="aula_'.$ausencias[$num_ausencia]->getId().'" class="celda2 '.$estiloAula.' campoAula '.$estiloFilaHoraActual.'"> '.$ausencias[$num_ausencia]->getAula().'</td>';
             
             $iconotarea='../imagenes/icono_tarea2.png';
     
             if($ausencias[$num_ausencia]->getTarea()==1){
-             $html = $html.'<td class="celda2 campoDatosCorto"><img src="'.$iconotarea.'" width="30px" height="30px"/></td>';
+             $html = $html.'<td class="celda2 campoTarea '.$estiloFilaHoraActual.'"><img src="'.$iconotarea.'" width="30px" height="30px"/></td>';
             }else{
-             $html =$html.'<td class="celda2 campoDatosCorto"></td>';
+             $html =$html.'<td class="celda2 campoTarea '.$estiloFilaHoraActual.'"></td>';
             }
             
-            $html =$html.'<td class="celda2 campoDatosLargo observaciones">'.$ausencias[$num_ausencia]->getObservaciones().'</td>';
-            $html =$html.'<td class="celda2 campoDatosLargo">'.mostrarDocentesEnGuardia($ausencias[$num_ausencia]->getDia(),$hora,$ausencias[$num_ausencia]->getId(),$ausencias[$num_ausencia]->getIdProfGuardia()).'</td>';
-            $html =$html.'<td class="celda2final campoDatosCorto"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><i class="glyphicon glyphicon-equalizer" style="font-size:36px"></i></a></td>';
+            $html =$html.'<td class="celda2 campoObservaciones observaciones '.$estiloFilaHoraActual.'">'.$ausencias[$num_ausencia]->getObservaciones().'</td>';
+            $html =$html.'<td class="celda2 campoDocentesAusentes '.$estiloFilaHoraActual.'">'.mostrarDocentesEnGuardia($ausencias[$num_ausencia]->getDia(),$hora,$ausencias[$num_ausencia]->getId(),$ausencias[$num_ausencia]->getIdProfGuardia()).'</td>';
+           
+            
+          
+            if($num_celda==($num_ausencias-1)) //ultima celda, es la que muestra el boton
+            {
+                $html =$html.'<td rowspan="'.$numeroProfesoresAusentes.'" class="celda2final campoContador '.$estiloFilaHoraActual.'"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><i class="glyphicon glyphicon-equalizer" style="font-size:36px"></i></a></td>';
+           
+            }  
+            if($num_ausencias==1) //ultima celda, es la que muestra el boton
+            {
+                $html =$html.'<td rowspan="'.$numeroProfesoresAusentes.'" class="celda2final campoContador '.$estiloFilaHoraActual.'"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><i class="glyphicon glyphicon-equalizer" style="font-size:36px"></i></a></td>';
+           
+            }  
+
             $html =$html.'</tr>';
         
-            $num_fila++;
+            $num_celda++;
         
     }
     }

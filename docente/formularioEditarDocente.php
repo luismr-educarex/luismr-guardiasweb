@@ -32,7 +32,7 @@ error_reporting(E_ALL);
                 <div class="d-flex">
                 <span class="textoDatosDocente"> Docente</span> 
   <input type="input" size="<?php echo $longitud ?>" class="form-control" id="nombre" name="nombre" value="<?php echo $docente['nombre'] ?>">
-                    <button type="submit" class="btn btn-info">Grabar</button>
+                    <button type="submit" class="btn boton_panel_menu">Grabar</button>
                 </div>
             
         </div>
@@ -59,7 +59,7 @@ error_reporting(E_ALL);
 
 
   
-  <button type="submit" class="btn btn-info">Grabar</button>
+ 
 </form>
       
   </div>

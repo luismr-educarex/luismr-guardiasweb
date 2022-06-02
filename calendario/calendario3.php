@@ -141,9 +141,9 @@ $numSemana=1; // el numero de la semana en el mes. Empezamos en 1
     
     <div class="cabeceraCalendario">
        <div class="navegacionMeses">     
-   <a class="btn btn-info" href="calendario3.php?mes=<?php echo $mes-1?>&anio=<?php echo $anio ?>">Anterior</a>
+   <a class="btn boton_panel_menu" href="calendario3.php?mes=<?php echo $mes-1?>&anio=<?php echo $anio ?>">Anterior</a>
           <span class="tituloMes"><?php echo $meses[$mes]." ".$anio?></span> 
-  <a class="btn btn-info" href="calendario3.php?mes=<?php echo $mes+1?>&anio=<?php echo $anio ?>">Siguiente</a>
+  <a class="btn boton_panel_menu" href="calendario3.php?mes=<?php echo $mes+1?>&anio=<?php echo $anio ?>">Siguiente</a>
 
     </div>
     
@@ -198,12 +198,12 @@ Si queremos abrir el modal al hacer click sobre un día del calendario, en el td
                                  <?php 
                  
                                           if(in_array($dia.'-'.$mes,$feriados)){  
-                                            echo '<td class="elementoCelda festivo">';
+                                            echo '<td class="celdaCalendario festivo">';
                                             echo $dia;
                                             echo '</td>';
                                         }
                                         else{
-                                            echo '<td class="elementoCelda">';
+                                            echo '<td class="celdaCalendario">';
                                             
                                             echo $dia;
 
