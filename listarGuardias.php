@@ -56,7 +56,6 @@ function obtenerAusenciasPorHora($ausencias){
 //Obtenemos de la lista de ausencias solo las ausencias de la hora que se le pasa, usando para la lista objetos DTO de tipo Guardia
 function recuperaHorasAusentes($lista,$hora){
     
-    
     $ausencias=array();
     $ausencia=0;
     $num_clases=sizeof($lista);
@@ -112,7 +111,7 @@ function mostrarCuadranteAusencia($lista,$fecha){
         <div class="col-sm-2 bg-celda-info"> OBSERVACIONES</div>  
         <div class="col-sm-2 bg-celda-info">GUARDIAS </div>
     </div>'; 
-    $numeroProfesoresAusentes=sizeof($listaAusencias);
+   
     for($hora=1;$hora<7;$hora++){ 
            $html =$html.'<div class="row">';
               $html =$html.'<div class="col-sm-1 bg-celda-info celdaHora">'.$hora.'</div>';

@@ -1,45 +1,5 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-require_once '../comun/cabecera.php';
-require_once 'AusenciasDAO.php';
-require_once 'Guardias.php';
-require_once '../comun/fechas.php';
-require_once '../DTO/HorasSemanasDocente.php';
-require_once '../docente/DocenteDao.php';
-
-?>
-<script>
-$(document).ready(function() {	
-    function comprobarHora() {
-
-        $.ajax({
-            type: "POST",
-            url: "../comprobarHora.php",
-            success: function(data) {
-                console.info(data);
-                fila="#"+data;
-                $(fila).addClass("horaActual");
-               
-            
-                    if(data>1){
-                        filaAnterior="#"+(data-1);
-                        $(filaAnterior).removeClass("horaActual");
-                    }
-                
-            }
-        });
-       
-    }
-    setInterval(comprobarHora, 5000);
-});
-</script>
-<?php
-
-
 $ausenciaDAO = new AusenciasDAO();
 
 if(isset($_GET["semana"]))
@@ -214,14 +174,12 @@ function imprimirFila($fecha,$semana,$dia,$hora,$listaAusencias){
             
             $html =$html.'<td class="celda2 campoDatosLargo observaciones">'.$ausencias[$num_ausencia]->getObservaciones().'</td>';
             $html =$html.'<td class="celda2 campoDatosLargo">'.mostrarDocentesEnGuardia($ausencias[$num_ausencia]->getDia(),$hora,$ausencias[$num_ausencia]->getId(),$ausencias[$num_ausencia]->getIdProfGuardia()).'</td>';
-           
+            $html =$html.'<td class="celda2final campoDatosCorto"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><i class="glyphicon glyphicon-equalizer" style="font-size:36px"></i></a></td>';
+            $html =$html.'</tr>';
         
             $num_fila++;
         
-    }//fin for
-
-    $html =$html.'<td class="celda2final campoDatosCorto"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><i class="glyphicon glyphicon-equalizer" style="font-size:36px"></i></a></td>';
-    $html =$html.'</tr>';
+    }
     }
     
     
@@ -274,67 +232,5 @@ function mostrarDocentesEnGuardia($dia,$hora,$idAusencia,$idDocenteGuardia){
 } 
 
 
+
 ?>
-
-<script>
-    
-$(document).ready(function(){
-  $(".selectorDocenteGuardia").change(function(){
-   
-      
-        var url = "guardarDocenteGuardia.php";   
-        console.info('selecciona docente de guardia');
-      
-
-       var ausencia = $(this).data('idausencia');
-       var docenteGuardia = $(this).val();
-      
-       console.info(ausencia);
-       console.info(docenteGuardia);
-        
-       var valores = {"ausencia":ausencia,
-                              "docenteGuardia":docenteGuardia
-                             };
-
-    $.ajax({                        
-       type: "POST",                 
-       url: url,                    
-       data: valores,
-       success: function(data)            
-       {
-
-         elemento = '#'+ausencia;
-         grupo = '#grupo_'+ausencia;
-        aula = '#aula_'+ausencia;
-           
-           
-         if(docenteGuardia!=0){   
-         //if ($(elemento).hasClass('ausenciaSinGuardia')){ //Si está marcado ausencia sin guardia
-                         
-                         $(elemento).addClass("ausenciaConGuardia");
-                         $(elemento).removeClass("ausenciaSinGuardia");
-                         $(grupo).addClass("textoAusenciaConGuardia");
-                         $(grupo).removeClass("textoAusenciaSinGuardia");
-                          $(aula).addClass("textoAusenciaConGuardia");
-                         $(aula).removeClass("textoAusenciaSinGuardia");
-                        
-         }
-           
-         else{ //Si está marcado ausencia sin guardia
-                        $(elemento).addClass("ausenciaSinGuardia");
-                         $(elemento).removeClass("ausenciaConGuardia");
-                       $(grupo).addClass("textoAusenciaSinGuardia");
-                         $(grupo).removeClass("textoAusenciaConGuardia");
-                         $(aula).addClass("textoAusenciaSinGuardia");
-                         $(aula).removeClass("textoAusenciaConGuardia");
-               
-                    }   
-           
-         }   
-     });
-  });
-});
-
-
-</script>
-

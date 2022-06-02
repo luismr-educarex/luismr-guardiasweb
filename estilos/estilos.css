@@ -3,15 +3,15 @@
 }
 
 .bloque_contenido{
-    width: 98%;
+    width: 85%;
     margin-top: 0.5em;
     max-width: 100%;
-    margin-right: 1%;
-    margin-left: 8%;
+
 } 
 
 .horario{
     margin-bottom: 10px;
+    margin-left: 7%;
     width: 100%;
     
 }
@@ -162,6 +162,9 @@ font-weight: bold;
     }
 
 
+    .horaActual{
+        background-color: #87CEEB !important;
+    }
        
        .panel{
            width: 900px;
@@ -537,7 +540,8 @@ font-weight: bold;
     padding-left: 16px!important;
 }
 .botonListaGuardias{
-    color: #FFF!important;
+    color: #008CBA!important;
+    padding-left: 35%;
 }
 .botonListaGuardias:hover{
     color: #008CBA!important;

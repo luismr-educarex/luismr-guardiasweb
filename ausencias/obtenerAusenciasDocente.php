@@ -27,7 +27,7 @@ function mostrarListadoAusenciasDocente($nombre,$ausencias){
 
     <div class="row">
     <div class="col-sm-6 docente">
-    <div class="textoTabla">Docente'.$nombre.' Número total de ausencias:'.$ausencias->num_rows.'</div>
+    <div class="textoTabla"><img src="../imagenes/icono_docente.png"></img>'.$nombre.' Número total de ausencias:'.$ausencias->num_rows.'</div>
     </div>
     </div>
    
@@ -37,6 +37,7 @@ function mostrarListadoAusenciasDocente($nombre,$ausencias){
             <th class="cabeceraTabla">HORA</th>
             <th class="cabeceraTabla">GRUPO</th>
             <th class="cabeceraTabla">AULA</th>
+            <th class="cabeceraTabla">GUARDIA</th>
 
         </tr>';
 
@@ -52,6 +53,7 @@ function mostrarListadoAusenciasDocente($nombre,$ausencias){
                 <td class="textoDatosDocente">'. $ausencia["hora"].'</td>
                 <td class="textoDatosDocente">'. $ausencia["grupo"].'</td>
                 <td class="textoDatosDocente">'. $ausencia["aula"].'</td>
+                <td class="textoDatosDocente">'. $ausencia["docenteGuardia"].'</td>
             </tr>';
            
          

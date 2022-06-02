@@ -158,9 +158,10 @@ public function obtener_ausencia_docente($idDocente){
   require('../bd/conexion.php');
      
   //$sql  = "SELECT * FROM guardia g LEFT JOIN docente d ON g.idProfesor=d.id WHERE idProfesor=".$idDocente." ORDER BY semana DESC,dia DESC,hora DESC";
-  $sql = "SELECT g.idProfesor,g.fechaGuardia,g.hora,h.grupo,h.aula FROM guardia g 
+  $sql = "SELECT g.idProfesor,g.fechaGuardia,g.hora,h.grupo,h.aula,dg.nombre docenteGuardia  FROM guardia g 
   LEFT JOIN docente d ON g.idProfesor=d.id 
   JOIN horario h ON h.id=horario
+  LEFT JOIN docente dg ON g.idProfGuardia=dg.id
   WHERE g.idProfesor=".$idDocente." ORDER BY g.semana DESC,g.dia DESC,g.hora ASC;";
 
   $result = mysqli_query($connection,$sql) or die ("MENSAJE:No se ha ejecutado la senctencia sql:".$sql);

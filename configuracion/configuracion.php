@@ -36,6 +36,14 @@ require_once '../comun/cabecera.php';
   </div>
  <div class="col-sm-9">
 </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-sm-3">
+      <a href="../docente/formularioNuevoDocente.php" class="btn btn-info boton_panel_menu" role="button">Alta Nuevo Docente</a>
+  </div>
+ <div class="col-sm-9">
+</div>
     </div>
 
 

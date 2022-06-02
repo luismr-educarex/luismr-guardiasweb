@@ -1,43 +1,6 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-require_once '../comun/cabecera.php';
-require_once 'AusenciasDAO.php';
-require_once 'Guardias.php';
-require_once '../comun/fechas.php';
-require_once '../DTO/HorasSemanasDocente.php';
-require_once '../docente/DocenteDao.php';
-
-?>
-<script>
-$(document).ready(function() {	
-    function comprobarHora() {
-
-        $.ajax({
-            type: "POST",
-            url: "../comprobarHora.php",
-            success: function(data) {
-                console.info(data);
-                fila="#"+data;
-                $(fila).addClass("horaActual");
-               
-            
-                    if(data>1){
-                        filaAnterior="#"+(data-1);
-                        $(filaAnterior).removeClass("horaActual");
-                    }
-                
-            }
-        });
-       
-    }
-    setInterval(comprobarHora, 5000);
-});
-</script>
-<?php
+include 'AusenciasDAO.php';
 
 
 $ausenciaDAO = new AusenciasDAO();
@@ -88,7 +51,7 @@ function obtenerAusenciasPorHora($ausencias){
 //Obtenemos de la lista de ausencias solo las ausencias de la hora que se le pasa, usando para la lista objetos DTO de tipo Guardia
 function recuperaHorasAusentes($lista,$hora){
     
-    
+    include_once '../ausencias/Guardias.php';
     $ausencias=array();
     $ausencia=0;
     $num_clases=sizeof($lista);
@@ -120,12 +83,12 @@ function recuperaHorasAusentes($lista,$hora){
 function mostrarCuadranteAusencia($lista,$dia,$fecha,$semana){
 
     
-     $listaAusencias = obtenerAusenciasPorHora($lista,$dia);
+    $listaAusencias = obtenerAusenciasPorHora($lista,$dia);
     
      $html='
       <div class="w3-container contenedortabla">
 
-      <div class="docente">'.$fecha.'</div>
+      <div class="docente">GUARDIAS '.$fecha.'</div>
 
     <table class="w3-table">
     <tr>
@@ -139,12 +102,15 @@ function mostrarCuadranteAusencia($lista,$dia,$fecha,$semana){
       <th class="cabeceraTabla">CONTADOR</th>
     </tr>'; 
     
+
+    $horaActualLectiva =obtenerHoraActualdeDocencia();
+    
     for($hora=1;$hora<7;$hora++){    
          
-              $html =$html.imprimirFila($fecha,$semana,$dia,$hora,$listaAusencias);
+              $html =$html.imprimirFila($fecha,$semana,$dia,$hora,$horaActualLectiva,$listaAusencias);
 
     }
-          
+        
     $html =$html.'   </table></div> ';
     
     return $html;
@@ -152,7 +118,7 @@ function mostrarCuadranteAusencia($lista,$dia,$fecha,$semana){
 
 
 
-function imprimirFila($fecha,$semana,$dia,$hora,$listaAusencias){    
+function imprimirFila($fecha,$semana,$dia,$hora,$horaActualLectiva,$listaAusencias){    
     
     $ausencias = $listaAusencias[$hora];
     $num_ausencias=sizeof($ausencias);
@@ -160,10 +126,15 @@ function imprimirFila($fecha,$semana,$dia,$hora,$listaAusencias){
     $html="";
     $numeroProfesoresAusentes=sizeof($listaAusencias[$hora]);
     $num_fila=1;
+
+    $estiloFilaHoraActual="";
+    if($hora==$horaActualLectiva){
+        $estiloFilaHoraActual="horaActual";
+    }
     
     if($numeroProfesoresAusentes==0){ //no hay ausencias
         
-         $html =$html.' <tr id="'.$hora.'" class="fila2">';
+         $html =$html.' <tr id="'.$hora.'" class="fila2 '.$estiloFilaHoraActual.'">';
           $html =$html.' <td class="fila2 numeroHora">'.$hora.'</td>';
           $html =$html.' <td class="fila2 sinAusencias campoDocente" colspan="6">SIN AUSENCIAS</td>';
           $html =$html.' <td class="celda2final" ></td>';
@@ -180,7 +151,7 @@ function imprimirFila($fecha,$semana,$dia,$hora,$listaAusencias){
                 $estiloFila="fila2";
            }
            
-           $html =$html.' <tr id="'.$hora.'" class="'.$estiloFila.'">';
+           $html =$html.' <tr id="'.$hora.'" class="'.$estiloFila.' '.$estiloFilaHoraActual.'">';
             
             if($num_fila==1) //primera fila, primer tr
            {
@@ -214,14 +185,12 @@ function imprimirFila($fecha,$semana,$dia,$hora,$listaAusencias){
             
             $html =$html.'<td class="celda2 campoDatosLargo observaciones">'.$ausencias[$num_ausencia]->getObservaciones().'</td>';
             $html =$html.'<td class="celda2 campoDatosLargo">'.mostrarDocentesEnGuardia($ausencias[$num_ausencia]->getDia(),$hora,$ausencias[$num_ausencia]->getId(),$ausencias[$num_ausencia]->getIdProfGuardia()).'</td>';
-           
+            $html =$html.'<td class="celda2final campoDatosCorto"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><i class="glyphicon glyphicon-equalizer" style="font-size:36px"></i></a></td>';
+            $html =$html.'</tr>';
         
             $num_fila++;
         
-    }//fin for
-
-    $html =$html.'<td class="celda2final campoDatosCorto"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><i class="glyphicon glyphicon-equalizer" style="font-size:36px"></i></a></td>';
-    $html =$html.'</tr>';
+    }
     }
     
     
@@ -232,6 +201,7 @@ function imprimirFila($fecha,$semana,$dia,$hora,$listaAusencias){
 
 function mostrarDocentesEnGuardia($dia,$hora,$idAusencia,$idDocenteGuardia){
     
+   include_once '../docente/DocenteDao.php';
 
     $docenteDAO = new DocenteDao();
 
@@ -248,7 +218,7 @@ function mostrarDocentesEnGuardia($dia,$hora,$idAusencia,$idDocenteGuardia){
     $html='';
     
           if (sizeof($listaGuardias) > 0) {
-               $html = $html.'<div><select class="selectorDocenteGuardia select" name="docenteGuardia" id="docenteGuardia" data-idausencia="'.$idAusencia.'">
+               $html = $html.'<div><select class="selectorDocenteGuardia select" name="docenteGuardia" id="docenteGuardia_'.$idAusencia.'" onchange="seleccionarDocenteGuardia(this.value,'.$idAusencia.')" data-idausencia="'.$idAusencia.'">
                <option value="0">DOCENTE DE GUARDIA</option>';
             $num_guardia=0;
             while($num_guardia<sizeof($listaGuardias)) {   
@@ -274,67 +244,39 @@ function mostrarDocentesEnGuardia($dia,$hora,$idAusencia,$idDocenteGuardia){
 } 
 
 
-?>
+function obtenerHoraActualdeDocencia(){
+    $time = time();
+$horaActual = intval(date("H", $time));
+$minutoActual = intval(date("i", $time));
 
-<script>
+$datos = file_get_contents("../configuracion/horas.json");
+$horario = json_decode($datos,true);
+$horas = $horario['horas'];
+
+$horalectiva = 0;
+$horaEncontrada=false;
+foreach($horas as $hora){
+    $hora_inicio=$hora['inicio'];
+    $hora_fin=$hora['fin'];
+    $hm_inicio= explode(':',$hora_inicio);
+    $hm_fin= explode(':',$hora_fin);
+    $h_inicio = intval($hm_inicio[0]);
+    $m_inicio = intval($hm_inicio[1]);
+    $h_fin = intval($hm_fin[0]);
+    $m_fin = intval($hm_fin[1]);
     
-$(document).ready(function(){
-  $(".selectorDocenteGuardia").change(function(){
-   
-      
-        var url = "guardarDocenteGuardia.php";   
-        console.info('selecciona docente de guardia');
-      
 
-       var ausencia = $(this).data('idausencia');
-       var docenteGuardia = $(this).val();
-      
-       console.info(ausencia);
-       console.info(docenteGuardia);
+    if(($horaActual>=$h_inicio) && ($horaActual<=$h_fin) && !$horaEncontrada)
+    {
+
+        $horalectiva = $hora['hora'];
+        $horaEncontrada=true;
         
-       var valores = {"ausencia":ausencia,
-                              "docenteGuardia":docenteGuardia
-                             };
+    }   
+}
 
-    $.ajax({                        
-       type: "POST",                 
-       url: url,                    
-       data: valores,
-       success: function(data)            
-       {
+return $horalectiva;
 
-         elemento = '#'+ausencia;
-         grupo = '#grupo_'+ausencia;
-        aula = '#aula_'+ausencia;
-           
-           
-         if(docenteGuardia!=0){   
-         //if ($(elemento).hasClass('ausenciaSinGuardia')){ //Si está marcado ausencia sin guardia
-                         
-                         $(elemento).addClass("ausenciaConGuardia");
-                         $(elemento).removeClass("ausenciaSinGuardia");
-                         $(grupo).addClass("textoAusenciaConGuardia");
-                         $(grupo).removeClass("textoAusenciaSinGuardia");
-                          $(aula).addClass("textoAusenciaConGuardia");
-                         $(aula).removeClass("textoAusenciaSinGuardia");
-                        
-         }
-           
-         else{ //Si está marcado ausencia sin guardia
-                        $(elemento).addClass("ausenciaSinGuardia");
-                         $(elemento).removeClass("ausenciaConGuardia");
-                       $(grupo).addClass("textoAusenciaSinGuardia");
-                         $(grupo).removeClass("textoAusenciaConGuardia");
-                         $(aula).addClass("textoAusenciaSinGuardia");
-                         $(aula).removeClass("textoAusenciaConGuardia");
-               
-                    }   
-           
-         }   
-     });
-  });
-});
+}
 
-
-</script>
-
+?>

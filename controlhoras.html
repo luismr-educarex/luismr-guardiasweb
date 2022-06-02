@@ -1,0 +1,19 @@
+
+<script>
+
+const jsonData= import('./horas.json'); 
+console.log(jsonData);
+
+var fechaHora = new Date();
+var horas = fechaHora.getHours();
+var minutos = fechaHora.getMinutes();
+var segundos = fechaHora.getSeconds();
+
+console.info(horas);
+
+if((horas < 10)&&(minutos>21))
+{ horas = '0' + horas; }
+if(minutos < 10) { minutos = '0' + minutos; }
+if(segundos < 10) { segundos = '0' + segundos; }
+
+</script>
