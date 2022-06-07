@@ -129,7 +129,7 @@ function mostrarCuadranteAusencia($lista,$dia,$fecha,$semana){
 
     <table class="w3-table">
     <tr>
-      <th class="cabeceraTabla numeroHora">h</th>
+      <th class="cabeceraTabla numeroHora">H</th>
       <th class="cabeceraTabla">DOCENTES AUSENTES</th>
       <th class="cabeceraTabla">GRUPO</th>
       <th class="cabeceraTabla">AULA</th>
@@ -184,7 +184,7 @@ function imprimirFila($fecha,$semana,$dia,$hora,$listaAusencias){
             
             if($num_fila==1) //primera fila, primer tr
            {
-              $html =$html.' <td rowspan="'.$numeroProfesoresAusentes.'" class="fila2 numeroHora"><span class="hora">'.$hora.'</span><p></p></td>';
+              $html =$html.' <td rowspan="'.$numeroProfesoresAusentes.'" class="fila2 numeroHora"><div class="hora" style="margin-top:'.$numeroProfesoresAusentes.'em">'.$hora.'</div><p></p></td>';
            }  
         
             $estiloDocente="ausenciaSinGuardia";
@@ -204,7 +204,7 @@ function imprimirFila($fecha,$semana,$dia,$hora,$listaAusencias){
             
             $html =$html.'<td id="aula_'.$ausencias[$num_ausencia]->getId().'" class="celda2 '.$estiloAula.' campoDatosAusencia"> '.$ausencias[$num_ausencia]->getAula().'</td>';
             
-            $iconotarea='../imagenes/icono_tarea2.png';
+            $iconotarea='../imagenes/tarea.png';
     
             if($ausencias[$num_ausencia]->getTarea()==1){
              $html = $html.'<td class="celda2 campoDatosCorto"><img src="'.$iconotarea.'" width="30px" height="30px"/></td>';
@@ -216,8 +216,13 @@ function imprimirFila($fecha,$semana,$dia,$hora,$listaAusencias){
             $html =$html.'<td class="celda2 campoDatosLargo">'.mostrarDocentesEnGuardia($ausencias[$num_ausencia]->getDia(),$hora,$ausencias[$num_ausencia]->getId(),$ausencias[$num_ausencia]->getIdProfGuardia()).'</td>';
            
 
-           
+            if($num_fila==1) //primera fila, primer tr
+            {
+                $html =$html.'<td  rowspan="'.$numeroProfesoresAusentes.'" class="celda2final campoDatosCorto"><div style="margin-top:'.($numeroProfesoresAusentes-1).'em"><a class="botonListaGuardias"  href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><img src="../imagenes/icono_abacus.png" class="icono_abacus"></img></a></div></td>';
 
+            }  
+           
+/*
             if($num_fila==($num_ausencias-1)) //ultima celda, es la que muestra el boton
             {
                 $html =$html.'<td  rowspan="'.$numeroProfesoresAusentes.'" class="celda2final campoDatosCorto"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><i class="glyphicon glyphicon-equalizer" style="font-size:36px"></i></a></td>';
@@ -227,7 +232,7 @@ function imprimirFila($fecha,$semana,$dia,$hora,$listaAusencias){
             {
                 $html =$html.'<td rowspan="'.$numeroProfesoresAusentes.'" class="celda2final campoDatosCorto"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><i class="glyphicon glyphicon-equalizer" style="font-size:36px"></i></a></td>';
 
-            }  
+            } */ 
             $html =$html.'</tr>';
         
             $num_fila++;

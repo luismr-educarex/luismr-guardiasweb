@@ -115,6 +115,7 @@ function mostrarCuadranteAusencia($lista,$dia,$fecha,$semana){
     $html =$html.'   </table></div> ';
     
     return $html;
+    
 }
 
 
@@ -133,7 +134,7 @@ function imprimirFila($fecha,$semana,$dia,$hora,$horaActualLectiva,$listaAusenci
         $estiloFilaHoraActual="horaActual";
     }
     
-    if($numeroProfesoresAusentes==0){ //no hay ausencias
+    if($num_ausencias==0){ //no hay ausencias
         
          $html =$html.' <tr id="'.$hora.'" class="fila2">';
           $html =$html.' <td class="fila2 numeroHora '.$estiloFilaHoraActual.'"><span class="hora">'.$hora.'</span></td>';
@@ -147,16 +148,16 @@ function imprimirFila($fecha,$semana,$dia,$hora,$horaActualLectiva,$listaAusenci
         for($num_ausencia=0;$num_ausencia<$num_ausencias;$num_ausencia++){
   
            $estiloFila="";
-           if($num_celda==$numeroProfesoresAusentes) //última fila, último tr
+           if($num_celda==$num_ausencias) //última fila, último tr
            {
                 $estiloFila="fila2";
            }
            
-           $html =$html.' <tr id="'.$hora.'" class="'.$estiloFila.'">';
+           $html =$html.' <tr class="'.$estiloFila.'">';
             
             if($num_celda==1) //primera celda, es la que muestra la hora
            {
-              $html =$html.' <td rowspan="'.$numeroProfesoresAusentes.'" class="fila2 numeroHora"><span class="hora">'.$hora.'</span></td>';
+              $html =$html.' <td rowspan="'.$num_ausencias.'" class="fila2 numeroHora"><span class="hora">'.$hora.'</span></td>';
            }  
         
             $estiloDocente="ausenciaSinGuardia";
@@ -191,12 +192,12 @@ function imprimirFila($fecha,$semana,$dia,$hora,$horaActualLectiva,$listaAusenci
           
             if($num_celda==($num_ausencias-1)) //ultima celda, es la que muestra el boton
             {
-                $html =$html.'<td rowspan="'.$numeroProfesoresAusentes.'" class="celda2final campoContador '.$estiloFilaHoraActual.'"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><i class="glyphicon glyphicon-equalizer" style="font-size:36px"></i></a></td>';
+                $html =$html.'<td rowspan="'.$num_ausencias.'" class="celda2final campoContador '.$estiloFilaHoraActual.'"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><img src="../imagenes/icono_abacus.png" class="icono_abacus"></img></a></td>';
            
             }  
             if($num_ausencias==1) //ultima celda, es la que muestra el boton
             {
-                $html =$html.'<td rowspan="'.$numeroProfesoresAusentes.'" class="celda2final campoContador '.$estiloFilaHoraActual.'"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><i class="glyphicon glyphicon-equalizer" style="font-size:36px"></i></a></td>';
+                $html =$html.'<td rowspan="'.$num_ausencias.'" class="celda2final campoContador '.$estiloFilaHoraActual.'"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><img src="../imagenes/icono_abacus.png" class="icono_abacus"></img></a></td>';
            
             }  
 
@@ -259,9 +260,12 @@ function mostrarDocentesEnGuardia($dia,$hora,$idAusencia,$idDocenteGuardia){
 
 
 function obtenerHoraActualdeDocencia(){
+   
+
     $time = time();
-$horaActual = intval(date("H", $time));
-$minutoActual = intval(date("i", $time));
+
+$horaActual =strtotime(date('H:i',$time));
+
 
 $datos = file_get_contents("../configuracion/horas.json");
 $horario = json_decode($datos,true);
@@ -269,25 +273,21 @@ $horas = $horario['horas'];
 
 $horalectiva = 0;
 $horaEncontrada=false;
+
 foreach($horas as $hora){
     $hora_inicio=$hora['inicio'];
     $hora_fin=$hora['fin'];
-    $hm_inicio= explode(':',$hora_inicio);
-    $hm_fin= explode(':',$hora_fin);
-    $h_inicio = intval($hm_inicio[0]);
-    $m_inicio = intval($hm_inicio[1]);
-    $h_fin = intval($hm_fin[0]);
-    $m_fin = intval($hm_fin[1]);
-    
 
-    if(($horaActual>=$h_inicio) && ($horaActual<=$h_fin) && !$horaEncontrada)
+
+    if(($horaActual>=strtotime($hora_inicio,$time)) && ($horaActual<=strtotime($hora_fin,$time)) && !$horaEncontrada)
     {
-
         $horalectiva = $hora['hora'];
         $horaEncontrada=true;
         
-    }   
+    } 
 }
+    
+
 
 return $horalectiva;
 

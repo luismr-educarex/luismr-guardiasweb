@@ -471,17 +471,21 @@ font-weight: bold;
 
 .numeroHora{
     background: #008CBA;
-   
     width: 2%;
     border-bottom: 0.01em solid #FFF!important;   
+
     
 }
 
 .hora{
     color: #FFF;
-    margin-top: 5%;
     font-weight: bold;
     font-size: 1.1em;
+    margin-top: 1em;
+}
+
+.icono_abacus{
+    margin-right: 1.1em;
 }
 
 .celda2 {
@@ -543,7 +547,7 @@ font-weight: bold;
       width: 10%; 
 }
 .campoDocentesAusentes{
-    width: 12%; 
+    width: 15%; 
 }
 .campoGrupos{
     width: 8%; 
@@ -558,7 +562,7 @@ font-weight: bold;
     width: 15%;
 }
 .campoContador{
-    width: 4%;
+    width: 5%;
 }
 .campoDatosCorto{
     width: 5%; 

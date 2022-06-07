@@ -71,8 +71,9 @@ function seleccionarDocenteGuardia(docente,ausencia){
 
 
 </script>
-
+<script type="text/javascript" src="../js/Datejs/build/date.js"></script>
 <script>
+  
 $(document).ready(function() {	
     function comprobarHora() {
 
@@ -93,18 +94,33 @@ $(document).ready(function() {
         }
         var fecha = formatDate(date)
         
+
+         //Obtener el numero de la semana 
         currentdate = new Date();
         var oneJan = new Date(currentdate.getFullYear(),0,1);
         var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
         var semana = Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7);
-       
 
+       /*
+        Date.prototype.getWeek = function() {
+        var onejan = new Date(this.getFullYear(),0,1);
+        var today = new Date(this.getFullYear(),this.getMonth(),this.getDate());
+        var dayOfYear = ((today - onejan + 86400000)/86400000);
+        return Math.ceil(dayOfYear/7)
+        };
+        var today = new Date();
+        var semana = today.getWeek();
+        console.log(semana);
+        */
+
+        console.info("./obtenerAusencias.php?semana="+semana+"&dia="+diaEnSemana+"&fecha="+fecha);
         $.ajax({
             type: "GET",
             //semana=21&dia=5&fecha=27-5-2022<<<<
-            url: "./obtenerAusencias.php?semana="+(semana-1)+"&dia="+diaEnSemana+"&fecha="+fecha,
+            url: "./obtenerAusencias.php?semana="+semana+"&dia="+diaEnSemana+"&fecha="+fecha,
             success: function(data) {
                 console.info("Datos recibidos correctamente");
+                
                 
                 $("#contenidoAusencias").html(data);
                 
@@ -120,9 +136,11 @@ $(document).ready(function() {
         });
        
     }
-    setInterval(comprobarHora, 3000);
+   setInterval(comprobarHora, 20000);
    
 });
+
+
 </script>
 
 
