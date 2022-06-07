@@ -126,7 +126,6 @@ function imprimirFila($fecha,$semana,$dia,$hora,$horaActualLectiva,$listaAusenci
     $num_ausencias=sizeof($ausencias);
     
     $html="";
-    $numeroProfesoresAusentes=sizeof($listaAusencias[$hora]);
     $num_celda=1;
 
     $estiloFilaHoraActual="";
@@ -177,7 +176,7 @@ function imprimirFila($fecha,$semana,$dia,$hora,$horaActualLectiva,$listaAusenci
             
             $html =$html.'<td id="aula_'.$ausencias[$num_ausencia]->getId().'" class="celda2 '.$estiloAula.' campoAula '.$estiloFilaHoraActual.'"> '.$ausencias[$num_ausencia]->getAula().'</td>';
             
-            $iconotarea='../imagenes/icono_tarea2.png';
+            $iconotarea='../imagenes/tarea.png';
     
             if($ausencias[$num_ausencia]->getTarea()==1){
              $html = $html.'<td class="celda2 campoTarea '.$estiloFilaHoraActual.'"><img src="'.$iconotarea.'" width="30px" height="30px"/></td>';
@@ -192,12 +191,12 @@ function imprimirFila($fecha,$semana,$dia,$hora,$horaActualLectiva,$listaAusenci
           
             if($num_celda==($num_ausencias-1)) //ultima celda, es la que muestra el boton
             {
-                $html =$html.'<td rowspan="'.$num_ausencias.'" class="celda2final campoContador '.$estiloFilaHoraActual.'"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><img src="../imagenes/icono_abacus.png" class="icono_abacus"></img></a></td>';
+                $html =$html.'<td rowspan="'.$num_ausencias.'" class="celda2final campoContador '.$estiloFilaHoraActual.'"><a class="botonListaGuardias" href="listarGuardiasHechaEnTablon.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><img src="../imagenes/icono_abacus.png" class="icono_abacus"></img></a></td>';
            
             }  
             if($num_ausencias==1) //ultima celda, es la que muestra el boton
             {
-                $html =$html.'<td rowspan="'.$num_ausencias.'" class="celda2final campoContador '.$estiloFilaHoraActual.'"><a class="botonListaGuardias" href="listarGuardiasHechas.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><img src="../imagenes/icono_abacus.png" class="icono_abacus"></img></a></td>';
+                $html =$html.'<td rowspan="'.$num_ausencias.'" class="celda2final campoContador '.$estiloFilaHoraActual.'"><a class="botonListaGuardias" href="listarGuardiasHechaEnTablon.php?semana='.$semana.'&fecha='.$fecha.'&dia='.$dia.'&hora='.$hora.'"><img src="../imagenes/icono_abacus.png" class="icono_abacus"></img></a></td>';
            
             }  
 

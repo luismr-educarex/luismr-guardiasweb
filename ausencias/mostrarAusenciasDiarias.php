@@ -136,7 +136,7 @@ $(document).ready(function() {
         });
        
     }
-   setInterval(comprobarHora, 20000);
+   setInterval(comprobarHora, 1000);
    
 });
 

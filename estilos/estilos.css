@@ -163,7 +163,9 @@ font-weight: bold;
 
 
     .horaActual{
-        background-color: #87CEEB !important;
+        background-color: #ddd !important;
+        
+        font-weight: bold;
     }
        
        .panel{
@@ -345,7 +347,7 @@ a:active {
 }
 
 .ausenciaSinGuardia {
-    background-color: #87CEEB;
+    background-color: #008CBA;
     border: none;
     color: white;
     padding: 1px 5px;
@@ -363,7 +365,7 @@ border: 0px none #000000;
 }
 
 .textoAusenciaSinGuardia{
-     color: #87CEEB;
+     color: #008CBA;
     font-weight: bold;
 }
 
@@ -373,7 +375,8 @@ border: 0px none #000000;
 }
 
 .ausenciaConGuardia {
-    background-color: #008CBA;
+    background-color: #87CEEB;
+   
     border: none;
     color: white;
     padding: 1px 5px;
